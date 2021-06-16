@@ -100,7 +100,7 @@ router.post(
   }),
   function (req, res) {
   
-      res.redirect("/admin-panel");
+      res.redirect("/dashboard/admin-panel");
     
   }
 );
