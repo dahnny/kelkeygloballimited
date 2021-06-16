@@ -15,7 +15,6 @@ const helmet = require('helmet')
 const mongoose = require("mongoose");
 const passport = require("passport")
 
-const MongoStore = require('connect-mongo').default;
 const app = express();
 app.use(
   cors({
