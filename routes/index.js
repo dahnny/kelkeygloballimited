@@ -19,9 +19,9 @@ router.get("/contact", async(req, res) => {
     res.render("contact")
 })
 router.get("/listing", async(req, res) => {
-    res.render("single_listing")
+    res.render("listings")
 })
-router.get("/property/:slug", async(req, res) => {
+router.get("/:slug", async(req, res) => {
     res.render("single_listing")
 })
 
