@@ -137,10 +137,6 @@ router.get("/:slug", async(req, res) => {
 
 router.get("/login", csrfProtection, async (req, res)=> {
 
-  var recent_posts = await ( await Post.find().where('status').equals("published") .populate("category").sort({
-    dateCreated : -1
-  })).slice(0,4)
-
 
   // console.log("Referral ID",req.query['referral'])
   // render the page and pass in any flash data if it exists
@@ -148,9 +144,7 @@ router.get("/login", csrfProtection, async (req, res)=> {
     message: req.flash("loginMessage"),
     successMessage : req.flash("successMessage"),
     title: "Log-In",
-    csrfToken: req.csrfToken(),
-    recent_posts,
-    moment
+    csrfToken: req.csrfToken()
   });
 });
 
