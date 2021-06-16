@@ -84,7 +84,7 @@ app.use('/', require('./routes/index'))
 
 
 
-app.locals.title="Agro"
+app.locals.title="Kelkeyglobal"
 app.locals.notifications = []
 // app.localsauthenticated = !req.user.anonymous
 
