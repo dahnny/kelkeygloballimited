@@ -85,10 +85,6 @@ router.get("/about", async(req, res) => {
     res.render("about")
 })
 
-router.get("/gallery", async(req, res) => {
-    res.render("gallery")
-})
-
 router.get("/contact", async(req, res) => {
     res.render("contact")
 })
@@ -100,42 +96,78 @@ router.get("/:slug", async(req, res) => {
 })
 
 
-router.post("/newsletter", async(req, res) => {
-    const {email} = req.body
+// router.post("/newsletter", async(req, res) => {
+//     const {email} = req.body
     
-    const data = {
-        members:[
-          {
-            email_address:req.body.email,
-            status:"subscribed",
-            // merge_fields:{
-            //     FNAME:username,
-            // }
-          }
-        ]
-      }
-      const postData = JSON.stringify(data) 
-      const options = {
-        url :"https://us19.api.mailchimp.com/3.0/lists/02e1d16e87",
-        method:'POST',
-        headers:{
-          Authorization:"auth API_KEY"
-        },
-        body:postData
-      };
+//     const data = {
+//         members:[
+//           {
+//             email_address:req.body.email,
+//             status:"subscribed",
+//             // merge_fields:{
+//             //     FNAME:username,
+//             // }
+//           }
+//         ]
+//       }
+//       const postData = JSON.stringify(data) 
+//       const options = {
+//         url :"https://us19.api.mailchimp.com/3.0/lists/02e1d16e87",
+//         method:'POST',
+//         headers:{
+//           Authorization:"auth API_KEY"
+//         },
+//         body:postData
+//       };
   
-      request(options, (err, response,body)=>{
-        if(err){
-          console.log("MAILCHIMP: ERROR", err)
-        } else{
-          if(response.statusCode === 200){
-            console.log("SUCCESS")
-          } else {
-            console.log("FAILED")
-          }
-        }
-      })
+//       request(options, (err, response,body)=>{
+//         if(err){
+//           console.log("MAILCHIMP: ERROR", err)
+//         } else{
+//           if(response.statusCode === 200){
+//             console.log("SUCCESS")
+//           } else {
+//             console.log("FAILED")
+//           }
+//         }
+//       })
       
-})
+// })
+
+
+router.get("/login", csrfProtection, async (req, res)=> {
+
+  var recent_posts = await ( await Post.find().where('status').equals("published") .populate("category").sort({
+    dateCreated : -1
+  })).slice(0,4)
+
+
+  // console.log("Referral ID",req.query['referral'])
+  // render the page and pass in any flash data if it exists
+  return res.render("login", {
+    message: req.flash("loginMessage"),
+    successMessage : req.flash("successMessage"),
+    title: "Log-In",
+    csrfToken: req.csrfToken(),
+    recent_posts,
+    moment
+  });
+});
+
+router.post(
+  "/login",
+  csrfProtection,
+  passport.authenticate("local-login", {
+    // successRedirect: "/dashboard", // redirect to the secure profile section
+    failureRedirect: "/login", // redirect back to the signup page if there is an error
+    failureFlash: true, // allow flash messages
+  }),
+  function (req, res) {
+  
+      res.redirect("/admin-panel");
+    
+  }
+);
+
 
 module.exports = router
