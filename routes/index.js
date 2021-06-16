@@ -82,7 +82,7 @@ router.get("/login", csrfProtection, async (req, res)=> {
 
   // console.log("Referral ID",req.query['referral'])
   // render the page and pass in any flash data if it exists
-  return res.render("login", {
+  return res.render("dashboard/Login", {
     message: req.flash("loginMessage"),
     successMessage : req.flash("successMessage"),
     title: "Log-In",
