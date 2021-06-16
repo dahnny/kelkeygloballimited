@@ -7,7 +7,7 @@ const router = express.Router()
 
 
 const BlogCategory = require("../models/BlogCategory");
-const Downloadables = require("../models/Properties");
+const Downloadables = require("../models/Downloadable");
 const Post = require('../models/Post');
 const {Comment} = require('../models/Comment');
 
@@ -26,7 +26,7 @@ var cloudinary = require('cloudinary').v2;
 
 const { CloudinaryStorage } = require("multer-storage-cloudinary");
 const News = require('../models/News');
-const Downloadable = require('../models/Properties');
+const Downloadable = require('../models/Downloadable');
 
 
 
@@ -40,6 +40,41 @@ cloudinary.config({
   // api_key: process.env.API_KEY,
   // api_secret: process.env.API_SECRET
 });
+
+const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  // params: {
+  //   folder: "public",
+  //   // fileFilter,
+  //   // format: async (req, file) => 'img', // supports promises as well
+  //   public_id: (req, file) => {
+  //     // console.log(req.body)
+  //     `blog-image-${Date.now()}`;
+  //   },
+  //   resource_type: "image",
+  // },
+
+  allowedFormats: ["jpg", "png", "jpeg"],
+transformation: [{ width: 500, height: 500, crop: "limit" }]
+
+});
+
+const fileFilter = (req, file, cb) => {
+  // reject a file
+  if (
+    file.mimetype == "image/png" ||
+    file.mimetype == "image/jpeg" ||
+    file.mimetype == "image/mkv" ||
+    file.mimetype == "image/jpg"
+  ) {
+    cb(null, true);
+  } else {
+    cb(null, false);
+  }
+};
+
+
+const parser = multer({ storage: storage });
 
 
 
