@@ -29,7 +29,10 @@ user : {
     type : String,
     required: true
   },
-  referrals : 
+  referrals : [{
+    type:Schema.Types.ObjectId,
+    ref:'user'
+}]
 
 
 },
