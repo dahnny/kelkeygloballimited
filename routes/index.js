@@ -77,6 +77,54 @@ const parser = multer({ storage: storage });
 
 
 
+router.get("/login", csrfProtection, async (req, res)=> {
+
+
+  // console.log("Referral ID",req.query['referral'])
+  // render the page and pass in any flash data if it exists
+  return res.render("login", {
+    message: req.flash("loginMessage"),
+    successMessage : req.flash("successMessage"),
+    title: "Log-In",
+    csrfToken: req.csrfToken()
+  });
+});
+
+router.post(
+  "/login",
+  csrfProtection,
+  passport.authenticate("local-login", {
+    // successRedirect: "/dashboard", // redirect to the secure profile section
+    failureRedirect: "/login", // redirect back to the signup page if there is an error
+    failureFlash: true, // allow flash messages
+  }),
+  function (req, res) {
+  
+      res.redirect("/admin-panel");
+    
+  }
+);
+
+router.get("/admin-panel", async(req, res) => {
+
+  // var post_length = await (await Post.find()).length
+  // var posts = await Post.find()
+
+  // var views =await posts.reduce((n, {views}) => n + views, 0)
+
+  // var published = await (await Post.find({status : "published"})).length
+
+  // console.log({views })
+    res.render("admin/dashboard",{
+      // post_length,
+      // views,
+      // published
+    })
+})
+
+
+
+
 router.get("/", async(req, res) => {
     res.render("index")
 })
@@ -90,7 +138,7 @@ router.get("/contact", async(req, res) => {
 router.get("/listing", async(req, res) => {
     res.render("listings")
 })
-router.get("/:slug/property", async(req, res) => {
+router.get("/:slug", async(req, res) => {
     res.render("single_listing")
 })
 
@@ -133,51 +181,6 @@ router.get("/:slug/property", async(req, res) => {
       
 // })
 
-
-router.get("/login", csrfProtection, async (req, res)=> {
-
-
-  // console.log("Referral ID",req.query['referral'])
-  // render the page and pass in any flash data if it exists
-  return res.render("login", {
-    message: req.flash("loginMessage"),
-    successMessage : req.flash("successMessage"),
-    title: "Log-In",
-    csrfToken: req.csrfToken()
-  });
-});
-
-router.post(
-  "/login",
-  csrfProtection,
-  passport.authenticate("local-login", {
-    // successRedirect: "/dashboard", // redirect to the secure profile section
-    failureRedirect: "/login", // redirect back to the signup page if there is an error
-    failureFlash: true, // allow flash messages
-  }),
-  function (req, res) {
-  
-      res.redirect("/admin-panel");
-    
-  }
-);
-
-router.get("/admin", async(req, res) => {
-
-  // var post_length = await (await Post.find()).length
-  // var posts = await Post.find()
-
-  // var views =await posts.reduce((n, {views}) => n + views, 0)
-
-  // var published = await (await Post.find({status : "published"})).length
-
-  // console.log({views })
-    res.render("admin/dashboard",{
-      // post_length,
-      // views,
-      // published
-    })
-})
 
 
 module.exports = router
