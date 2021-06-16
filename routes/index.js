@@ -25,7 +25,7 @@ var cloudinary = require('cloudinary').v2;
 
 const { CloudinaryStorage } = require("multer-storage-cloudinary");
 const News = require('../models/News');
-const Propertes = require('../models/Propertes');
+const Properties = require('../models/Properties');
 
 
 
