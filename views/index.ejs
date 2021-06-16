@@ -1,85 +1,101 @@
 <%- include('./partials/Header.ejs'); %>
 
 <body>
+  <%- include('./partials/Preloader.ejs'); %> <%- include('./partials/Nav.ejs');
+  %>
 
-  <%- include('./partials/Preloader.ejs'); %>
+  <!-- Banner Section One Start -->
+  <section class="banner-one">
+    <div
+      class="banner-bg-slide"
+      data-options='{ "delay": 5000, "slides": [ { "src": "assets/images/properties/slider1.jpg" }, { "src": "assets/images/properties/slider2.jpg" } ], "transition": "fade", "timer": false, "align": "top", "animation": [ "kenburnsUp", "kenburnsDown", "kenburnsLeft", "kenburnsRight" ] }'
+    ></div>
+    <!-- /.banner-bg-slide -->
+    <div class="container">
+      <div class="content-box">
+        <div class="top-title">
+          <h2>
+            Find Your Future <br />
+            Dream Property
+          </h2>
+        </div>
 
-  <%- include('./partials/Nav.ejs'); %>
-
-
-      <!-- Banner Section One Start -->
-      <section class="banner-one">
-          <div class="banner-bg-slide"
-              data-options='{ "delay": 5000, "slides": [ { "src": "assets/images/properties/slider1.jpg" }, { "src": "assets/images/properties/slider2.jpg" } ], "transition": "fade", "timer": false, "align": "top", "animation": [ "kenburnsUp", "kenburnsDown", "kenburnsLeft", "kenburnsRight" ] }'>
-          </div><!-- /.banner-bg-slide -->
-          <div class="container">
-              <div class="content-box">
-                  <div class="top-title">
-                      <h2>Find Your Future <br> Dream Property</h2>
+        <div class="product-tab-box tabs-box">
+          <ul class="tab-btns tab-buttons clearfix list-unstyled">
+            <li data-tab="#desc" class="tab-btn active-btn">
+              <span>Buy</span>
+            </li>
+            <li data-tab="#addi__info" class="tab-btn"><span>Sale</span></li>
+            <li data-tab="#review" class="tab-btn"><span>Rent</span></li>
+          </ul>
+          <div class="tabs-content">
+            <div class="tab active-tab" id="desc">
+              <form class="banner_one_search_form" action="/listing">
+                <div class="banner_one_search_form_input_box">
+                  <input
+                    type="text"
+                    placeholder="Search for city, property, agent and more..."
+                  />
+                  <button type="submit" class="thm-btn banner_one_search_btn">
+                    Search Property
+                  </button>
+                  <div class="banner_one_search_icon">
+                    <a href="#"><span class="icon-magnifying-glass"></span></a>
                   </div>
+                </div>
+              </form>
+            </div>
 
-                  <div class="product-tab-box tabs-box">
-                      <ul class="tab-btns tab-buttons clearfix list-unstyled">
-                          <li data-tab="#desc" class="tab-btn active-btn"><span>Buy</span></li>
-                          <li data-tab="#addi__info" class="tab-btn"><span>Sale</span></li>
-                          <li data-tab="#review" class="tab-btn"><span>Rent</span></li>
-                      </ul>
-                      <div class="tabs-content">
-                          <div class="tab active-tab" id="desc">
-                              <form class="banner_one_search_form" action="/listing">
-                                  <div class="banner_one_search_form_input_box">
-                                      <input type="text" placeholder="Search for city, property, agent and more...">
-                                      <button type="submit" class="thm-btn banner_one_search_btn">Search
-                                          Property</button>
-                                      <div class="banner_one_search_icon">
-                                          <a href="#"><span class="icon-magnifying-glass"></span></a>
-                                      </div>
-                                  </div>
-                              </form>
-                          </div>
-
-                          <div class="tab" id="addi__info">
-                              <form class="banner_one_search_form" action="/listing">
-                                  <div class="banner_one_search_form_input_box">
-                                      <input type="text" placeholder="Search for city, property, agent and more...">
-                                      <button type="submit" class="thm-btn banner_one_search_btn">Search
-                                          Property</button>
-                                      <div class="banner_one_search_icon">
-                                          <a href="#"><span class="icon-magnifying-glass"></span></a>
-                                      </div>
-                                  </div>
-                              </form>
-                          </div>
-
-                          <div class="tab" id="review">
-                              <form class="banner_one_search_form" action="/listing">
-                                  <div class="banner_one_search_form_input_box">
-                                      <input type="text" placeholder="Search for city, property, agent and more...">
-                                      <button type="submit" class="thm-btn banner_one_search_btn">Search
-                                          Property</button>
-                                      <div class="banner_one_search_icon">
-                                          <a href="#"><span class="icon-magnifying-glass"></span></a>
-                                      </div>
-                                  </div>
-                              </form>
-                          </div>
-                      </div>
+            <div class="tab" id="addi__info">
+              <form class="banner_one_search_form" action="/listing">
+                <div class="banner_one_search_form_input_box">
+                  <input
+                    type="text"
+                    placeholder="Search for city, property, agent and more..."
+                  />
+                  <button type="submit" class="thm-btn banner_one_search_btn">
+                    Search Property
+                  </button>
+                  <div class="banner_one_search_icon">
+                    <a href="#"><span class="icon-magnifying-glass"></span></a>
                   </div>
-                  <div class="banner_one_bottom_icon_text">
-                      <div class="banner_one_bottom_icon">
-                          <span class="icon-building"></span>
-                      </div>
-                      <div class="banner_one_bottom_text">
-                          <p>Smart Real Estate Services All our the World</p>
-                      </div>
+                </div>
+              </form>
+            </div>
+
+            <div class="tab" id="review">
+              <form class="banner_one_search_form" action="/listing">
+                <div class="banner_one_search_form_input_box">
+                  <input
+                    type="text"
+                    placeholder="Search for city, property, agent and more..."
+                  />
+                  <button type="submit" class="thm-btn banner_one_search_btn">
+                    Search Property
+                  </button>
+                  <div class="banner_one_search_icon">
+                    <a href="#"><span class="icon-magnifying-glass"></span></a>
                   </div>
-              </div>
+                </div>
+              </form>
+            </div>
           </div>
-      </section>
-      <!-- Banner Section One End -->
+        </div>
+        <div class="banner_one_bottom_icon_text">
+          <div class="banner_one_bottom_icon">
+            <span class="icon-building"></span>
+          </div>
+          <div class="banner_one_bottom_text">
+            <p>Smart Real Estate Services All our the World</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Banner Section One End -->
 
-      <!--Explore One Start-->
-      <!-- <section class="explore_one">
+  <!--Explore One Start-->
+  <!-- <section class="explore_one">
           <div class="container">
               <div class="block-title text-left">
                   <h4>Find Your Properties</h4>
@@ -270,19 +286,24 @@
               </div>
           </div>
       </section> -->
-      <!--Explore One End-->
+  <!--Explore One End-->
 
-            <!--Latest Properties Start-->
-            <section class="latest_properties">
-              <div class="container">
-                  <div class="block-title text-center">
-                      <h4>Browse Hot Offers</h4>
-                      <h2>Latest Properties</h2>
-                  </div>
-                  <div class="row">
-                      <div class="col-xl-12">
-                          <div class="thm-swiper__slider swiper-container thm-swiper__slider-pause-hover"
-                              data-swiper-options='{"spaceBetween": 100, "slidesPerView": 4, "autoplay": { "delay": 5000 }, "pagination": {
+  <!--Latest Properties Start-->
+  <section class="latest_properties">
+    <div class="container">
+      <div class="block-title text-center">
+        <h4>Browse Hot Offers</h4>
+        <h2>Latest Properties</h2>
+      </div>
+      <div class="row">
+        <div class="col-xl-12">
+          <div
+            class="
+              thm-swiper__slider
+              swiper-container
+              thm-swiper__slider-pause-hover
+            "
+            data-swiper-options='{"spaceBetween": 100, "slidesPerView": 4, "autoplay": { "delay": 5000 }, "pagination": {
                                   "el": "#latest_properties_pagination",
                                   "type": "bullets",
                                   "clickable": true
@@ -321,509 +342,637 @@
                                       "spaceBetween": 30,
                                       "slidesPerView": 3
                                   }
-                              }}'>
-                              <div class="swiper-wrapper">
-                                  <div class="swiper-slide">
-                                      <div class="latest_properties_single">
-                                          <div class="latest_properties_img_carousel owl-theme owl-carousel">
-                                              <div class="latest_properties_img">
-                                                  <img src="assets/images/properties/slider4.jpg" alt="">
-                                                  <div class="latest_properties_icon">
-                                                      <i class="fa fa-heart"></i>
-                                                  </div>
-                                                  <div class="featured_and_sale_btn">
-    
-                                                      <a href="#" class="sale_btn">For Sale</a>
-                                                  </div>
-                                              </div>
-                                              <div class="latest_properties_img">
-                                                  <img src="assets/images/properties/slider5.jpg" alt="">
-                                                  <div class="latest_properties_icon">
-                                                      <i class="fa fa-heart"></i>
-                                                  </div>
-                                                  <div class="featured_and_sale_btn">
-    
-                                                      <a href="#" class="sale_btn">For Sale</a>
-                                                  </div>
-                                              </div>
-                                              <div class="latest_properties_img">
-                                                  <img src="assets/images/resources/latest_properties_img_3.jpg" alt="">
-                                                  <div class="latest_properties_icon">
-                                                      <i class="fa fa-heart"></i>
-                                                  </div>
-                                                  <div class="featured_and_sale_btn">
-    
-                                                      <a href="#" class="sale_btn">For Sale</a>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                          <div class="latest_properties_content">
-                                              <div class="latest_properties_top_content">
-                                                  <h4><a href="/listing">Interior Appartment</a></h4>
-                                                  <p>80 Broklyn Street, New York. USA</p>
-                                                  <h3>$86.7600 <span>Sqft</span></h3>
-                                              </div>
-                                              <div class="latest_properties_bottom_content">
-                                                  <ul class="list-unstyled">
-                                                      <li><span class="icon-bed"></span>4</li>
-                                                      <li><span class="icon-shower"></span>2</li>
-                                                      <li><span class="icon-square-measument"></span>500 sqft</li>
-                                                  </ul>
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <div class="swiper-slide">
-                                      <div class="latest_properties_single">
-                                          <div class="latest_properties_img_carousel owl-theme owl-carousel">
-                                              <div class="latest_properties_img">
-                                                  <img src="assets/images/properties/slider6.jpg" alt="">
-                                                  <div class="latest_properties_icon">
-                                                      <i class="fa fa-heart"></i>
-                                                  </div>
-                                                  <div class="featured_and_sale_btn">
-                                                      <a href="#" class="featured_btn">Featured</a>
-                                                      <a href="#" class="sale_btn">For Rent</a>
-                                                  </div>
-                                              </div>
-                                              <div class="latest_properties_img">
-                                                  <img src="assets/images/properties/slider5.jpg" alt="">
-                                                  <div class="latest_properties_icon">
-                                                      <i class="fa fa-heart"></i>
-                                                  </div>
-                                                  <div class="featured_and_sale_btn">
-                                                      <a href="#" class="featured_btn">Featured</a>
-                                                      <a href="#" class="sale_btn">For Rent</a>
-                                                  </div>
-                                              </div>
-                                              <div class="latest_properties_img">
-                                                  <img src="assets/images/properties/slider4.jpg" alt="">
-                                                  <div class="latest_properties_icon">
-                                                      <i class="fa fa-heart"></i>
-                                                  </div>
-                                                  <div class="featured_and_sale_btn">
-                                                      <a href="#" class="featured_btn">Featured</a>
-                                                      <a href="#" class="sale_btn">For Rent</a>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                          <div class="latest_properties_content">
-                                              <div class="latest_properties_top_content">
-                                                  <h4><a href="/listing">Monall Design House</a></h4>
-                                                  <p>80 Broklyn Street, New York. USA</p>
-                                                  <h3>$140.0000 <span>Sqft</span></h3>
-                                              </div>
-                                              <div class="latest_properties_bottom_content">
-                                                  <ul class="list-unstyled">
-                                                      <li><span class="icon-bed"></span>4</li>
-                                                      <li><span class="icon-shower"></span>2</li>
-                                                      <li><span class="icon-square-measument"></span>500 sqft</li>
-                                                  </ul>
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <div class="swiper-slide">
-                                      <div class="latest_properties_single">
-                                          <div class="latest_properties_img_carousel owl-theme owl-carousel">
-                                              <div class="latest_properties_img">
-                                                  <img src="assets/images/properties/slider4.jpg" alt="">
-                                                  <div class="latest_properties_icon">
-                                                      <i class="fa fa-heart"></i>
-                                                  </div>
-                                                  <div class="featured_and_sale_btn">
-    
-                                                      <a href="#" class="sale_btn">For Sale</a>
-                                                  </div>
-                                              </div>
-                                              <div class="latest_properties_img">
-                                                  <img src="assets/images/properties/slider1.jpg" alt="">
-                                                  <div class="latest_properties_icon">
-                                                      <i class="fa fa-heart"></i>
-                                                  </div>
-                                                  <div class="featured_and_sale_btn">
-    
-                                                      <a href="#" class="sale_btn">For Sale</a>
-                                                  </div>
-                                              </div>
-                                              <div class="latest_properties_img">
-                                                  <img src="assets/images/resources/latest_properties_img_2.jpg" alt="">
-                                                  <div class="latest_properties_icon">
-                                                      <i class="fa fa-heart"></i>
-                                                  </div>
-                                                  <div class="featured_and_sale_btn">
-    
-                                                      <a href="#" class="sale_btn">For Sale</a>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                          <div class="latest_properties_content">
-                                              <div class="latest_properties_top_content">
-                                                  <h4><a href="/listing">Luxury Appartment</a></h4>
-                                                  <p>80 Broklyn Street, New York. USA</p>
-                                                  <h3>$900 <span>Monthly</span></h3>
-                                              </div>
-                                              <div class="latest_properties_bottom_content">
-                                                  <ul class="list-unstyled">
-                                                      <li><span class="icon-bed"></span>4</li>
-                                                      <li><span class="icon-shower"></span>2</li>
-                                                      <li><span class="icon-square-measument"></span>500 sqft</li>
-                                                  </ul>
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <div class="swiper-slide">
-                                      <div class="latest_properties_single">
-                                          <div class="latest_properties_img_carousel owl-theme owl-carousel">
-                                              <div class="latest_properties_img">
-                                                  <img src="assets/images/properties/slider2.jpg alt="">
-                                                  <div class="latest_properties_icon">
-                                                      <i class="fa fa-heart"></i>
-                                                  </div>
-                                                  <div class="featured_and_sale_btn">
-                                                      <a href="#" class="featured_btn">Featured</a>
-                                                      <a href="#" class="sale_btn">For Rent</a>
-                                                  </div>
-                                              </div>
-                                              <div class="latest_properties_img">
-                                                  <img src="assets/images/properties/slider6.jpg" alt="">
-                                                  <div class="latest_properties_icon">
-                                                      <i class="fa fa-heart"></i>
-                                                  </div>
-                                                  <div class="featured_and_sale_btn">
-                                                      <a href="#" class="featured_btn">Featured</a>
-                                                      <a href="#" class="sale_btn">For Rent</a>
-                                                  </div>
-                                              </div>
-                                              <div class="latest_properties_img">
-                                                  <img src="assets/images/resources/latest_properties_img_3.jpg" alt="">
-                                                  <div class="latest_properties_icon">
-                                                      <i class="fa fa-heart"></i>
-                                                  </div>
-                                                  <div class="featured_and_sale_btn">
-                                                      <a href="#" class="featured_btn">Featured</a>
-                                                      <a href="#" class="sale_btn">For Rent</a>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                          <div class="latest_properties_content">
-                                              <div class="latest_properties_top_content">
-                                                  <h4><a href="/listing">Interior Appartment</a></h4>
-                                                  <p>80 Broklyn Street, New York. USA</p>
-                                                  <h3>$86.7600 <span>Sqft</span></h3>
-                                              </div>
-                                              <div class="latest_properties_bottom_content">
-                                                  <ul class="list-unstyled">
-                                                      <li><span class="icon-bed"></span>4</li>
-                                                      <li><span class="icon-shower"></span>2</li>
-                                                      <li><span class="icon-square-measument"></span>500 sqft</li>
-                                                  </ul>
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <div class="swiper-slide">
-                                      <div class="latest_properties_single">
-                                          <div class="latest_properties_img_carousel owl-theme owl-carousel">
-                                              <div class="latest_properties_img">
-                                                  <img src="assets/images/resources/latest_properties_img_2.jpg" alt="">
-                                                  <div class="latest_properties_icon">
-                                                      <i class="fa fa-heart"></i>
-                                                  </div>
-                                                  <div class="featured_and_sale_btn">
-                                                      <a href="#" class="featured_btn">Featured</a>
-                                                      <a href="#" class="sale_btn">For Rent</a>
-                                                  </div>
-                                              </div>
-                                              <div class="latest_properties_img">
-                                                  <img src="assets/images/resources/latest_properties_img_3.jpg" alt="">
-                                                  <div class="latest_properties_icon">
-                                                      <i class="fa fa-heart"></i>
-                                                  </div>
-                                                  <div class="featured_and_sale_btn">
-                                                      <a href="#" class="featured_btn">Featured</a>
-                                                      <a href="#" class="sale_btn">For Rent</a>
-                                                  </div>
-                                              </div>
-                                              <div class="latest_properties_img">
-                                                  <img src="assets/images/resources/latest_properties_img_1.jpg" alt="">
-                                                  <div class="latest_properties_icon">
-                                                      <i class="fa fa-heart"></i>
-                                                  </div>
-                                                  <div class="featured_and_sale_btn">
-                                                      <a href="#" class="featured_btn">Featured</a>
-                                                      <a href="#" class="sale_btn">For Rent</a>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                          <div class="latest_properties_content">
-                                              <div class="latest_properties_top_content">
-                                                  <h4><a href="/listing">Monall Design House</a></h4>
-                                                  <p>80 Broklyn Street, New York. USA</p>
-                                                  <h3>$140.0000 <span>Sqft</span></h3>
-                                              </div>
-                                              <div class="latest_properties_bottom_content">
-                                                  <ul class="list-unstyled">
-                                                      <li><span class="icon-bed"></span>4</li>
-                                                      <li><span class="icon-shower"></span>2</li>
-                                                      <li><span class="icon-square-measument"></span>500 sqft</li>
-                                                  </ul>
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
+                              }}'
+          >
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <div class="latest_properties_single">
+                  <div
+                    class="
+                      latest_properties_img_carousel
+                      owl-theme owl-carousel
+                    "
+                  >
+                    <div class="latest_properties_img">
+                      <img src="assets/images/properties/slider4.jpg" alt="" />
+                      <div class="latest_properties_icon">
+                        <i class="fa fa-heart"></i>
                       </div>
+                      <div class="featured_and_sale_btn">
+                        <a href="#" class="sale_btn">For Sale</a>
+                      </div>
+                    </div>
+                    <div class="latest_properties_img">
+                      <img src="assets/images/properties/slider5.jpg" alt="" />
+                      <div class="latest_properties_icon">
+                        <i class="fa fa-heart"></i>
+                      </div>
+                      <div class="featured_and_sale_btn">
+                        <a href="#" class="sale_btn">For Sale</a>
+                      </div>
+                    </div>
+                    <div class="latest_properties_img">
+                      <img
+                        src="assets/images/resources/latest_properties_img_3.jpg"
+                        alt=""
+                      />
+                      <div class="latest_properties_icon">
+                        <i class="fa fa-heart"></i>
+                      </div>
+                      <div class="featured_and_sale_btn">
+                        <a href="#" class="sale_btn">For Sale</a>
+                      </div>
+                    </div>
                   </div>
-                  <div class="swiper-pagination" id="latest_properties_pagination"></div>
-              </div>
-          </section>
-          <!--Latest Properties End-->
-    
-
-      <!--Why Choose One Start-->
-      <section class="why_choose_one jarallax" data-jarallax data-speed="0.2" data-imgPosition="50% 0%"
-          style="background-image: url(assets/images/properties/background1.jpeg)">
-          <div class="container">
-              <div class="why_choose_one_title">
-                  <h2>Why Choose Us</h2>
-              </div>
-              <div class="why_choose_one_shape_one"
-                  style="background-image: url(assets/images/shapes/why_choose_one_shape_1.png)"></div>
-              <div class="row">
-                  <div class="col-xl-3 col-lg-6 col-md-6">
-                      <!--Why Choose One Single-->
-                      <div class="why_choose_one_single wow fadeInUp">
-                          <div class="why_choose_one_icon">
-                              <span class="icon-town"></span>
-                          </div>
-                          <h3>Find Your <br> Dream Home</h3>
-                          <p>There many variation of <br> pasages of lorem sum<br> available.</p>
-                      </div>
-                  </div>
-                  <div class="col-xl-3 col-lg-6 col-md-6">
-                      <!--Why Choose One Single-->
-                      <div class="why_choose_one_single wow fadeInUp" data-wow-delay="100ms">
-                          <div class="why_choose_one_icon">
-                              <span class="icon-agent"></span>
-                          </div>
-                          <h3>Experienced <br> Agents</h3>
-                          <p>There many variation of <br> pasages of lorem sum<br> available.</p>
-                      </div>
-                  </div>
-                  <div class="col-xl-3 col-lg-6 col-md-6">
-                      <!--Why Choose One Single-->
-                      <div class="why_choose_one_single wow fadeInUp" data-wow-delay="200ms">
-                          <div class="why_choose_one_icon">
-                              <span class="icon-assets"></span>
-                          </div>
-                          <h3>Buy or Rent <br> Homes</h3>
-                          <p>There many variation of <br> pasages of lorem sum<br> available.</p>
-                      </div>
-                  </div>
-                  <div class="col-xl-3 col-lg-6 col-md-6">
-                      <!--Why Choose One Single-->
-                      <div class="why_choose_one_single wow fadeInUp" data-wow-delay="300ms">
-                          <div class="why_choose_one_icon">
-                              <span class="icon-rent"></span>
-                          </div>
-                          <h3>List Your <br> Own Property</h3>
-                          <p>There many variation of <br> pasages of lorem sum<br> available.</p>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </section>
-      <!--Why Choose One End-->
-
-
-      <!--Providing One Start-->
-      <section class="providing_one jarallax" data-jarallax data-speed="0.2" data-imgPosition="50% 0%"
-          style="background-image: url(https://images.pexels.com/photos/415687/pexels-photo-415687.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260)">
-          <div class="container">
-              <div class="row">
-                  <div class="col-xl-5 col-lg-5">
-                      <div class="providing_one_left">
-                          <div class="block-title text-left">
-                              <h4>What Are You Looking</h4>
-                              <h2>Providing the <br> Best Real Estate Services</h2>
-                          </div>
-                          <div class="providing_one_btn">
-                              <a href="/listing" class="thm-btn">Search Property</a>
-                          </div>
-                          <div class="providing_one_shaape_one">
-                              <img src="assets/images/shapes/providing_one_shape_1.png" alt="">
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-xl-7 col-lg-7">
-                      <div class="providing_one_four_boxes clearfix">
-                          <ul class="list-unstyled">
-                              <li>
-                                  <div class="providing_one_four_boxes_iocn">
-                                      <span class="icon-home"></span>
-                                  </div>
-                                  <div class="providing_one_four_boxes_text">
-                                      <p>Modern<br>Villas</p>
-                                  </div>
-                              </li>
-                              <li>
-                                  <div class="providing_one_four_boxes_iocn">
-                                      <span class="icon-house"></span>
-                                  </div>
-                                  <div class="providing_one_four_boxes_text">
-                                      <p>Furnished<br>Homes</p>
-                                  </div>
-                              </li>
-                              <li>
-                                  <div class="providing_one_four_boxes_iocn">
-                                      <span class="icon-condominium"></span>
-                                  </div>
-                                  <div class="providing_one_four_boxes_text">
-                                      <p>Sweet<br>Apartment</p>
-                                  </div>
-                              </li>
-                              <li>
-                                  <div class="providing_one_four_boxes_iocn">
-                                      <span class="icon-buildings"></span>
-                                  </div>
-                                  <div class="providing_one_four_boxes_text">
-                                      <p>Commercial<br>Building</p>
-                                  </div>
-                              </li>
-                          </ul>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </section>
-      <!--Providing One End-->
-
-      <!--Testimonials One Start-->
-      <section class="testimonials_one">
-          <div class="container">
-              <div class="swiper-container" id="testimonials-one__thumb">
-                  <div class="swiper-wrapper">
-                      <div class="swiper-slide">
-                          <img src="https://www.pngkey.com/png/full/114-1149878_setting-user-avatar-in-specific-size-without-breaking.png" alt="">
-                      </div>
-                      <div class="swiper-slide">
-                          <img src="https://www.pngkey.com/png/full/114-1149878_setting-user-avatar-in-specific-size-without-breaking.png" alt="">
-                      </div>
-                      <div class="swiper-slide">
-                          <img src="https://www.pngkey.com/png/full/114-1149878_setting-user-avatar-in-specific-size-without-breaking.png" alt="">
-                      </div>
-                  </div>
-              </div>
-              <div class="swiper-container" id="testimonials-one__carousel">
-                  <div class="testimonials_one_carousel_bg"
-                      style="background-image: url(https://images.pexels.com/photos/313691/pexels-photo-313691.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260)"></div>
-                  <div class="testimonials_one_quote">
-                      <i class="fas fa-quote-left"></i>
-                  </div>
-                  <div class="swiper-wrapper">
-                      <div class="swiper-slide">
-                          <p>This is due to their excellent service, competitive<br> pricing and customer support.
-                              It’s
-                              throughly <br> refresing to get such a personal touch.</p>
-                          <div class="testimonials-one__meta">
-                              <h3>Mike Hardson / <span>Customer</span></h3>
-                          </div>
-                      </div>
-                      <div class="swiper-slide">
-                          <p>This is due to their excellent service, competitive<br> pricing and customer support.
-                              It’s
-                              throughly <br> refresing to get such a personal touch.</p>
-                          <div class="testimonials-one__meta">
-                              <h3>Mike Hardson / <span>Customer</span></h3>
-                          </div>
-                      </div>
-                      <div class="swiper-slide">
-                          <p>This is due to their excellent service, competitive<br> pricing and customer support.
-                              It’s
-                              throughly <br> refresing to get such a personal touch.</p>
-                          <div class="testimonials-one__meta">
-                              <h3>Mike Hardson / <span>Customer</span></h3>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </section>
-      <!--Testimonials One End-->
-
-      <!--How It Works Start-->
-      <section class="how_it_works">
-          <div class="how_it_works_shape_1">
-              <img src="assets/images/shapes/how_it_works_shape_1.png" alt="">
-          </div>
-          <div class="container">
-              <div class="block-title text-center">
-                  <h4>How It Works</h4>
-                  <h2>Follow Easy Steps</h2>
-              </div>
-              <div class="row">
-                  <div class="col-xl-12">
-                      <ul class="how_it_works_single list-unstyled">
-                          <li>
-                              <div class="how_it_works_img">
-                                  <img style="height: 162px; width: 162px;" src="assets/images/properties/howitworks1.jpg" alt="">
-                                  <div class="how_it_works_circle">
-                                      <p>01</p>
-                                  </div>
-                              </div>
-                              <div class="how_it_works_content">
-                                  <h3>Choose A Property</h3>
-                                  <p>Select the property which appeals to you.</p>
-                              </div>
-                          </li>
-                          <li class="item-2">
-                              <div class="how_it_works_img">
-                                  <img src="assets/images/properties/howitworks2.jpg" alt="">
-                                  <div class="how_it_works_circle">
-                                      <p>02</p>
-                                  </div>
-                              </div>
-                              <div class="how_it_works_content">
-                                  <h3>Complete Payment</h3>
-                                  <p>Pay the fee for the property.</p>
-                              </div>
-                          </li>
-                          <li>
-                              <div class="how_it_works_img">
-                                  <img  src="assets/images/properties/howitworks3.jpg" alt="">
-                                  <div class="how_it_works_circle">
-                                      <p>03</p>
-                                  </div>
-                              </div>
-                              <div class="how_it_works_content">
-                                  <h3>Take Your Keys</h3>
-                                  <p>Get the documents and keys to your newly owned property.</p>
-                              </div>
-                          </li>
-                          <li class="item-4">
-                              <div class="how_it_works_img">
-                                  <img src="assets/images/properties/howitworks4.jpg" alt="">
-                                  <div class="how_it_works_circle">
-                                      <p>04</p>
-                                  </div>
-                              </div>
-                              <div class="how_it_works_content">
-                                  <h3>Live Happily</h3>
-                                  <p>Enjoy your property.</p>
-                              </div>
-                          </li>
+                  <div class="latest_properties_content">
+                    <div class="latest_properties_top_content">
+                      <h4><a href="/listing">Interior Appartment</a></h4>
+                      <p>80 Broklyn Street, New York. USA</p>
+                      <h3>₦ 86.7600 <span>Sqft</span></h3>
+                    </div>
+                    <div class="latest_properties_bottom_content">
+                      <ul class="list-unstyled">
+                        <li><span class="icon-bed"></span>4</li>
+                        <li><span class="icon-shower"></span>2</li>
+                        <li>
+                          <span class="icon-square-measument"></span>500 sqft
+                        </li>
                       </ul>
+                    </div>
                   </div>
+                </div>
               </div>
+              <div class="swiper-slide">
+                <div class="latest_properties_single">
+                  <div
+                    class="
+                      latest_properties_img_carousel
+                      owl-theme owl-carousel
+                    "
+                  >
+                    <div class="latest_properties_img">
+                      <img src="assets/images/properties/slider6.jpg" alt="" />
+                      <div class="latest_properties_icon">
+                        <i class="fa fa-heart"></i>
+                      </div>
+                      <div class="featured_and_sale_btn">
+                        <a href="#" class="featured_btn">Featured</a>
+                        <a href="#" class="sale_btn">For Rent</a>
+                      </div>
+                    </div>
+                    <div class="latest_properties_img">
+                      <img src="assets/images/properties/slider5.jpg" alt="" />
+                      <div class="latest_properties_icon">
+                        <i class="fa fa-heart"></i>
+                      </div>
+                      <div class="featured_and_sale_btn">
+                        <a href="#" class="featured_btn">Featured</a>
+                        <a href="#" class="sale_btn">For Rent</a>
+                      </div>
+                    </div>
+                    <div class="latest_properties_img">
+                      <img src="assets/images/properties/slider4.jpg" alt="" />
+                      <div class="latest_properties_icon">
+                        <i class="fa fa-heart"></i>
+                      </div>
+                      <div class="featured_and_sale_btn">
+                        <a href="#" class="featured_btn">Featured</a>
+                        <a href="#" class="sale_btn">For Rent</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="latest_properties_content">
+                    <div class="latest_properties_top_content">
+                      <h4><a href="/listing">Monall Design House</a></h4>
+                      <p>80 Broklyn Street, New York. USA</p>
+                      <h3>₦ 140.0000 <span>Sqft</span></h3>
+                    </div>
+                    <div class="latest_properties_bottom_content">
+                      <ul class="list-unstyled">
+                        <li><span class="icon-bed"></span>4</li>
+                        <li><span class="icon-shower"></span>2</li>
+                        <li>
+                          <span class="icon-square-measument"></span>500 sqft
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="latest_properties_single">
+                  <div
+                    class="
+                      latest_properties_img_carousel
+                      owl-theme owl-carousel
+                    "
+                  >
+                    <div class="latest_properties_img">
+                      <img src="assets/images/properties/slider4.jpg" alt="" />
+                      <div class="latest_properties_icon">
+                        <i class="fa fa-heart"></i>
+                      </div>
+                      <div class="featured_and_sale_btn">
+                        <a href="#" class="sale_btn">For Sale</a>
+                      </div>
+                    </div>
+                    <div class="latest_properties_img">
+                      <img src="assets/images/properties/slider1.jpg" alt="" />
+                      <div class="latest_properties_icon">
+                        <i class="fa fa-heart"></i>
+                      </div>
+                      <div class="featured_and_sale_btn">
+                        <a href="#" class="sale_btn">For Sale</a>
+                      </div>
+                    </div>
+                    <div class="latest_properties_img">
+                      <img
+                        src="assets/images/resources/latest_properties_img_2.jpg"
+                        alt=""
+                      />
+                      <div class="latest_properties_icon">
+                        <i class="fa fa-heart"></i>
+                      </div>
+                      <div class="featured_and_sale_btn">
+                        <a href="#" class="sale_btn">For Sale</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="latest_properties_content">
+                    <div class="latest_properties_top_content">
+                      <h4><a href="/listing">Luxury Appartment</a></h4>
+                      <p>80 Broklyn Street, New York. USA</p>
+                      <h3>₦ 900 <span>Monthly</span></h3>
+                    </div>
+                    <div class="latest_properties_bottom_content">
+                      <ul class="list-unstyled">
+                        <li><span class="icon-bed"></span>4</li>
+                        <li><span class="icon-shower"></span>2</li>
+                        <li>
+                          <span class="icon-square-measument"></span>500 sqft
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="latest_properties_single">
+                  <div
+                    class="
+                      latest_properties_img_carousel
+                      owl-theme owl-carousel
+                    "
+                  >
+                    <div class="latest_properties_img">
+                      <img src="assets/images/properties/slider2.jpg alt="">
+                      <div class="latest_properties_icon">
+                        <i class="fa fa-heart"></i>
+                      </div>
+                      <div class="featured_and_sale_btn">
+                        <a href="#" class="featured_btn">Featured</a>
+                        <a href="#" class="sale_btn">For Rent</a>
+                      </div>
+                    </div>
+                    <div class="latest_properties_img">
+                      <img src="assets/images/properties/slider6.jpg" alt="" />
+                      <div class="latest_properties_icon">
+                        <i class="fa fa-heart"></i>
+                      </div>
+                      <div class="featured_and_sale_btn">
+                        <a href="#" class="featured_btn">Featured</a>
+                        <a href="#" class="sale_btn">For Rent</a>
+                      </div>
+                    </div>
+                    <div class="latest_properties_img">
+                      <img
+                        src="assets/images/resources/latest_properties_img_3.jpg"
+                        alt=""
+                      />
+                      <div class="latest_properties_icon">
+                        <i class="fa fa-heart"></i>
+                      </div>
+                      <div class="featured_and_sale_btn">
+                        <a href="#" class="featured_btn">Featured</a>
+                        <a href="#" class="sale_btn">For Rent</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="latest_properties_content">
+                    <div class="latest_properties_top_content">
+                      <h4><a href="/listing">Interior Appartment</a></h4>
+                      <p>80 Broklyn Street, New York. USA</p>
+                      <h3>₦ 86.7600 <span>Sqft</span></h3>
+                    </div>
+                    <div class="latest_properties_bottom_content">
+                      <ul class="list-unstyled">
+                        <li><span class="icon-bed"></span>4</li>
+                        <li><span class="icon-shower"></span>2</li>
+                        <li>
+                          <span class="icon-square-measument"></span>500 sqft
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="latest_properties_single">
+                  <div
+                    class="
+                      latest_properties_img_carousel
+                      owl-theme owl-carousel
+                    "
+                  >
+                    <div class="latest_properties_img">
+                      <img
+                        src="assets/images/resources/latest_properties_img_2.jpg"
+                        alt=""
+                      />
+                      <div class="latest_properties_icon">
+                        <i class="fa fa-heart"></i>
+                      </div>
+                      <div class="featured_and_sale_btn">
+                        <a href="#" class="featured_btn">Featured</a>
+                        <a href="#" class="sale_btn">For Rent</a>
+                      </div>
+                    </div>
+                    <div class="latest_properties_img">
+                      <img
+                        src="assets/images/resources/latest_properties_img_3.jpg"
+                        alt=""
+                      />
+                      <div class="latest_properties_icon">
+                        <i class="fa fa-heart"></i>
+                      </div>
+                      <div class="featured_and_sale_btn">
+                        <a href="#" class="featured_btn">Featured</a>
+                        <a href="#" class="sale_btn">For Rent</a>
+                      </div>
+                    </div>
+                    <div class="latest_properties_img">
+                      <img
+                        src="assets/images/resources/latest_properties_img_1.jpg"
+                        alt=""
+                      />
+                      <div class="latest_properties_icon">
+                        <i class="fa fa-heart"></i>
+                      </div>
+                      <div class="featured_and_sale_btn">
+                        <a href="#" class="featured_btn">Featured</a>
+                        <a href="#" class="sale_btn">For Rent</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="latest_properties_content">
+                    <div class="latest_properties_top_content">
+                      <h4><a href="/listing">Monall Design House</a></h4>
+                      <p>80 Broklyn Street, New York. USA</p>
+                      <h3>₦ 140.0000 <span>Sqft</span></h3>
+                    </div>
+                    <div class="latest_properties_bottom_content">
+                      <ul class="list-unstyled">
+                        <li><span class="icon-bed"></span>4</li>
+                        <li><span class="icon-shower"></span>2</li>
+                        <li>
+                          <span class="icon-square-measument"></span>500 sqft
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-      </section>
-      <!--How It Works End-->
+        </div>
+      </div>
+      <div class="swiper-pagination" id="latest_properties_pagination"></div>
+    </div>
+  </section>
+  <!--Latest Properties End-->
 
-      <!--Blog One Start-->
-      <!-- <section class="blog_one">
+  <!--Why Choose One Start-->
+  <section
+    class="why_choose_one jarallax"
+    data-jarallax
+    data-speed="0.2"
+    data-imgPosition="50% 0%"
+    style="background-image: url(assets/images/properties/background1.jpeg)"
+  >
+    <div class="container">
+      <div class="why_choose_one_title">
+        <h2>Why Choose Us</h2>
+      </div>
+      <div
+        class="why_choose_one_shape_one"
+        style="
+          background-image: url(assets/images/shapes/why_choose_one_shape_1.png);
+        "
+      ></div>
+      <div class="row">
+        <div class="col-xl-3 col-lg-6 col-md-6">
+          <!--Why Choose One Single-->
+          <div class="why_choose_one_single wow fadeInUp">
+            <div class="why_choose_one_icon">
+              <span class="icon-town"></span>
+            </div>
+            <h3>
+              Find Your <br />
+              Dream Home
+            </h3>
+            <p>
+              There many variation of <br />
+              pasages of lorem sum<br />
+              available.
+            </p>
+          </div>
+        </div>
+        <div class="col-xl-3 col-lg-6 col-md-6">
+          <!--Why Choose One Single-->
+          <div
+            class="why_choose_one_single wow fadeInUp"
+            data-wow-delay="100ms"
+          >
+            <div class="why_choose_one_icon">
+              <span class="icon-agent"></span>
+            </div>
+            <h3>
+              Experienced <br />
+              Agents
+            </h3>
+            <p>
+              There many variation of <br />
+              pasages of lorem sum<br />
+              available.
+            </p>
+          </div>
+        </div>
+        <div class="col-xl-3 col-lg-6 col-md-6">
+          <!--Why Choose One Single-->
+          <div
+            class="why_choose_one_single wow fadeInUp"
+            data-wow-delay="200ms"
+          >
+            <div class="why_choose_one_icon">
+              <span class="icon-assets"></span>
+            </div>
+            <h3>
+              Buy or Rent <br />
+              Homes
+            </h3>
+            <p>
+              There many variation of <br />
+              pasages of lorem sum<br />
+              available.
+            </p>
+          </div>
+        </div>
+        <div class="col-xl-3 col-lg-6 col-md-6">
+          <!--Why Choose One Single-->
+          <div
+            class="why_choose_one_single wow fadeInUp"
+            data-wow-delay="300ms"
+          >
+            <div class="why_choose_one_icon">
+              <span class="icon-rent"></span>
+            </div>
+            <h3>
+              List Your <br />
+              Own Property
+            </h3>
+            <p>
+              There many variation of <br />
+              pasages of lorem sum<br />
+              available.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--Why Choose One End-->
+
+  <!--Providing One Start-->
+  <section
+    class="providing_one jarallax"
+    data-jarallax
+    data-speed="0.2"
+    data-imgPosition="50% 0%"
+    style="
+      background-image: url(https://images.pexels.com/photos/415687/pexels-photo-415687.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260);
+    "
+  >
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-5 col-lg-5">
+          <div class="providing_one_left">
+            <div class="block-title text-left">
+              <h4>What Are You Looking</h4>
+              <h2>
+                Providing the <br />
+                Best Real Estate Services
+              </h2>
+            </div>
+            <div class="providing_one_btn">
+              <a href="/listing" class="thm-btn">Search Property</a>
+            </div>
+            <div class="providing_one_shaape_one">
+              <img
+                src="assets/images/shapes/providing_one_shape_1.png"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-7 col-lg-7">
+          <div class="providing_one_four_boxes clearfix">
+            <ul class="list-unstyled">
+              <li>
+                <div class="providing_one_four_boxes_iocn">
+                  <span class="icon-home"></span>
+                </div>
+                <div class="providing_one_four_boxes_text">
+                  <p>Modern<br />Villas</p>
+                </div>
+              </li>
+              <li>
+                <div class="providing_one_four_boxes_iocn">
+                  <span class="icon-house"></span>
+                </div>
+                <div class="providing_one_four_boxes_text">
+                  <p>Furnished<br />Homes</p>
+                </div>
+              </li>
+              <li>
+                <div class="providing_one_four_boxes_iocn">
+                  <span class="icon-condominium"></span>
+                </div>
+                <div class="providing_one_four_boxes_text">
+                  <p>Sweet<br />Apartment</p>
+                </div>
+              </li>
+              <li>
+                <div class="providing_one_four_boxes_iocn">
+                  <span class="icon-buildings"></span>
+                </div>
+                <div class="providing_one_four_boxes_text">
+                  <p>Commercial<br />Building</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--Providing One End-->
+
+  <!--Testimonials One Start-->
+  <section class="testimonials_one">
+    <div class="container">
+      <div class="swiper-container" id="testimonials-one__thumb">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img
+              src="https://www.pngkey.com/png/full/114-1149878_setting-user-avatar-in-specific-size-without-breaking.png"
+              alt=""
+            />
+          </div>
+          <div class="swiper-slide">
+            <img
+              src="https://www.pngkey.com/png/full/114-1149878_setting-user-avatar-in-specific-size-without-breaking.png"
+              alt=""
+            />
+          </div>
+          <div class="swiper-slide">
+            <img
+              src="https://www.pngkey.com/png/full/114-1149878_setting-user-avatar-in-specific-size-without-breaking.png"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+      <div class="swiper-container" id="testimonials-one__carousel">
+        <div
+          class="testimonials_one_carousel_bg"
+          style="
+            background-image: url(https://images.pexels.com/photos/313691/pexels-photo-313691.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260);
+          "
+        ></div>
+        <div class="testimonials_one_quote">
+          <i class="fas fa-quote-left"></i>
+        </div>
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <p>
+              This is due to their excellent service, competitive<br />
+              pricing and customer support. It’s throughly <br />
+              refresing to get such a personal touch.
+            </p>
+            <div class="testimonials-one__meta">
+              <h3>Mike Hardson / <span>Customer</span></h3>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <p>
+              This is due to their excellent service, competitive<br />
+              pricing and customer support. It’s throughly <br />
+              refresing to get such a personal touch.
+            </p>
+            <div class="testimonials-one__meta">
+              <h3>Mike Hardson / <span>Customer</span></h3>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <p>
+              This is due to their excellent service, competitive<br />
+              pricing and customer support. It’s throughly <br />
+              refresing to get such a personal touch.
+            </p>
+            <div class="testimonials-one__meta">
+              <h3>Mike Hardson / <span>Customer</span></h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--Testimonials One End-->
+
+  <!--How It Works Start-->
+  <section class="how_it_works">
+    <div class="how_it_works_shape_1">
+      <img src="assets/images/shapes/how_it_works_shape_1.png" alt="" />
+    </div>
+    <div class="container">
+      <div class="block-title text-center">
+        <h4>How It Works</h4>
+        <h2>Follow Easy Steps</h2>
+      </div>
+      <div class="row">
+        <div class="col-xl-12">
+          <ul class="how_it_works_single list-unstyled">
+            <li>
+              <div class="how_it_works_img">
+                <img
+                  style="height: 162px; width: 162px"
+                  src="assets/images/properties/howitworks1.jpg"
+                  alt=""
+                />
+                <div class="how_it_works_circle">
+                  <p>01</p>
+                </div>
+              </div>
+              <div class="how_it_works_content">
+                <h3>Choose A Property</h3>
+                <p>Select the property which appeals to you.</p>
+              </div>
+            </li>
+            <li class="item-2">
+              <div class="how_it_works_img">
+                <img src="assets/images/properties/howitworks2.jpg" alt="" />
+                <div class="how_it_works_circle">
+                  <p>02</p>
+                </div>
+              </div>
+              <div class="how_it_works_content">
+                <h3>Complete Payment</h3>
+                <p>Pay the fee for the property.</p>
+              </div>
+            </li>
+            <li>
+              <div class="how_it_works_img">
+                <img src="assets/images/properties/howitworks3.jpg" alt="" />
+                <div class="how_it_works_circle">
+                  <p>03</p>
+                </div>
+              </div>
+              <div class="how_it_works_content">
+                <h3>Take Your Keys</h3>
+                <p>Get the documents and keys to your newly owned property.</p>
+              </div>
+            </li>
+            <li class="item-4">
+              <div class="how_it_works_img">
+                <img src="assets/images/properties/howitworks4.jpg" alt="" />
+                <div class="how_it_works_circle">
+                  <p>04</p>
+                </div>
+              </div>
+              <div class="how_it_works_content">
+                <h3>Live Happily</h3>
+                <p>Enjoy your property.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--How It Works End-->
+
+  <!--Blog One Start-->
+  <!-- <section class="blog_one">
           <div class="container">
               <div class="row">
                   <div class="col-xl-4 col-lg-4">
@@ -913,10 +1062,10 @@
               </div>
           </div>
       </section> -->
-      <!--Blog One End-->
+  <!--Blog One End-->
 
-      <!--Brand One Start-->
-      <!-- <div class="brand_one">
+  <!--Brand One Start-->
+  <!-- <div class="brand_one">
           <div class="container">
               <div class="thm-swiper__slider swiper-container" data-swiper-options='{"spaceBetween": 100, "slidesPerView": 5, "autoplay": { "delay": 5000 }, "breakpoints": {
               "0": {
@@ -979,10 +1128,7 @@
               </div>
           </div>
       </div> -->
-      <!--Brand One End-->
+  <!--Brand One End-->
 
-  
-
-
-
-<%- include('./partials/Footer.ejs'); %>
+  <%- include('./partials/Footer.ejs'); %>
+</body>
