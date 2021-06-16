@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
 
-user : {
+
 
   email: {
     type: String,
@@ -34,8 +34,6 @@ user : {
     ref:'user'
 }]
 
-
-},
 
 
 
