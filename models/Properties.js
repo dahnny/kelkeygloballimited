@@ -38,28 +38,28 @@ const downloadableSchema = new mongoose.Schema({
     },
     image_one:{
         type:String,
-        default: "https://images.pexels.com/photos/2774570/pexels-photo-2774570.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
+        default: "https://images.pexels.com/photos/2029694/pexels-photo-2029694.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
     },
     image_one_name:{
         type:String
     },
     image_two:{
         type:String,
-        default: "https://images.pexels.com/photos/2774570/pexels-photo-2774570.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
+        default: "https://images.pexels.com/photos/2029694/pexels-photo-2029694.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
     },
     image_two_name:{
         type:String
     },
     image_three:{
         type:String,
-        default: "https://images.pexels.com/photos/2774570/pexels-photo-2774570.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
+        default: "https://images.pexels.com/photos/2029694/pexels-photo-2029694.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
     },
     image_three_name:{
         type:String
     },
     image_four : {
         type:String,
-        default: "https://images.pexels.com/photos/2774570/pexels-photo-2774570.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
+        default: "https://images.pexels.com/photos/2029694/pexels-photo-2029694.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
     },
     image_four_name:{
         type:String
