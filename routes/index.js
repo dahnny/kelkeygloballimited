@@ -90,7 +90,7 @@ router.get("/contact", async(req, res) => {
 router.get("/listing", async(req, res) => {
     res.render("listings")
 })
-router.get("/:slug", async(req, res) => {
+router.get("/:slug/property", async(req, res) => {
     res.render("single_listing")
 })
 
