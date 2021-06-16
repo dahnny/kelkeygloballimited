@@ -24,7 +24,7 @@ module.exports = function(passport) {
 
     // used to deserialize the user
     passport.deserializeUser(function(id, done) {
-        Admin.findById(id, function(err, user) {
+        User.findById(id, function(err, user) {
             done(err, user);
         });
     });
@@ -66,9 +66,9 @@ module.exports = function(passport) {
       
         newUser.firstname = req.body.firstname.toLowerCase()
         newUser.lastname = req.body.lastname.toLowerCase()
-        await newAdmin.save()
+        await newUser.save()
    
-            return done(null, newAdmin);
+            return done(null, newUser);
       
         }
         );
