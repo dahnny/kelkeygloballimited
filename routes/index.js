@@ -165,18 +165,18 @@ router.post(
 
 router.get("/admin-panel", async(req, res) => {
 
-  var post_length = await (await Post.find()).length
-  var posts = await Post.find()
+  // var post_length = await (await Post.find()).length
+  // var posts = await Post.find()
 
-  var views =await posts.reduce((n, {views}) => n + views, 0)
+  // var views =await posts.reduce((n, {views}) => n + views, 0)
 
-  var published = await (await Post.find({status : "published"})).length
+  // var published = await (await Post.find({status : "published"})).length
 
-  console.log({views })
+  // console.log({views })
     res.render("dashboard/index",{
-      post_length,
-      views,
-      published
+      // post_length,
+      // views,
+      // published
     })
 })
 
