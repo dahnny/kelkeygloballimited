@@ -64,11 +64,11 @@ const downloadableSchema = new mongoose.Schema({
     image_four_name:{
         type:String
     },
+    sold : {
+        type : Boolean,
+        default : false
+    }    ,
 
-    // downloadable material link
-    link:{
-        type:String
-    },
     views: {
         type: Number,
         default: '0',    },
