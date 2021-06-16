@@ -1,7 +1,46 @@
 const express = require('express')
 const request= require("request")
 
+
+var FroalaEditor = require("wysiwyg-editor-node-sdk/lib/froalaEditor.js");
 const router = express.Router()
+
+
+const BlogCategory = require("../models/BlogCategory");
+const Downloadables = require("../models/Downloadable");
+const Post = require('../models/Post');
+const {Comment} = require('../models/Comment');
+
+const moment = require("moment")
+var csrf = require('csurf')
+var csrfProtection = csrf({ cookie: true })
+
+const isLoggedIn = require('../middleware/loggedIn');
+let passport
+
+passport = require('passport');
+require('../config/passport')(passport);
+const multer = require("multer")
+// var upload = multer({ dest: 'uploads/' })
+var cloudinary = require('cloudinary').v2;
+
+const { CloudinaryStorage } = require("multer-storage-cloudinary");
+const News = require('../models/News');
+const Downloadable = require('../models/Downloadable');
+
+
+
+
+// cloudinary configuration
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.API_KEY,
+  api_secret: process.env.API_SECRET
+  // cloud_name: process.env.CLOUD_NAME,
+  // api_key: process.env.API_KEY,
+  // api_secret: process.env.API_SECRET
+});
+
 
 
 router.get("/", async(req, res) => {
