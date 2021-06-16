@@ -77,52 +77,52 @@ module.exports = function(passport) {
 
 
 
-    passport.use('admin-signup', new LocalStrategy({
-        // by default, local strategy uses username and password, we will override with email
-        usernameField : 'email',
-        passwordField : 'password',
-        passReqToCallback : true // allows us to pass back the entire request to the callback
-    },
-    async(req,email, password, done) =>{
+    // passport.use('admin-signup', new LocalStrategy({
+    //     // by default, local strategy uses username and password, we will override with email
+    //     usernameField : 'email',
+    //     passwordField : 'password',
+    //     passReqToCallback : true // allows us to pass back the entire request to the callback
+    // },
+    // async(req,email, password, done) =>{
 
-        // asynchronous
-        // Admin.findOne wont fire unless data is sent back
-        process.nextTick(async() => {
+    //     // asynchronous
+    //     // Admin.findOne wont fire unless data is sent back
+    //     process.nextTick(async() => {
 
 
             
-        // find a user whose email is the same as the forms email
-        // we are checking to see if the user trying to login already exists
+    //     // find a user whose email is the same as the forms email
+    //     // we are checking to see if the user trying to login already exists
 
-        try {
+    //     try {
                    
-        const user_exists = await Admin.findOne({ 'email' :  email })
+    //     const user_exists = await Admin.findOne({ 'email' :  email })
 
-        console.log({user_exists})
-        if(user_exists){
-            return done(null, false, req.flash('signupMessage', 'email already taken'));
-        } 
-        var newAdmin    = new Admin();
-        // // set the user's local credentials
-        // newAdmin.local.username = username.toLowerCase()
-        newAdmin.email    = email.toLowerCase();
-        newAdmin.password = newAdmin.generateHash(password);
-        newAdmin.firstname = req.body.firstname.toLowerCase()
-        newAdmin.lastname = req.body.lastname.toLowerCase()
-        await newAdmin.save()
-                /** referral */
+    //     console.log({user_exists})
+    //     if(user_exists){
+    //         return done(null, false, req.flash('signupMessage', 'email already taken'));
+    //     } 
+    //     var newAdmin    = new Admin();
+    //     // // set the user's local credentials
+    //     // newAdmin.local.username = username.toLowerCase()
+    //     newAdmin.email    = email.toLowerCase();
+    //     newAdmin.password = newAdmin.generateHash(password);
+    //     newAdmin.firstname = req.body.firstname.toLowerCase()
+    //     newAdmin.lastname = req.body.lastname.toLowerCase()
+    //     await newAdmin.save()
+    //             /** referral */
    
-            return done(null, newAdmin);
+    //         return done(null, newAdmin);
         
 
-        } catch (error) {
-            console.warn({error})
-        }
+    //     } catch (error) {
+    //         console.warn({error})
+    //     }
 
-        }
-        );
+    //     }
+    //     );
 
-    }));
+    // }));
 
 
     passport.use('local-login', new LocalStrategy({
