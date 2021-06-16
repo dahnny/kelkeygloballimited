@@ -7,7 +7,6 @@ const router = express.Router()
 
 
 const BlogCategory = require("../models/BlogCategory");
-const Downloadables = require("../models/Downloadable");
 const Post = require('../models/Post');
 const {Comment} = require('../models/Comment');
 
@@ -26,7 +25,7 @@ var cloudinary = require('cloudinary').v2;
 
 const { CloudinaryStorage } = require("multer-storage-cloudinary");
 const News = require('../models/News');
-const Downloadable = require('../models/Downloadable');
+const Propertes = require('../models/Propertes');
 
 
 
