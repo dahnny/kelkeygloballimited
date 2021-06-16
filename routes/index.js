@@ -172,7 +172,7 @@ router.get("/admin-panel", async(req, res) => {
   // var published = await (await Post.find({status : "published"})).length
 
   // console.log({views })
-    res.render("dashboard/index",{
+    res.render("admin/dashboard",{
       // post_length,
       // views,
       // published
