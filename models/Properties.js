@@ -12,7 +12,8 @@ const downloadableSchema = new mongoose.Schema({
         required: true,
     },
     slug:{
-        type:String
+        type:String,
+        required: true,
     },
     owner:{
         type:Schema.Types.ObjectId,
