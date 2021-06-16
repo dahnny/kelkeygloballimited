@@ -53,19 +53,19 @@ module.exports = function(passport) {
         // find a user whose email is the same as the forms email
         // we are checking to see if the user trying to login already exists
 
-        const user_exists = await Admin.findOne({ 'email' :  email })
+        const user_exists = await User.findOne({ 'email' :  email })
         if(user_exists){
             console.log("user alread exists!!!!!!!!")
             return done(null, false, req.flash('signupMessage', 'email already taken'));
         } 
-        var newAdmin    = new Admin();
+        var newUser    = new User();
         // // set the user's local credentials
-        // newAdmin.local.username = username.toLowerCase()
-        newAdmin.email    = email.toLowerCase();
-        newAdmin.password = newAdmin.generateHash(password);
+        // newUser.local.username = username.toLowerCase()
+        newUser.email    = email.toLowerCase();
+        newUser.password = newUser.generateHash(password);
       
-        newAdmin.firstname = req.body.firstname.toLowerCase()
-        newAdmin.lastname = req.body.lastname.toLowerCase()
+        newUser.firstname = req.body.firstname.toLowerCase()
+        newUser.lastname = req.body.lastname.toLowerCase()
         await newAdmin.save()
    
             return done(null, newAdmin);
