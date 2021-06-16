@@ -105,6 +105,34 @@ router.post(
   }
 );
 
+router.get("/login", csrfProtection, async (req, res)=> {
+
+
+  // console.log("Referral ID",req.query['referral'])
+  // render the page and pass in any flash data if it exists
+  return res.render("admin/Login", {
+    message: req.flash("loginMessage"),
+    successMessage : req.flash("successMessage"),
+    title: "Log-In",
+    csrfToken: req.csrfToken()
+  });
+});
+
+router.post(
+  "/login",
+  csrfProtection,
+  passport.authenticate("local-login", {
+    // successRedirect: "/dashboard", // redirect to the secure profile section
+    failureRedirect: "/login", // redirect back to the signup page if there is an error
+    failureFlash: true, // allow flash messages
+  }),
+  function (req, res) {
+  
+      res.redirect("/dashboard/admin-panel");
+    
+  }
+);
+
 router.get("/admin-panel", isLoggedIn, async(req, res) => {
 
   // var post_length = await (await Post.find()).length
