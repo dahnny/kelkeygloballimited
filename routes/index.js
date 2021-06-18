@@ -165,11 +165,7 @@ router.post("/dashboard/add-property", isLoggedIn, async (req, res) => {
   // var published = await (await Post.find({status : "published"})).length
 
   // console.log({views })
-  res.redirect("/dashboard", {
-    // post_length,
-    // views,
-    // published
-  });
+  res.redirect("/dashboard");
 });
 
 router.get("/dashboard/properties", isLoggedIn, async (req, res) => {
