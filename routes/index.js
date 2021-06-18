@@ -264,14 +264,7 @@ router.get("/dashboard/properties", isLoggedIn, async (req, res) => {
         toalPages,
         currentPage: page
       })
-    // const {id} = req.params
-
-  res.render("admin/Properties", {
-    all_properties,
-    // post_length,
-    // views,
-    // published
-  });
+    
 });
 
 router.get("/dashboard/properties/:slug", isLoggedIn, async (req, res) => {
