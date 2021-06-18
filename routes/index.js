@@ -299,6 +299,20 @@ router.get("/dashboard/properties/:id/unpublish", isLoggedIn, async (req, res) =
 });
 
 
+router.get("/dashboard/properties/:id/unpublish", isLoggedIn, async (req, res) => {
+
+  const {id} = req.params
+  if(!id){
+    req.flash("error", "Something went wrong")
+    return res.redirect("/dashboard/properties")
+  }
+
+ await Properties.findByIdAndDelete(id)
+
+  req.flash("success", "Property has been deleted successfully")
+  return res.redirect("/dashboard/properties")
+});
+
 router.get("/dashboard/properties/:slug", isLoggedIn, async (req, res) => {
   // var post_length = await (await Post.find()).length
   // var posts = await Post.find()
