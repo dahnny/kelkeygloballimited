@@ -32,36 +32,13 @@ cloudinary.config({
   // api_secret: process.env.API_SECRET
 });
 
-const storage = new CloudinaryStorage({
-  cloudinary: cloudinary,
-  // params: {
-  //   folder: "public",
-  //   // fileFilter,
-  //   // format: async (req, file) => 'img', // supports promises as well
-  //   public_id: (req, file) => {
-  //     // console.log(req.body)
-  //     `blog-image-${Date.now()}`;
-  //   },
-  //   resource_type: "image",
-  // },
-
-  allowedFormats: ["jpg", "png", "jpeg"],
-  transformation: [{ width: 500, height: 500, crop: "limit" }],
+const storage = multer.diskStorage({
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname + "-" + Date.now());
+  },
 });
 
-const fileFilter = (req, file, cb) => {
-  // reject a file
-  if (
-    file.mimetype == "image/png" ||
-    file.mimetype == "image/jpeg" ||
-    file.mimetype == "image/mkv" ||
-    file.mimetype == "image/jpg"
-  ) {
-    cb(null, true);
-  } else {
-    cb(null, false);
-  }
-};
+
 
 const parser = multer({ storage: storage });
 
