@@ -71,14 +71,16 @@ module.exports = function(passport) {
         } 
 
 
-        var newUser    = new User();
+        var newUser    = new User({
+            email    : email.toLowerCase(),
+            password : User.generateHash(password),
+          
+            first_name : req.body.first_name,
+            last_name : req.body.last_name
+        });
         // // set the user's local credentials
         // newUser.local.username = username.toLowerCase()
-        newUser.email    = email.toLowerCase();
-        newUser.password = newUser.generateHash(password);
-      
-        newUser.first_name = req.body.first_name.toLowerCase()
-        newUser.last_name = req.body.last_name.toLowerCase()
+       
         await newUser.save()
    
             return done(null, newUser);
