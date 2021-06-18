@@ -126,13 +126,13 @@
 												<td>
 													<div class="d-flex">
 														<% if (post.status == "draft") { %>
-														<a href="/dashboard/properties/<%= post._id %>/publish" class="btn btn-info btn-sm light px-4">Publish</a>
+														<a href="/dashboard/properties/<%= post._id %>/publish" class="btn btn-info btn-medium light px-4">Publish</a>
 														<% } %>
 														<% if (post.status == "published") { %>
-															<a  href="/dashboard/properties/<%= post._id %>/unpublish" class="btn btn-info btn-sm light px-4">Un-Publish</a>
+															<a  href="/dashboard/properties/<%= post._id %>/unpublish" class="btn btn-info btn-medium light px-4">Un-Publish</a>
 															<% } %>
-														<a href="javascript:;" class="btn btn-warning  btn-sm light ml-2 px-4">Edit</a>
-														<a  href="/dashboard/properties/<%= post._id %>/delete" class="btn btn-danger  btn-sm light ml-2 px-4">Delete</a>
+														<a href="javascript:;" class="btn btn-warning  btn-medium light ml-2 px-4">Edit</a>
+														<a  href="/dashboard/properties/<%= post._id %>/delete" class="btn btn-danger  btn-medium light ml-2 px-4">Delete</a>
 														
 													</div>
 												</td>
