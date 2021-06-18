@@ -207,7 +207,17 @@ router.post("/dashboard/add-property", isLoggedIn, upload.array("properties", 4)
       content,
       price,
       amenities,
-      image_one : imageResponses[0].url
+      image_one : imageResponses[0].url,
+      image_one_name : imageResponses[0].public_id,
+
+      image_two : imageResponses[1].url,
+      image_two_name : imageResponses[1].public_id,
+
+      image_two : imageResponses[2].url,
+      image_two_name : imageResponses[2].public_id,
+
+      image_three : imageResponses[3].url,
+      image_three_name : imageResponses[3].public_id,
 
       details: {
         bedrooms,
