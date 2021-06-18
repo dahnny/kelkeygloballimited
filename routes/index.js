@@ -26,6 +26,7 @@ var cloudinary = require('cloudinary').v2;
 const { CloudinaryStorage } = require("multer-storage-cloudinary");
 const News = require('../models/News');
 const Properties = require('../models/Properties');
+const SignupUser = require('../models/user');
 
 
 
@@ -141,7 +142,7 @@ router.get("/dashboard",isLoggedIn, async(req, res) => {
   var valuation =await all_properties.reduce((n, {price}) => n + price, 0)
   console.log({valuation})
 
-  var published = await (await Post.find({status : "published"})).length
+  var published = await (await SignupUser.find({status : "published"})).length
 
   // console.log({views })
     res.render("admin/dashboard",{
