@@ -13,8 +13,7 @@
 		
 				<div class="d-flex flex-wrap mb-2 align-items-center justify-content-between">
 					<div class="mb-3">
-						<h6 class="fs-16 text-black font-w600 mb-0">568 Total Orders</h6>
-						<span class="fs-14">Based your preferences</span>
+						<h6 class="fs-16 text-black font-w600 mb-0">568 Total Properties</h6>
 					</div>
 					<!-- <div class="event-tabs mb-3">
 						<ul class="nav nav-tabs" role="tablist">
@@ -50,6 +49,30 @@
 					</div> -->
 				</div>
 				
+
+				<% if (message.length > 0) { %>
+					<!-- <%= message %> -->
+					 <!-- <%= message %> -->
+					 <div class="alert alert-danger alert-dismissible fade show" role="alert">
+					  <strong class="text-center">
+						  <%= message %></strong> 
+						  
+					  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					  </button>
+					</div>
+				<% } %> 
+				<% if (successMessage.length > 0) { %>
+					<!-- <%= message %> -->
+					<div class="alert alert-success alert-dismissible fade show" role="alert">
+						<strong class="text-center">
+							<%= successMessage %></strong> 
+							
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						  <span aria-hidden="true">&times;</span>
+						</button>
+					  </div>
+				<% } %>
 				<div class="row">
 					<div class="col-xl-12">	
 						<div class="tab-content">
