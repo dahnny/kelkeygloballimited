@@ -204,7 +204,7 @@ router.get("/dashboard/users", isLoggedIn, async (req, res) => {
     // published
   });
 });
-router.post("/dashboard/create-category", async (req, res) => {
+router.post("/dashboard/create-category", isLoggedIn, async (req, res) => {
   var { category_name } = req.body;
 
   if (!category_name) {
@@ -224,9 +224,9 @@ router.post("/dashboard/create-category", async (req, res) => {
       category_name,
     });
     await new_category.save();
-    // req.flash("success", "Category created successfully");
-    // res.redirect("/dashboard/create-category");
-    res.json(new_category)
+    req.flash("success", "Category created successfully");
+    res.redirect("/dashboard/create-category");
+    // res.json(new_category)
   }
 });
 
