@@ -79,10 +79,6 @@ const downloadableSchema = new mongoose.Schema({
     default: "0",
   },
 
-  dateCreated: {
-    type: Date,
-    default: Date.now,
-  },
   location: {
     type: String,
   },
@@ -93,6 +89,9 @@ const downloadableSchema = new mongoose.Schema({
   amenities : {
     type : Array,
     default : []
+  },
+  video : {
+      type : String,
   },
 
   details: {
@@ -108,6 +107,11 @@ const downloadableSchema = new mongoose.Schema({
       type: Number,
       default: 0,
     }
+  },
+  
+  dateCreated: {
+    type: Date,
+    default: Date.now,
   },
 });
 
