@@ -224,8 +224,9 @@ router.post("/dashboard/create-category", isLoggedIn, async (req, res) => {
       category_name,
     });
     await new_category.save();
-    req.flash("success", "Category created successfully");
-    res.redirect("/dashboard/create-category");
+    // req.flash("success", "Category created successfully");
+    // res.redirect("/dashboard/create-category");
+    res.json(new_category)
   }
 });
 
