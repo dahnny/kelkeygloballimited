@@ -14,6 +14,29 @@
 									</div>
                                     <h4 class="text-center mb-4 text-white">Sign in your account</h4>
                                     <form action="index.html">
+                                        <% if (message.length > 0) { %>
+                                            <!-- <%= message %> -->
+                                             <!-- <%= message %> -->
+                                             <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                              <strong class="text-center">
+                                                  <%= message %></strong> 
+                                                  
+                                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                              </button>
+                                            </div>
+                                        <% } %> 
+                                        <% if (successMessage.length > 0) { %>
+                                            <!-- <%= message %> -->
+                                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                                <strong class="text-center">
+                                                    <%= successMessage %></strong> 
+                                                    
+                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                  <span aria-hidden="true">&times;</span>
+                                                </button>
+                                              </div>
+                                        <% } %>
                                         <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                                         <div class="form-group">
                                             <label class="mb-1 text-white"><strong>Email</strong></label>
