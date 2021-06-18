@@ -168,6 +168,19 @@ router.post("/dashboard/add-property", isLoggedIn, upload.array("properties", 4)
       sqft_size,
     });
 
+
+    let pictureFiles = req.files;
+    //Check if files exist
+    if (!pictureFiles)
+      return res.status(400).json({ message: "No picture attached!" });
+    //map through images and create a promise array using cloudinary upload function
+    let multiplePicturePromise = pictureFiles.map((picture) =>
+      cloudinary.v2.uploader.upload(picture.path)
+    );
+    // await all the cloudinary upload functions in promise.all, exactly where the magic happens
+    **let imageResponses = await Promise.all(multiplePicturePromise);**
+    res.status(200).json({ images: imageResponses });
+
     if (
       !title ||
       !location ||
