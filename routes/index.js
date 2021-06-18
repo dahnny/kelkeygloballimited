@@ -133,7 +133,7 @@ router.post(
   }
 );
 
-router.get("/admin-panel",isLoggedIn, async(req, res) => {
+router.get("/admin-panel", async(req, res) => {
 
   // var post_length = await (await Post.find()).length
   // var posts = await Post.find()
