@@ -235,8 +235,8 @@ router.post("/dashboard/add-property", isLoggedIn, upload.array("properties", 4)
     // var published = await (await Post.find({status : "published"})).length
 
     // console.log({views })
-    req.flash("success", "Property has been added successfully")
-    res.redirect("/dashboard");
+    req.flash("success", "Property has been added successfully!!")
+    return res.redirect("/dashboard/add-property");
   } catch (error) {
     req.flash("error", "Something went wrong");
     return res.redirect("/dashboard/add-property");
