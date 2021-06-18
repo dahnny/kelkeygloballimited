@@ -236,6 +236,7 @@ router.post("/dashboard/add-property", isLoggedIn, upload.array("properties", 4)
     req.flash("success", "Property has been added successfully!!")
     return res.redirect("/dashboard/add-property");
   } catch (error) {
+    console.log({error})
     req.flash("error", "Something went wrong");
     return res.redirect("/dashboard/add-property");
   }
