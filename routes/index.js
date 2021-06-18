@@ -294,7 +294,7 @@ router.get("/dashboard/properties/:id/unpublish", isLoggedIn, async (req, res) =
       }
     })
 
-    req.flash("success", "Property has been published successfully")
+    req.flash("success", "Property has been converted to draft successfully")
     return res.redirect("/dashboard/properties")
 });
 
