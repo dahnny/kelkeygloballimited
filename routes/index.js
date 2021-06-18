@@ -155,6 +155,24 @@ router.get("/dashboard/add-property", isLoggedIn, async (req, res) => {
     // published
   });
 });
+
+router.post("/dashboard/add-property", isLoggedIn, async (req, res) => {
+  const {title, location, }
+  // var post_length = await (await Post.find()).length
+  // var posts = await Post.find()
+
+  // var views =await posts.reduce((n, {views}) => n + views, 0)
+
+  // var published = await (await Post.find({status : "published"})).length
+
+  // console.log({views })
+  res.render("admin/Addproperty", {
+    // post_length,
+    // views,
+    // published
+  });
+});
+
 router.get("/dashboard/properties", isLoggedIn, async (req, res) => {
   // var post_length = await (await Post.find()).length
   // var posts = await Post.find()
