@@ -325,6 +325,7 @@ router.get(
 );
 
 router.get("/dashboard/properties/:slug", isLoggedIn, async (req, res) => {
+  const {slug} = req.params
   var property = await Properties.findOne({ slug });
 
   res.render("admin/Property", {
