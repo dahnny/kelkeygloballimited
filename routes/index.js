@@ -142,9 +142,9 @@ router.get("/dashboard",isLoggedIn, async(req, res) => {
 
   // console.log({views })
     res.render("admin/dashboard",{
-      // post_length,
-      // views,
-      // published
+property_length,
+user_length,
+valuation
     })
 })
 
