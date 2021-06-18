@@ -100,7 +100,7 @@ router.post(
   }),
   function (req, res) {
   
-      res.redirect("/admin-panel");
+      res.redirect("/dashboard");
     
   }
 );
@@ -128,12 +128,12 @@ router.post(
   }),
   function (req, res) {
   
-      res.redirect("/admin-panel");
+      res.redirect("/dashboard");
     
   }
 );
 
-router.get("/admin-panel",isLoggedIn, async(req, res) => {
+router.get("/dashboard",isLoggedIn, async(req, res) => {
 
   // var post_length = await (await Post.find()).length
   // var posts = await Post.find()
@@ -150,7 +150,7 @@ router.get("/admin-panel",isLoggedIn, async(req, res) => {
     })
 })
 
-router.get("/admin-panel/add-property",isLoggedIn,  async(req, res) => {
+router.get("/dashboard/add-property",isLoggedIn,  async(req, res) => {
 
   // var post_length = await (await Post.find()).length
   // var posts = await Post.find()
@@ -166,7 +166,7 @@ router.get("/admin-panel/add-property",isLoggedIn,  async(req, res) => {
       // published
     })
 })
-router.get("/admin-panel/properties", isLoggedIn, async(req, res) => {
+router.get("/dashboard/properties", isLoggedIn, async(req, res) => {
 
   // var post_length = await (await Post.find()).length
   // var posts = await Post.find()
@@ -183,7 +183,7 @@ router.get("/admin-panel/properties", isLoggedIn, async(req, res) => {
     })
 })
 
-router.get("/admin-panel/properties/:slug", isLoggedIn, async(req, res) => {
+router.get("/dashboard/properties/:slug", isLoggedIn, async(req, res) => {
 
   // var post_length = await (await Post.find()).length
   // var posts = await Post.find()
@@ -201,7 +201,7 @@ router.get("/admin-panel/properties/:slug", isLoggedIn, async(req, res) => {
 })
 
 
-router.get("/admin-panel/users", isLoggedIn, async(req, res) => {
+router.get("/dashboard/users", isLoggedIn, async(req, res) => {
 
   // var post_length = await (await Post.find()).length
   // var posts = await Post.find()
