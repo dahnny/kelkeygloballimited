@@ -179,8 +179,8 @@ router.post("/dashboard/add-property", isLoggedIn, async (req, res) => {
     // console.log({views })
     res.redirect("/dashboard");
   } catch (error) {
-    console.log({error})
-    res.redirect("/dashboard");
+    req.flash("error" , "Something went wrong")
+    return res.redirect("/dashboard/add-property")
   }
  
 });
