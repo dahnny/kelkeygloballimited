@@ -171,7 +171,7 @@
 												<div class="col-12">
 													<div class="skip-email text-center">
 													
-														<button type="submit" class="btn btn-primary mb-2">Create Property</button>
+														<button id="add_property" type="submit" class="btn btn-primary mb-2">Create Property</button>
                                   
 													</div>
 												</div>
@@ -257,6 +257,19 @@
 		});
 	</script>
 
+<script>
+	$(function() {
+    $('#add_property').submit(function(event) {
+        event.preventDefault(); // Stops browser from navigating away from page
+        var data;
+        // build a json object or do something with the form, store in data
+        $.post('/addEntry', data, function(resp) {
+            alert(resp);
+            // do something when it was successful
+        });
+    });
+});
+</script>
 </body>
 
 </html>
