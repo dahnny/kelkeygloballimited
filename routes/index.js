@@ -165,7 +165,7 @@ router.post("/dashboard/add-property", isLoggedIn, async (req, res) => {
   // var published = await (await Post.find({status : "published"})).length
 
   // console.log({views })
-  res.render("admin/Addproperty", {
+  res.redirect("/dashboard", {
     // post_length,
     // views,
     // published
