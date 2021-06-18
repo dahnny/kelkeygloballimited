@@ -122,6 +122,10 @@ router.get("/dashboard", isLoggedIn, async (req, res) => {
 
   var user_length = await (await SignupUser.find()).length;
 
+  
+  var popular_properties = await ( await Properties.find().where('status').equals("published") .populate("category").sort({
+    views : -1
+  })).slice(0,4)
   // console.log({views })
   res.render("admin/dashboard", {
     property_length,
