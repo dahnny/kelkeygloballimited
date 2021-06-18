@@ -64,8 +64,8 @@ module.exports = function(passport) {
         newUser.email    = email.toLowerCase();
         newUser.password = newUser.generateHash(password);
       
-        newUser.firstname = req.body.firstname.toLowerCase()
-        newUser.lastname = req.body.lastname.toLowerCase()
+        newUser.first_name = req.body.first_name.toLowerCase()
+        newUser.last_name = req.body.last_name.toLowerCase()
         await newUser.save()
    
             return done(null, newUser);
