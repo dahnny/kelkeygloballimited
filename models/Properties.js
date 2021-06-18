@@ -30,7 +30,7 @@ const downloadableSchema = new mongoose.Schema({
   comments: [
     {
       type: Schema.Types.ObjectId,
-      ref: "Comment",
+      ref: "Comment"
     },
   ],
   content: {
