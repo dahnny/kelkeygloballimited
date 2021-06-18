@@ -40,9 +40,7 @@ const storage = multer.diskStorage({
 
 
 
-const parser = multer({ storage: storage });
-
-
+const upload = multer({ storage });
 
 
 router.get("/login", csrfProtection, async (req, res) => {
