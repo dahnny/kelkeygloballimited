@@ -204,7 +204,7 @@ router.get("/dashboard/users", isLoggedIn, async (req, res) => {
     // published
   });
 });
-router.post("/dashboard/create-category", isLoggedIn, async (req, res) => {
+router.post("/dashboard/create-category", async (req, res) => {
   var { category_name } = req.body;
 
   if (!category_name) {
