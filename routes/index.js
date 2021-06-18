@@ -176,6 +176,8 @@ router.post("/dashboard/add-property", isLoggedIn, async (req, res) => {
       req.flash("error" , "Some fields are missing. Please enter all fields")
       return res.redirect("/dashboard/add-property")
     }
+
+    const new_property = new Properties({})
     // var post_length = await (await Post.find()).length
     // var posts = await Post.find()
   
