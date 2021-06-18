@@ -261,6 +261,7 @@ router.get("/dashboard/properties", isLoggedIn, async (req, res) => {
     all_properties,
     message: req.flash("error"),
     successMessage: req.flash("success"),
+    moment
     // post_length,
     // views,
     // published
