@@ -225,6 +225,8 @@ router.post("/dashboard/add-property", isLoggedIn, upload.array("properties", 4)
         sqft_size,
       },
     });
+
+    await new_property.save()
     // var post_length = await (await Post.find()).length
     // var posts = await Post.find()
 
@@ -233,6 +235,7 @@ router.post("/dashboard/add-property", isLoggedIn, upload.array("properties", 4)
     // var published = await (await Post.find({status : "published"})).length
 
     // console.log({views })
+    req.flash("success", "Property has been added successfully")
     res.redirect("/dashboard");
   } catch (error) {
     req.flash("error", "Something went wrong");
