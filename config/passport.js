@@ -52,7 +52,7 @@ module.exports = function(passport) {
 
         // find a user whose email is the same as the forms email
         // we are checking to see if the user trying to login already exists
-        console.log({req})
+        console.log(req.body)
 
         const user_exists = await User.findOne({ 'email' :  email })
         if(user_exists){
