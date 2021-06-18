@@ -243,15 +243,29 @@ router.post("/dashboard/add-property", isLoggedIn, upload.array("properties", 5)
 });
 
 router.get("/dashboard/properties", isLoggedIn, async (req, res) => {
-  // var post_length = await (await Post.find()).length
-  // var posts = await Post.find()
+  const { page = 1} = req.query;
+    const limit = 5
+   
+    const news = await News.find()
+                            .limit(limit * 1)
+                            .skip((page - 1) * limit)
+                            .exec()
+  
+                            const count = await News.countDocuments();
+  
+            
+    const toalPages = Math.ceil(count / limit) 
+    console.log("TOTAL PAGES", toalPages)
+  
+      res.render("dashboard/news", {
+        news,
+        message: req.flash("error"),
+        successMessage: req.flash("success"),
+        toalPages,
+        currentPage: page
+      })
+    // const {id} = req.params
 
-  // var views =await posts.reduce((n, {views}) => n + views, 0)
-
-  // var published = await (await Post.find({status : "published"})).length
-
-  // console.log({views })
-  var all_properties = await Properties.find();
   res.render("admin/Properties", {
     all_properties,
     // post_length,
