@@ -22,7 +22,6 @@ const Category = require("../models/Category");
 const Properties = require("../models/Properties");
 const SignupUser = require("../models/user");
 
-const moment = require("moment")
 
 // cloudinary configuration
 cloudinary.config({
