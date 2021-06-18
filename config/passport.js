@@ -72,7 +72,7 @@ module.exports = function(passport) {
 
 
         var newUser    = new SignupUser({
-            email    : email.toLowerCase(),
+            email    : email,
             password : SignupUser.generateHash(password),
           
             first_name : req.body.first_name,
