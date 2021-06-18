@@ -158,6 +158,8 @@ router.get("/dashboard/add-property", isLoggedIn, async (req, res) => {
 
 router.post("/dashboard/add-property", isLoggedIn, async (req, res) => {
   const {title, location, category, content, amenities, video, price, bedrooms, bathrooms, sqft_size } = req.body
+
+  console.log({title, location, category, content, amenities, video, price, bedrooms, bathrooms, sqft_size } )
   // var post_length = await (await Post.find()).length
   // var posts = await Post.find()
 
