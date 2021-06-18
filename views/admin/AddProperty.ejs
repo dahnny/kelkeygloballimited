@@ -5,180 +5,235 @@
         <!--**********************************
             Content body start
         ***********************************-->
-        <div class="content-body">
+		<div class="content-body">
             <div class="container-fluid">
-
+				<!-- Add Order -->
+				<div class="modal fade" id="addOrderModalside">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title">Add Event</h5>
+								<button type="button" class="close" data-dismiss="modal"><span>&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<form>
+									<div class="form-group">
+										<label class="text-black font-w500">Event Name</label>
+										<input type="text" class="form-control">
+									</div>
+									<div class="form-group">
+										<label class="text-black font-w500">Event Date</label>
+										<input type="date" class="form-control">
+									</div>
+									<div class="form-group">
+										<label class="text-black font-w500">Description</label>
+										<input type="text" class="form-control">
+									</div>
+									<div class="form-group">
+										<button type="button" class="btn btn-primary">Create</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
                 <div class="page-titles">
 					<ol class="breadcrumb">
-						<li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-						<li class="breadcrumb-item active"><a href="javascript:void(0)">Wizard</a></li>
+						<li class="breadcrumb-item"><a href="javascript:void(0)">Form</a></li>
+						<li class="breadcrumb-item active"><a href="javascript:void(0)">Validation</a></li>
 					</ol>
                 </div>
                 <!-- row -->
                 <div class="row">
-                    <div class="col-xl-12 col-xxl-12">
+                    <div class="col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">Form step</h4>
+                                <h4 class="card-title">Form Validation</h4>
                             </div>
                             <div class="card-body">
-								<div id="smartwizard" class="form-wizard order-create">
-									<ul class="nav nav-wizard">
-										<li><a class="nav-link" href="#PropertyDetails"> 
-											<span>1</span> 
-										</a></li>
-										<li><a class="nav-link" href="#PropertyAmenities">
-											<span>2</span>
-										</a></li>
-										<li><a class="nav-link" href="#PropertyDetails">
-											<span>3</span>
-										</a></li>
-										<li><a class="nav-link" href="#PropertyImages">
-											<span>4</span>
-										</a></li>
-									</ul>
-									<div class="tab-content">
-										
-										<div id="PropertyDetails" class="tab-pane" role="tabpanel">
-											<form>
-											<div class="row">
-												<div class="col-lg-6 mb-2">
-													<div class="form-group">
-														<label class="text-label">Property Title*</label>
-														<input id="title" type="text" name="title" class="form-control" placeholder="name of property" required>
-													</div>
-												</div>
-												<div class="col-lg-6 mb-2">
-													<div class="form-group">
-														<label class="text-label">Property Address*</label>
-														<input id="address" type="address" name="location" class="form-control" placeholder="Property address" required>
-													</div>
-												</div>
-												<div class="col-lg-12 mb-3">
-													<div class="form-group">
-														<label class="text-label">Property Content*</label>
-														<div class="card-body">
-															<div class="summernote" id="content" name = "content"></div>
-														</div>
-													</div>
-												</div>
-											</div>
-											
-										</div>
-										<div id="PropertyAmenities" class="tab-pane" role="tabpanel">
-											<div class="row">
-												<div class="col-lg-6 mb-2">
-													<div class="form-group">
-														<label class="text-label">Category*</label>
-														<select id="single-select">
-															<option value="AL">Alabama</option>
-															<option value="WY">Wyoming</option>
-														</select>	</div>
-												</div>
-												<div class="col-lg-6 mb-2">
-													<div class="form-group">
-														<label class="text-label">Amenities</label>
-														<select id = "amenities"  class="multi-select" name="amenities[]" required multiple="multiple">
-															<option value="AL">Alabama</option>
-															<option value="WY">Wyoming</option>
-															<option value="UI">dlf</option>
-														</select>	</div>
-												</div>
-											
-											</div>
-										</div>
-										<div id="PropertyDetails" class="tab-pane" role="tabpanel">
-											<div class="row">
-												<div class="col-sm-4 mb-2">
-													<h4>Bedrooms *</h4>
-												</div>
-												<div class="col-6 col-sm-4 mb-2">
-													<div class="form-group">
-														<input class="form-control" value="1" type="number" name="bedrooms" id="bedrooms">
-													</div>
-												</div>
-											
-											</div>
-											<div class="row">
-												<div class="col-sm-4 mb-2">
-													<h4>Bathrooms *</h4>
-												</div>
-												<div class="col-6 col-sm-4 mb-2">
-													<div class="form-group">
-														<input class="form-control" value="1" type="number" name="bathrooms" id="bathrooms">
-													</div>
-												</div>
-												
-											</div>
-											<div class="row">
-												<div class="col-sm-4 mb-2">
-													<h4>Size in Square Feet *</h4>
-												</div>
-												<div class="col-6 col-sm-4 mb-2">
-													<div class="form-group">
-														<input class="form-control" value="1" type="number" name="sqft_size" id="sqft_size">
-													</div>
-												</div>
-											
-											</div>
-										
-											<div class="row">
-												<div class="col-sm-4 mb-2">
-													<h4>Video of Property (optional)</h4>
-												</div>
-												<div class="col-12 col-sm-8 mb-2">
-													<div class="form-group">
-														<input class="form-control" placeholder="video url" type="url" name="video" id="input9">
-													</div>
-												</div>
-											
-											</div>
-										</div>
-										<div id="PropertyImages" class="tab-pane" role="tabpanel">
-											<center>	<h4>Property images</h4></center>
-										
-											<div class="row emial-setup">
-											
-												<div class="col-lg-6 col-sm-12">
-													<div class="form-group">
-												
-															<input type="file" class="custom-file-input">
-															<label class="custom-file-label">Choose first image</label>
-													
-													</div>
-												</div>
-												<div class="col-lg-6 col-sm-12 col-xs-12">
-													<div class="form-group">
-														<input type="file" class="custom-file-input">
-														<label class="custom-file-label">Choose Second image</label>
-													</div>
-												</div>
-												<div class="col-lg-6 col-sm-12">
-													<div class="form-group">
-														<input type="file" class="custom-file-input">
-														<label class="custom-file-label">Choose third image</label>
-													</div>
-												</div>
-												<div class="col-lg-6 col-sm-12">
-													<div class="form-group">
-														<input type="file" class="custom-file-input">
-														<label class="custom-file-label">Choose last image</label>
-													</div>
-												</div>
-											</div>
-
-											<div class="row">
-												<div class="col-12">
-													<div class="skip-email text-center">
-													
-														<button id="add_property" type="submit" class="btn btn-primary mb-2">Create Property</button>
-                                  
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
+                                <div class="form-validation">
+                                    <form class="form-valide" action="#" method="post">
+                                        <div class="row">
+                                            <div class="col-xl-6">
+                                                <div class="form-group row">
+                                                    <label class="col-lg-4 col-form-label" for="val-username">Username
+                                                        <span class="text-danger">*</span>
+                                                    </label>
+                                                    <div class="col-lg-6">
+                                                        <input type="text" class="form-control" id="val-username" name="val-username" placeholder="Enter a username..">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-lg-4 col-form-label" for="val-email">Email <span
+                                                            class="text-danger">*</span>
+                                                    </label>
+                                                    <div class="col-lg-6">
+                                                        <input type="text" class="form-control" id="val-email" name="val-email" placeholder="Your valid email..">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-lg-4 col-form-label" for="val-password">Password
+                                                        <span class="text-danger">*</span>
+                                                    </label>
+                                                    <div class="col-lg-6">
+                                                        <input type="password" class="form-control" id="val-password" name="val-password" placeholder="Choose a safe one..">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-lg-4 col-form-label" for="val-confirm-password">Confirm Password <span
+                                                            class="text-danger">*</span>
+                                                    </label>
+                                                    <div class="col-lg-6">
+                                                        <input type="password" class="form-control" id="val-confirm-password" name="val-confirm-password" placeholder="..and confirm it!">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-lg-4 col-form-label" for="val-suggestions">Suggestions <span
+                                                            class="text-danger">*</span>
+                                                    </label>
+                                                    <div class="col-lg-6">
+                                                        <textarea class="form-control" id="val-suggestions" name="val-suggestions" rows="5" placeholder="What would you like to see?"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6">
+                                                <div class="form-group row">
+                                                    <label class="col-lg-4 col-form-label" for="val-skill">Best Skill
+                                                        <span class="text-danger">*</span>
+                                                    </label>
+                                                    <div class="col-lg-6">
+                                                        <select class="form-control default-select" id="val-skill" name="val-skill">
+                                                            <option value="">Please select</option>
+                                                            <option value="html">HTML</option>
+                                                            <option value="css">CSS</option>
+                                                            <option value="javascript">JavaScript</option>
+                                                            <option value="angular">Angular</option>
+                                                            <option value="angular">React</option>
+                                                            <option value="vuejs">Vue.js</option>
+                                                            <option value="ruby">Ruby</option>
+                                                            <option value="php">PHP</option>
+                                                            <option value="asp">ASP.NET</option>
+                                                            <option value="python">Python</option>
+                                                            <option value="mysql">MySQL</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-lg-4 col-form-label" for="val-currency">Currency
+                                                        <span class="text-danger">*</span>
+                                                    </label>
+                                                    <div class="col-lg-6">
+                                                        <input type="text" class="form-control" id="val-currency" name="val-currency" placeholder="$21.60">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-lg-4 col-form-label" for="val-website">Website
+                                                        <span class="text-danger">*</span>
+                                                    </label>
+                                                    <div class="col-lg-6">
+                                                        <input type="text" class="form-control" id="val-website" name="val-website" placeholder="http://example.com">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-lg-4 col-form-label" for="val-phoneus">Phone (US)
+                                                        <span class="text-danger">*</span>
+                                                    </label>
+                                                    <div class="col-lg-6">
+                                                        <input type="text" class="form-control" id="val-phoneus" name="val-phoneus" placeholder="212-999-0000">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-lg-4 col-form-label" for="val-digits">Digits <span
+                                                            class="text-danger">*</span>
+                                                    </label>
+                                                    <div class="col-lg-6">
+                                                        <input type="text" class="form-control" id="val-digits" name="val-digits" placeholder="5">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-lg-4 col-form-label" for="val-number">Number <span
+                                                            class="text-danger">*</span>
+                                                    </label>
+                                                    <div class="col-lg-6">
+                                                        <input type="text" class="form-control" id="val-number" name="val-number" placeholder="5.0">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-lg-4 col-form-label" for="val-range">Range [1, 5]
+                                                        <span class="text-danger">*</span>
+                                                    </label>
+                                                    <div class="col-lg-6">
+                                                        <input type="text" class="form-control" id="val-range" name="val-range" placeholder="4">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-lg-4 col-form-label"><a
+                                                            href="javascript:void()">Terms &amp; Conditions</a> <span
+                                                            class="text-danger">*</span>
+                                                    </label>
+                                                    <div class="col-lg-8">
+                                                        <label class="css-control css-control-primary css-checkbox" for="val-terms">
+                                                            <input type="checkbox" class="css-control-input mr-2"
+                                                                id="val-terms" name="val-terms" value="1">
+                                                            <span class="css-control-indicator"></span> I agree to the
+                                                            terms</label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-lg-8 ml-auto">
+                                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Vertical Forms with icon</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="basic-form">
+                                    <form class="form-valide-with-icon" action="#" method="post">
+                                        <div class="form-group">
+                                            <label class="text-label">Username</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                                                </div>
+                                                <input type="text" class="form-control" id="val-username1" name="val-username" placeholder="Enter a username..">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="text-label">Password *</label>
+                                            <div class="input-group transparent-append">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                                                </div>
+                                                <input type="password" class="form-control" id="dz-password" name="val-password" placeholder="Choose a safe one..">
+                                                <div class="input-group-append show-pass ">
+                                                    <span class="input-group-text "> 
+														<i class="fa fa-eye-slash"></i>
+														<i class="fa fa-eye"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="form-check">
+                                                <input id="checkbox1" class="form-check-input" type="checkbox">
+                                                <label for="checkbox1" class="form-check-label">Check me out</label>
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn mr-2 btn-primary">Submit</button>
+                                        <button type="submit" class="btn btn-light">cencel</button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -222,67 +277,19 @@
     <!-- Required vendors -->
     <script src="/dashboard/vendor/global/global.min.js"></script>
 	<script src="/dashboard/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
-	
-
-    <!-- Summernote -->
-    <script src="/dashboard/vendor/summernote/js/summernote.min.js"></script>
-    <!-- Summernote init -->
-    <script src="/dashboard/js/plugins-init/summernote-init.js"></script>
-
     <script src="/dashboard/js/custom.min.js"></script>
 	<script src="/dashboard/js/deznav-init.js"></script>
-	
 	
     
 
 
-    <script src="/dashboard/vendor/jquery-steps/build/jquery.steps.min.js"></script>
+
+    <!-- Jquery Validation -->
     <script src="/dashboard/vendor/jquery-validation/jquery.validate.min.js"></script>
     <!-- Form validate init -->
     <script src="/dashboard/js/plugins-init/jquery.validate-init.js"></script>
 
-	<script src="/dashboard/vendor/select2/js/select2.full.min.js"></script>
-    <script src="/dashboard/js/plugins-init/select2-init.js"></script>
 
-	
-
-
-   <!-- Form Steps -->
-	<script src="/dashboard/vendor/jquery-smartwizard/dist/js/jquery.smartWizard.js"></script>
-	
-	<script>
-		$(document).ready(function(){
-			// SmartWizard initialize
-			$('#smartwizard').smartWizard(); 
-		});
-	</script>
-
-<script>
-	$(function() {
-    $('#add_property').click(function(event) {
-        event.preventDefault(); // Stops browser from navigating away from page
-		var title = $("#title"). val();
-		var address = $("#address"). val();
-		var content = $("#content"). val();
-		var category = $("#single-select"). val();
-		var amenities = $("#amenities"). val();
-		var bedrooms = $("#bedrooms"). val();
-		var bathrooms = $("#bathrooms"). val();
-		var sqft_size = $("#sqft_size"). val();
-
-		console.log({title, address, category, amenities, bedrooms, bathrooms, sqft_size})
-        // var data;
-
-		// alert("clicked")
-
-        // build a json object or do something with the form, store in data
-        // $.post('/addEntry', data, function(resp) {
-        //     alert(resp);
-        //     // do something when it was successful
-        // });
-    });
-});
-</script>
 </body>
 
 </html>
