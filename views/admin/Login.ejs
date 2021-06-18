@@ -14,6 +14,7 @@
 									</div>
                                     <h4 class="text-center mb-4 text-white">Sign in your account</h4>
                                     <form action="index.html">
+                                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                                         <div class="form-group">
                                             <label class="mb-1 text-white"><strong>Email</strong></label>
                                             <input type="email" name = "email" class="form-control" placeholder="hello@example.com">
