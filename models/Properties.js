@@ -120,7 +120,7 @@ const propertySchema = new mongoose.Schema({
   },
 });
 
-propertiesSchema.pre("save", function (next) {
+propertySchema.pre("save", function (next) {
   slug = slugify(this.title);
   this.slug = slug.toLowerCase();
   next();
