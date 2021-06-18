@@ -60,8 +60,8 @@ try{
 
 app.use(morgan('dev')); // log every request to the console
 app.use(cookieParser()); //
-  app.use(bodyParser.json());
-  app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
   /** VIEWS CONFIGURATION */
   /** SERVING PUBLIC FILES */
   app.use(express.static(path.join(__dirname, "public")));
