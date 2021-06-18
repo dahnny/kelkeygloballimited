@@ -65,6 +65,15 @@ const fileFilter = (req, file, cb) => {
 
 const parser = multer({ storage: storage });
 
+
+var cpUpload = parser.fields([
+  { name: "image_one", maxCount: 1 },
+  { name: "image_two", maxCount: 1 },
+  { name: "image_three", maxCount: 1 },
+  { name: "image_four", maxCount: 1 },
+  // { name: 'pitch_deck', maxCount: 1 },
+]);
+
 router.get("/login", csrfProtection, async (req, res) => {
   // console.log("Referral ID",req.query['referral'])
   // render the page and pass in any flash data if it exists
