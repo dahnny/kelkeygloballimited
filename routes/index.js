@@ -6,10 +6,6 @@ var FroalaEditor = require("wysiwyg-editor-node-sdk/lib/froalaEditor.js");
 const router = express.Router()
 
 
-const BlogCategory = require("../models/BlogCategory");
-const Post = require('../models/Post');
-const {Comment} = require('../models/Comment');
-
 const moment = require("moment")
 var csrf = require('csurf')
 var csrfProtection = csrf({ cookie: true })
@@ -142,7 +138,7 @@ router.get("/dashboard",isLoggedIn, async(req, res) => {
   var valuation =await all_properties.reduce((n, {price}) => n + price, 0)
   console.log({valuation})
 
-  var published = await (await SignupUser.find({status : "published"})).length
+  var user_length = await (await SignupUser.find()).length
 
   // console.log({views })
     res.render("admin/dashboard",{
