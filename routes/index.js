@@ -246,19 +246,19 @@ router.get("/dashboard/properties", isLoggedIn, async (req, res) => {
   const { page = 1} = req.query;
     const limit = 5
    
-    const news = await News.find()
+    const all_properties = await Properties.find()
                             .limit(limit * 1)
                             .skip((page - 1) * limit)
                             .exec()
   
-                            const count = await News.countDocuments();
+                            const count = await Properties.countDocuments();
   
             
     const toalPages = Math.ceil(count / limit) 
     console.log("TOTAL PAGES", toalPages)
   
-      res.render("dashboard/news", {
-        news,
+      res.render("admin/Properties", {
+        all_properties,
         message: req.flash("error"),
         successMessage: req.flash("success"),
         toalPages,
