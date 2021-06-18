@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const slugify = require("slugify");
 
-const propertiesSchema = new mongoose.Schema({
+const propertySchema = new mongoose.Schema({
   title: {
     type: String,
     required: true,
@@ -143,6 +143,6 @@ function validatePost(post) {
 //     validate:validatePost
 // }
 
-module.exports = mongoose.model("Downloadable", downloadableSchema);
+module.exports = mongoose.model("Property", propertySchema);
 
 // exports.validate = validatePost;
