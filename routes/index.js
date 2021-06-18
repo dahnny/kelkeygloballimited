@@ -156,11 +156,9 @@ router.get("/dashboard/add-property", isLoggedIn, async (req, res) => {
     });
   } catch (error) {
     console.log({error})
-    res.render("admin/Addproperty", {
-    categories : [],
-    message: req.flash("error"),
-    successMessage: req.flash("success"),
-    });
+    req.flash("error" , "Something went wrong")
+   return res.redirect("/dashboard/add-property")
+ 
   }
 
 });
