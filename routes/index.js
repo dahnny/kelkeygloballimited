@@ -123,7 +123,7 @@ router.get("/dashboard", isLoggedIn, async (req, res) => {
   var user_length = await (await SignupUser.find()).length;
 
   
-  var popular_properties = await ( await Properties.find().where('status').equals("published") .populate("category").sort({
+  var popular_properties = await ( await Properties.find().where('status').equals("published").sort({
     views : -1
   })).slice(0,4)
   // console.log({views })
