@@ -141,11 +141,10 @@ router.get("/dashboard", isLoggedIn, async (req, res) => {
 });
 
 router.get("/dashboard/add-property", isLoggedIn, async (req, res) => {
-
   try {
-    var categories = await Category.find()
-    console.log({categories})
-  
+    var categories = await Category.find();
+    console.log({ categories });
+
     res.render("admin/Addproperty", {
       categories,
       message: req.flash("error"),
@@ -155,43 +154,79 @@ router.get("/dashboard/add-property", isLoggedIn, async (req, res) => {
       // published
     });
   } catch (error) {
-    console.log({error})
-    req.flash("error" , "Something went wrong")
-   return res.redirect("/dashboard/add-property")
- 
+    console.log({ error });
+    req.flash("error", "Something went wrong");
+    return res.redirect("/dashboard/add-property");
   }
-
 });
 
 router.post("/dashboard/add-property", isLoggedIn, async (req, res) => {
   try {
-    
-    const {title, location, category, content, amenities, video, price, bedrooms, bathrooms, sqft_size } = req.body
+    const {
+      title,
+      location,
+      category,
+      content,
+      amenities,
+      video,
+      price,
+      bedrooms,
+      bathrooms,
+      sqft_size,
+    } = req.body;
 
-    console.log({title, location, category, content, amenities, video, price, bedrooms, bathrooms, sqft_size } )
+    console.log({
+      title,
+      location,
+      category,
+      content,
+      amenities,
+      video,
+      price,
+      bedrooms,
+      bathrooms,
+      sqft_size,
+    });
 
-
-
-    if(!title || !location || !category || !content || !price ||!bedrooms ||!bathrooms || sqft_size){
-      req.flash("error" , "Some fields are missing. Please enter all fields")
-      return res.redirect("/dashboard/add-property")
+    if (
+      !title ||
+      !location ||
+      !category ||
+      !content ||
+      !price ||
+      !bedrooms ||
+      !bathrooms ||
+      sqft_size
+    ) {
+      req.flash("error", "Some fields are missing. Please enter all fields");
+      return res.redirect("/dashboard/add-property");
     }
 
-    const new_property = new Properties({})
+    const new_property = new Properties({
+      title,
+      location,
+      category,
+      content,
+      price,
+      details: {
+        bedrooms,
+        bathrooms,
+        sqft_size,
+      },
+    });
     // var post_length = await (await Post.find()).length
     // var posts = await Post.find()
-  
+
     // var views =await posts.reduce((n, {views}) => n + views, 0)
-  
+
     // var published = await (await Post.find({status : "published"})).length
-  
+
     // console.log({views })
     res.redirect("/dashboard");
   } catch (error) {
-    req.flash("error" , "Something went wrong")
-    return res.redirect("/dashboard/add-property")
+    req.flash("error", "Something went wrong");
+    return res.redirect("/dashboard/add-property");
   }
- 
 });
 
 router.get("/dashboard/properties", isLoggedIn, async (req, res) => {
