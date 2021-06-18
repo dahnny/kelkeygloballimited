@@ -122,16 +122,21 @@ router.get("/dashboard", isLoggedIn, async (req, res) => {
 
   var user_length = await (await SignupUser.find()).length;
 
-  
-  var popular_properties = await ( await Properties.find().where('status').equals("published") .populate("category").sort({
-    views : -1
-  })).slice(0,4)
+  var popular_properties = await (
+    await Properties.find()
+      .where("status")
+      .equals("published")
+      .populate("category")
+      .sort({
+        views: -1,
+      })
+  ).slice(0, 4);
   // console.log({views })
   res.render("admin/dashboard", {
     property_length,
     user_length,
     valuation,
-    popular_properties
+    popular_properties,
   });
 });
 
@@ -161,7 +166,7 @@ router.get("/dashboard/properties", isLoggedIn, async (req, res) => {
   // console.log({views })
   var all_properties = await Properties.find();
   res.render("admin/Properties", {
-    all_properties
+    all_properties,
     // post_length,
     // views,
     // published
@@ -199,38 +204,30 @@ router.get("/dashboard/users", isLoggedIn, async (req, res) => {
     // published
   });
 });
-router.post("/dashboard/users", isLoggedIn, async (req, res) => {
- 
-var {category_name} = req.body
+router.post("/dashboard/create-category", isLoggedIn, async (req, res) => {
+  var { category_name } = req.body;
 
-if(!category_name){
+  if (!category_name) {
+    req.flash("error", "Please enter a proper category name");
+    return res.redirect("/dashboard/create-category");
+  }
 
-  req.flash("error", "Please enter a proper category name");
- return res.redirect("/dashboard/create-category")
-}
+  var exists = await BlogCategory.findOne({ category_name });
 
+  // Post
 
- var exists = await   BlogCategory.findOne({ category_name })
-
-// Post
-
-  if(exists){
-  
+  if (exists) {
     req.flash("error", "This category already exists");
-   return res.redirect("/dashboard/create-category")
-  }else{
-
+    return res.redirect("/dashboard/create-category");
+  } else {
     var new_category = await new BlogCategory({
-      category_name
-    })
-    await new_category.save()
+      category_name,
+    });
+    await new_category.save();
     req.flash("success", "Category created successfully");
-    res.redirect("/dashboard/create-category")
+    res.redirect("/dashboard/create-category");
   }
 });
-
-
-
 
 router.get("/", async (req, res) => {
   res.render("index");
