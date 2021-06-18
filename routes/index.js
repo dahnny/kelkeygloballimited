@@ -147,7 +147,9 @@ router.get("/dashboard/add-property", isLoggedIn, async (req, res) => {
     console.log({categories})
   
     res.render("admin/Addproperty", {
-      categories
+      categories,
+      message: req.flash("error"),
+      successMessage: req.flash("success"),
       // post_length,
       // views,
       // published
@@ -155,7 +157,9 @@ router.get("/dashboard/add-property", isLoggedIn, async (req, res) => {
   } catch (error) {
     console.log({error})
     res.render("admin/Addproperty", {
-    categories : []
+    categories : [],
+    message: req.flash("error"),
+    successMessage: req.flash("success"),
     });
   }
 
