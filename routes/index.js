@@ -321,8 +321,13 @@ router.get("/dashboard/properties/:slug", isLoggedIn, async (req, res) => {
 
   // var published = await (await Post.find({status : "published"})).length
 
+  var property = await Properties.findOne({slug})
+
+
+
   // console.log({views })
   res.render("admin/Property", {
+    property,
     // post_length,
     // views,
     // published
