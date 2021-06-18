@@ -111,7 +111,7 @@ router.get("/register", csrfProtection, async (req, res)=> {
   // console.log("Referral ID",req.query['referral'])
   // render the page and pass in any flash data if it exists
   return res.render("admin/Register", {
-    message: req.flash("registerMessage"),
+    signupMessage: req.flash("signupMessage"),
     successMessage : req.flash("successMessage"),
     title: "Log-In",
     csrfToken: req.csrfToken()
