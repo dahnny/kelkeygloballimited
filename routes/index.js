@@ -270,6 +270,12 @@ router.get("/dashboard/properties/:id/publish", isLoggedIn, async (req, res) => 
       req.flash("error", "Something went wrong")
       return res.redirect("/dashboard/properties")
     }
+
+    Properties.findByIdAndUpdate(id, {
+      $set : {
+        status : "published"
+      }
+    })
 });
 
 
