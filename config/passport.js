@@ -70,21 +70,18 @@ module.exports = function(passport) {
             return done(null, false, req.flash('signupMessage', 'email already taken'));
         } 
 
-
-        var newUser    = new SignupUser({
-            email    : email,
-            password : newUser.generateHash(password),
-          
-            first_name : req.body.first_name,
-            last_name : req.body.last_name
-        });
+        var newUser    = new SignupUser();
         // // set the user's local credentials
-        // newUser.local.username = username.toLowerCase()
-       
+        // newUser.local.username = username
+        newUser.email    = email;
+        newUser.password = newUser.generateHash(password);
+        newUser.first_name = req.body.first_name
+        newUser.last_name = req.body.last_name
         await newUser.save()
+                /** referral */
    
             return done(null, newUser);
-      
+       
         }
         );
 
@@ -119,11 +116,11 @@ module.exports = function(passport) {
     //     } 
     //     var newAdmin    = new Admin();
     //     // // set the user's local credentials
-    //     // newAdmin.local.username = username.toLowerCase()
-    //     newAdmin.email    = email.toLowerCase();
+    //     // newAdmin.local.username = username
+    //     newAdmin.email    = email;
     //     newAdmin.password = newAdmin.generateHash(password);
-    //     newAdmin.firstname = req.body.firstname.toLowerCase()
-    //     newAdmin.lastname = req.body.lastname.toLowerCase()
+    //     newAdmin.firstname = req.body.firstname
+    //     newAdmin.lastname = req.body.lastname
     //     await newAdmin.save()
     //             /** referral */
    
@@ -150,7 +147,7 @@ module.exports = function(passport) {
 
         // find a user whose email is the same as the forms email
         // we are checking to see if the user trying to login already exists
-        SignupUser.findOne({ 'email' :  email.toLowerCase() }, function(err, user) {
+        SignupUser.findOne({ 'email' :  email }, function(err, user) {
             // if there are any errors, return the error before anything else
             if (err)
                 return done(err);
