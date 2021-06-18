@@ -212,7 +212,7 @@ router.post("/dashboard/create-category", isLoggedIn, async (req, res) => {
     return res.redirect("/dashboard/create-category");
   }
 
-  var exists = await BlogCategory.findOne({ category_name });
+  var exists = await Category.findOne({ category_name });
 
   // Post
 
@@ -220,7 +220,7 @@ router.post("/dashboard/create-category", isLoggedIn, async (req, res) => {
     req.flash("error", "This category already exists");
     return res.redirect("/dashboard/create-category");
   } else {
-    var new_category = await new BlogCategory({
+    var new_category = await new Category({
       category_name,
     });
     await new_category.save();
