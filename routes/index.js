@@ -182,7 +182,8 @@ router.post("/dashboard/add-property", isLoggedIn, upload.array("properties", 4)
     );
     // await all the cloudinary upload functions in promise.all, exactly where the magic happens
   let imageResponses = await Promise.all(multiplePicturePromise)
-    res.status(200).json({ images: imageResponses });
+    // res.status(200).json({ images: imageResponses });
+    console.log({imageResponses})
 
     if (
       !title ||
