@@ -58,11 +58,12 @@ module.exports = function(passport) {
             return done(null, false, req.flash('signupMessage', 'Please enter all fields'));
         }
 
+        if(password !== confirm_password){
+            return done(null, false, req.flash('signupMessage', 'Passwords do not match'));
+        }
+
         // we are checking to see if the user trying to login already exists
-            
-
-        console.log(req.body)
-
+    
         const user_exists = await User.findOne({ 'email' :  email })
         if(user_exists){
             console.log("user alread exists!!!!!!!!")
