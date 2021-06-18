@@ -271,11 +271,14 @@ router.get("/dashboard/properties/:id/publish", isLoggedIn, async (req, res) => 
       return res.redirect("/dashboard/properties")
     }
 
-    Properties.findByIdAndUpdate(id, {
+   await Properties.findByIdAndUpdate(id, {
       $set : {
         status : "published"
       }
     })
+
+    req.flash("success", "Property has been published successfully")
+    return res.redirect("/dashboard/properties")
 });
 
 
