@@ -262,14 +262,15 @@
     $('#add_property').click(function(event) {
         event.preventDefault(); // Stops browser from navigating away from page
 		var title = $("#title"). val();
-		var title = $("#address"). val();
-		var title = $("#title"). val();
+		var address = $("#address"). val();
+		// var title = $("#title"). val();
 		var category = $("#single-select"). val();
 		var amenities = $("#amenities"). val();
 		var bedrooms = $("#bedrooms"). val();
 		var bathrooms = $("#bathrooms"). val();
 		var sqft_size = $("#sqft_size"). val();
 
+		console.log({title, address, category, amenities, bedrooms, bathrooms, sqft_size})
         // var data;
 
 		// alert("clicked")
