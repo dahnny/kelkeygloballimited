@@ -77,7 +77,16 @@ const downloadableSchema = new mongoose.Schema({
         type:Date,
         default:Date.now
 
-    }
+    },
+    location : {
+        type :String
+    },
+    reviews : {
+        type : Number,
+        default : 3
+    },
+
+    
 });
 
 
