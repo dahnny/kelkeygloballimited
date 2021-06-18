@@ -40,4 +40,4 @@ function validateBlogCategry(category){
 
 
 
-module.exports = mongoose.model('category', BlogCategorySchema);
+module.exports = mongoose.model('category', CategorySchema);
