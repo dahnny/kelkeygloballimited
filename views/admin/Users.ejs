@@ -38,15 +38,13 @@
 										<tbody>
 											<%users.forEach((user) => {%>
 											<tr>
-												<td>#0012451</td>
+												<td>#<%=user._id.slice(0,8) %></td>
 												<td><%=user.first_name %></td>
-												<td><span class="text-nowrap">The Story of Danau Toba<br> (Musical Drama)</span></td>
-												<td>Bella Simatupang</td>
-												<td>London, US</td>
-												<td>1 Pcs</td>
-												<td>567k left</td>
-												<td><strong class="text-black">NO</strong></td>
-												<td><a href="javascript:void(0)" class="btn btn-primary btn-sm light">$125,70</a></td>
+												<td><span class="text-nowrap"><%=user.last_name %></td>
+												<td><%=user.email %></td>
+												<td><%=moment(user.dateCreated).format("LLLL") %></td>
+						
+												<td><a href="javascript:void(0)" class="btn btn-primary btn-sm light"><%=user.referrals.length %></a></td>
 											</tr>
 											<% })%>
 										</tbody>
