@@ -142,15 +142,20 @@ router.get("/dashboard", isLoggedIn, async (req, res) => {
 
 router.get("/dashboard/add-property", isLoggedIn, async (req, res) => {
 
-  var categories = await Category.find()
-  console.log({categories})
+  try {
+    var categories = await Category.find()
+    console.log({categories})
+  
+    res.render("admin/Addproperty", {
+      categories
+      // post_length,
+      // views,
+      // published
+    });
+  } catch (error) {
+    console.log({error})
+  }
 
-  res.render("admin/Addproperty", {
-    categories
-    // post_length,
-    // views,
-    // published
-  });
 });
 
 router.post("/dashboard/add-property", isLoggedIn, async (req, res) => {
