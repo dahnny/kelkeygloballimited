@@ -169,6 +169,13 @@ router.post("/dashboard/add-property", isLoggedIn, async (req, res) => {
     const {title, location, category, content, amenities, video, price, bedrooms, bathrooms, sqft_size } = req.body
 
     console.log({title, location, category, content, amenities, video, price, bedrooms, bathrooms, sqft_size } )
+
+
+
+    if(!title || !location || !category || !content || !price ||!bedrooms ||!bathrooms || sqft_size){
+      req.flash("error" , "Some fields are missing")
+      return res.redirect("/dashboard/add-property")
+    }
     // var post_length = await (await Post.find()).length
     // var posts = await Post.find()
   
