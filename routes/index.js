@@ -138,7 +138,8 @@ router.get("/dashboard",isLoggedIn, async(req, res) => {
   var property_length = await (await Properties.find()).length
   var all_properties = await Properties.find()
 
-  var valuation =await all_properties.reduce((n, {views}) => n + views, 0)
+  var valuation =await all_properties.reduce((n, {price}) => n + price, 0)
+  console.log({valuation})
 
   var published = await (await Post.find({status : "published"})).length
 
