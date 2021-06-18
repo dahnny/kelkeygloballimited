@@ -90,13 +90,17 @@ const downloadableSchema = new mongoose.Schema({
     type: Number,
     default: 3,
   },
+  amenities : {
+    type : Array,
+    default : []
+  },
 
   details: {
     bedrooms: {
       type: Number,
       default: 0,
     },
-    bathrooms: {
+    bathrooms: {    
       type: Number,
       default: 0,
     },
