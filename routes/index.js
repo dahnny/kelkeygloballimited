@@ -337,7 +337,7 @@ router.get("/dashboard/properties/:slug", isLoggedIn, async (req, res) => {
 });
 
 router.get("/dashboard/users", isLoggedIn, async (req, res) => {
-  // var post_length = await (await Post.find()).length
+const  users = await SignupUser.find()
   // var posts = await Post.find()
 
   // var views =await posts.reduce((n, {views}) => n + views, 0)
@@ -346,6 +346,11 @@ router.get("/dashboard/users", isLoggedIn, async (req, res) => {
 
   // console.log({views })
   res.render("admin/Users", {
+    users,
+    moment,
+    message: req.flash("error"),
+    successMessage: req.flash("success"),
+
     // post_length,
     // views,
     // published
