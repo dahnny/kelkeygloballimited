@@ -332,6 +332,7 @@ router.get("/dashboard/properties/:slug", isLoggedIn, async (req, res) => {
 
   res.render("admin/Property", {
     property,
+    moment
   });
 });
 
