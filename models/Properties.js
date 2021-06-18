@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const slugify = require("slugify");
 
-const downloadableSchema = new mongoose.Schema({
+const propertiesSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true,
@@ -120,7 +120,7 @@ const downloadableSchema = new mongoose.Schema({
   },
 });
 
-downloadableSchema.pre("save", function (next) {
+propertiesSchema.pre("save", function (next) {
   slug = slugify(this.title);
   this.slug = slug.toLowerCase();
   next();
