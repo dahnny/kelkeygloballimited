@@ -38,9 +38,15 @@
 														</svg>
 													</div>
 													<div class="dropdown-menu dropdown-menu-right">
-														<a class="dropdown-item" href="/dashboard/properties/<%= post._id %>/publish">Publish</a>
-														<a class="dropdown-item" href="/dashboard/properties/<%= post._id %>/edit">Edit</a>
-														<a class="dropdown-item" href="/dashboard/properties/<%= post._id %>/delete">Delete</a>
+														<% if (property.status == "draft") { %>
+															<a class="dropdown-item" href="/dashboard/properties/<%= property._id %>/publish">Publish</a>
+															<% } %>
+															<% if (property.status == "published") { %>
+																<a class="dropdown-item" href="/dashboard/properties/<%= property._id %>/publish">Publish</a>
+																<% } %>
+														
+														<a class="dropdown-item" href="/dashboard/properties/<%= property._id %>/edit">Edit</a>
+														<a class="dropdown-item" href="/dashboard/properties/<%= property._id %>/delete">Delete</a>
 													</div>
 												</div>
 											</div>
