@@ -140,7 +140,7 @@ router.get("/dashboard/add-property", isLoggedIn, async (req, res) => {
   }
 });
 
-router.post("/dashboard/add-property", isLoggedIn, async (req, res) => {
+router.post("/dashboard/add-property", isLoggedIn, upload.array("properties", 4), async (req, res) => {
   try {
     const {
       title,
