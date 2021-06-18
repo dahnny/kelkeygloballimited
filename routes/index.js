@@ -183,6 +183,23 @@ router.get("/admin-panel/properties", isLoggedIn, async(req, res) => {
     })
 })
 
+router.get("/admin-panel/properties/:slug", isLoggedIn, async(req, res) => {
+
+  // var post_length = await (await Post.find()).length
+  // var posts = await Post.find()
+
+  // var views =await posts.reduce((n, {views}) => n + views, 0)
+
+  // var published = await (await Post.find({status : "published"})).length
+
+  // console.log({views })
+    res.render("admin/Properties",{
+      // post_length,
+      // views,
+      // published
+    })
+})
+
 
 router.get("/admin-panel/users", isLoggedIn, async(req, res) => {
 
