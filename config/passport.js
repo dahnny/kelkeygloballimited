@@ -50,8 +50,17 @@ module.exports = function(passport) {
         // User.findOne wont fire unless data is sent back
         process.nextTick(async() => {
 
+            const { first_name, last_name, confirm_password }
+
         // find a user whose email is the same as the forms email
+
+        if(!first_name || !last_name | !confirm_password){
+            return done(null, false, req.flash('signupMessage', 'Please enter all fields'));
+        }
+
         // we are checking to see if the user trying to login already exists
+            
+
         console.log(req.body)
 
         const user_exists = await User.findOne({ 'email' :  email })
@@ -59,6 +68,8 @@ module.exports = function(passport) {
             console.log("user alread exists!!!!!!!!")
             return done(null, false, req.flash('signupMessage', 'email already taken'));
         } 
+
+
         var newUser    = new User();
         // // set the user's local credentials
         // newUser.local.username = username.toLowerCase()
