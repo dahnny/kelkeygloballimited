@@ -261,12 +261,13 @@
 	$(function() {
     $('#add_property').submit(function(event) {
         event.preventDefault(); // Stops browser from navigating away from page
-        var data;
+        // var data;
+		alert("clicked")
         // build a json object or do something with the form, store in data
-        $.post('/addEntry', data, function(resp) {
-            alert(resp);
-            // do something when it was successful
-        });
+        // $.post('/addEntry', data, function(resp) {
+        //     alert(resp);
+        //     // do something when it was successful
+        // });
     });
 });
 </script>
