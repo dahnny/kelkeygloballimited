@@ -280,6 +280,23 @@ router.get("/dashboard/properties/:id/publish", isLoggedIn, async (req, res) => 
     req.flash("success", "Property has been published successfully")
     return res.redirect("/dashboard/properties")
 });
+router.get("/dashboard/properties/:id/unpublish", isLoggedIn, async (req, res) => {
+
+    const {id} = req.params
+    if(!id){
+      req.flash("error", "Something went wrong")
+      return res.redirect("/dashboard/properties")
+    }
+
+   await Properties.findByIdAndUpdate(id, {
+      $set : {
+        status : "draft"
+      }
+    })
+
+    req.flash("success", "Property has been published successfully")
+    return res.redirect("/dashboard/properties")
+});
 
 
 router.get("/dashboard/properties/:slug", isLoggedIn, async (req, res) => {
