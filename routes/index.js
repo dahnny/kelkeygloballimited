@@ -191,7 +191,7 @@ router.post("/dashboard/add-property", isLoggedIn, upload.array("properties", 5)
       !price ||
       !bedrooms ||
       !bathrooms ||
-      sqft_size
+      !sqft_size
     ) {
       req.flash("error", "Some fields are missing. Please enter all fields");
       return res.redirect("/dashboard/add-property");
