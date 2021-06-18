@@ -5,7 +5,7 @@ var LocalStrategy   = require('passport-local').Strategy;
 
 // load up the user model
 var Admin            = require("../models/Admin");
-var User            = require("../models/user");
+var SignupUser            = require("../models/user");
 
 
 // expose this function to our app using module.exports
@@ -24,7 +24,7 @@ module.exports = function(passport) {
 
     // used to deserialize the user
     passport.deserializeUser(function(id, done) {
-        User.findById(id, function(err, user) {
+        SignupUser.findById(id, function(err, user) {
             done(err, user);
         });
     });
@@ -64,16 +64,16 @@ module.exports = function(passport) {
 
         // we are checking to see if the user trying to login already exists
     
-        const user_exists = await User.findOne({ 'email' :  email })
+        const user_exists = await SignupUser.findOne({ 'email' :  email })
         if(user_exists){
             console.log("user alread exists!!!!!!!!")
             return done(null, false, req.flash('signupMessage', 'email already taken'));
         } 
 
 
-        var newUser    = new User({
+        var newUser    = new SignupUser({
             email    : email.toLowerCase(),
-            password : User.generateHash(password),
+            password : SignupUser.generateHash(password),
           
             first_name : req.body.first_name,
             last_name : req.body.last_name
@@ -150,7 +150,7 @@ module.exports = function(passport) {
 
         // find a user whose email is the same as the forms email
         // we are checking to see if the user trying to login already exists
-        User.findOne({ 'email' :  email.toLowerCase() }, function(err, user) {
+        SignupUser.findOne({ 'email' :  email.toLowerCase() }, function(err, user) {
             // if there are any errors, return the error before anything else
             if (err)
                 return done(err);
