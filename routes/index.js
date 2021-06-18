@@ -154,23 +154,33 @@ router.get("/dashboard/add-property", isLoggedIn, async (req, res) => {
     });
   } catch (error) {
     console.log({error})
+    res.render("admin/Addproperty", {
+    categories : []
+    });
   }
 
 });
 
 router.post("/dashboard/add-property", isLoggedIn, async (req, res) => {
-  const {title, location, category, content, amenities, video, price, bedrooms, bathrooms, sqft_size } = req.body
+  try {
+    
+    const {title, location, category, content, amenities, video, price, bedrooms, bathrooms, sqft_size } = req.body
 
-  console.log({title, location, category, content, amenities, video, price, bedrooms, bathrooms, sqft_size } )
-  // var post_length = await (await Post.find()).length
-  // var posts = await Post.find()
-
-  // var views =await posts.reduce((n, {views}) => n + views, 0)
-
-  // var published = await (await Post.find({status : "published"})).length
-
-  // console.log({views })
-  res.redirect("/dashboard");
+    console.log({title, location, category, content, amenities, video, price, bedrooms, bathrooms, sqft_size } )
+    // var post_length = await (await Post.find()).length
+    // var posts = await Post.find()
+  
+    // var views =await posts.reduce((n, {views}) => n + views, 0)
+  
+    // var published = await (await Post.find({status : "published"})).length
+  
+    // console.log({views })
+    res.redirect("/dashboard");
+  } catch (error) {
+    console.log({error})
+    res.redirect("/dashboard");
+  }
+ 
 });
 
 router.get("/dashboard/properties", isLoggedIn, async (req, res) => {
