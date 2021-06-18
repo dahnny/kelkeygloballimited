@@ -38,10 +38,7 @@ const storage = multer.diskStorage({
   },
 });
 
-
-
 const upload = multer({ storage });
-
 
 router.get("/login", csrfProtection, async (req, res) => {
   // console.log("Referral ID",req.query['referral'])
@@ -138,109 +135,116 @@ router.get("/dashboard/add-property", isLoggedIn, async (req, res) => {
   }
 });
 
-router.post("/dashboard/add-property", isLoggedIn, upload.array("properties", 5), async (req, res) => {
-  try {
-    const {
-      title,
-      location,
-      category,
-      content,
-      amenities,
-      video,
-      price,
-      bedrooms,
-      bathrooms,
-      sqft_size,
-    } = req.body;
-
-    console.log({
-      title,
-      location,
-      category,
-      content,
-      amenities,
-      video,
-      price,
-      bedrooms,
-      bathrooms,
-      sqft_size,
-    });
-
-
-    let pictureFiles = req.files;
-    //Check if files exist
-    if (!pictureFiles){
-      req.flash("error", "Property images are missing, please upload all required images");
-      return res.redirect("/dashboard/add-property");
-    }
-  
-    //map through images and create a promise array using cloudinary upload function
-    let multiplePicturePromise = pictureFiles.map((picture) =>
-    cloudinary.uploader.upload(picture.path)
-    );
-    // await all the cloudinary upload functions in promise.all, exactly where the magic happens
-  let imageResponses = await Promise.all(multiplePicturePromise)
-    // res.status(200).json({ images: imageResponses });
-    console.log({imageResponses})
-
-    if (
-      !title ||
-      !location ||
-      !category ||
-      !content ||
-      !price ||
-      !bedrooms ||
-      !bathrooms ||
-      !sqft_size
-    ) {
-      req.flash("error", "Some fields are missing. Please enter all fields");
-      return res.redirect("/dashboard/add-property");
-    }
-
-    const new_property = new Properties({
-      title,
-      location,
-      category,
-      owner : req.user.id,
-      content,
-      price,
-      amenities,
-      image_one : imageResponses[0].url,
-      image_one_name : imageResponses[0].public_id,
-
-      image_two : imageResponses[1].url,
-      image_two_name : imageResponses[1].public_id,
-
-      image_two : imageResponses[2].url,
-      image_two_name : imageResponses[2].public_id,
-
-      image_three : imageResponses[3].url,
-      image_three_name : imageResponses[3].public_id,
-
-      details: {
+router.post(
+  "/dashboard/add-property",
+  isLoggedIn,
+  upload.array("properties", 5),
+  async (req, res) => {
+    try {
+      const {
+        title,
+        location,
+        category,
+        content,
+        amenities,
+        video,
+        price,
         bedrooms,
         bathrooms,
         sqft_size,
-      },
-    });
+      } = req.body;
 
-    await new_property.save()
-    // var post_length = await (await Post.find()).length
-    // var posts = await Post.find()
+      console.log({
+        title,
+        location,
+        category,
+        content,
+        amenities,
+        video,
+        price,
+        bedrooms,
+        bathrooms,
+        sqft_size,
+      });
 
-    // var views =await posts.reduce((n, {views}) => n + views, 0)
+      let pictureFiles = req.files;
+      //Check if files exist
+      if (!pictureFiles) {
+        req.flash(
+          "error",
+          "Property images are missing, please upload all required images"
+        );
+        return res.redirect("/dashboard/add-property");
+      }
 
-    // var published = await (await Post.find({status : "published"})).length
+      //map through images and create a promise array using cloudinary upload function
+      let multiplePicturePromise = pictureFiles.map((picture) =>
+        cloudinary.uploader.upload(picture.path)
+      );
+      // await all the cloudinary upload functions in promise.all, exactly where the magic happens
+      let imageResponses = await Promise.all(multiplePicturePromise);
+      // res.status(200).json({ images: imageResponses });
+      console.log({ imageResponses });
 
-    // console.log({views })
-    req.flash("success", "Property has been added successfully!!")
-    return res.redirect("/dashboard/add-property");
-  } catch (error) {
-    console.log({error})
-    req.flash("error", "Something went wrong");
-    return res.redirect("/dashboard/add-property");
+      if (
+        !title ||
+        !location ||
+        !category ||
+        !content ||
+        !price ||
+        !bedrooms ||
+        !bathrooms ||
+        !sqft_size
+      ) {
+        req.flash("error", "Some fields are missing. Please enter all fields");
+        return res.redirect("/dashboard/add-property");
+      }
+
+      const new_property = new Properties({
+        title,
+        location,
+        category,
+        owner: req.user.id,
+        content,
+        price,
+        amenities,
+        image_one: imageResponses[0].url,
+        image_one_name: imageResponses[0].public_id,
+
+        image_two: imageResponses[1].url,
+        image_two_name: imageResponses[1].public_id,
+
+        image_two: imageResponses[2].url,
+        image_two_name: imageResponses[2].public_id,
+
+        image_three: imageResponses[3].url,
+        image_three_name: imageResponses[3].public_id,
+
+        details: {
+          bedrooms,
+          bathrooms,
+          sqft_size,
+        },
+      });
+
+      await new_property.save();
+      // var post_length = await (await Post.find()).length
+      // var posts = await Post.find()
+
+      // var views =await posts.reduce((n, {views}) => n + views, 0)
+
+      // var published = await (await Post.find({status : "published"})).length
+
+      // console.log({views })
+      req.flash("success", "Property has been added successfully!!");
+      return res.redirect("/dashboard/add-property");
+    } catch (error) {
+      console.log({ error });
+      req.flash("error", "Something went wrong");
+      return res.redirect("/dashboard/add-property");
+    }
   }
-});
+);
 
 router.get("/dashboard/properties", isLoggedIn, async (req, res) => {
   // var post_length = await (await Post.find()).length
@@ -262,75 +266,69 @@ router.get("/dashboard/properties", isLoggedIn, async (req, res) => {
   });
 });
 
-
-router.get("/dashboard/properties/:id/publish", isLoggedIn, async (req, res) => {
-
-    const {id} = req.params
-    if(!id){
-      req.flash("error", "Something went wrong")
-      return res.redirect("/dashboard/properties")
+router.get(
+  "/dashboard/properties/:id/publish",
+  isLoggedIn,
+  async (req, res) => {
+    const { id } = req.params;
+    if (!id) {
+      req.flash("error", "Something went wrong");
+      return res.redirect("/dashboard/properties");
     }
 
-   await Properties.findByIdAndUpdate(id, {
-      $set : {
-        status : "published"
-      }
-    })
+    await Properties.findByIdAndUpdate(id, {
+      $set: {
+        status: "published",
+      },
+    });
 
-    req.flash("success", "Property has been published successfully")
-    return res.redirect("/dashboard/properties")
-});
-router.get("/dashboard/properties/:id/unpublish", isLoggedIn, async (req, res) => {
-
-    const {id} = req.params
-    if(!id){
-      req.flash("error", "Something went wrong")
-      return res.redirect("/dashboard/properties")
-    }
-
-   await Properties.findByIdAndUpdate(id, {
-      $set : {
-        status : "draft"
-      }
-    })
-
-    req.flash("success", "Property has been converted to draft successfully")
-    return res.redirect("/dashboard/properties")
-});
-
-
-router.get("/dashboard/properties/:id/unpublish", isLoggedIn, async (req, res) => {
-
-  const {id} = req.params
-  if(!id){
-    req.flash("error", "Something went wrong")
-    return res.redirect("/dashboard/properties")
+    req.flash("success", "Property has been published successfully");
+    return res.redirect("/dashboard/properties");
   }
+);
+router.get(
+  "/dashboard/properties/:id/unpublish",
+  isLoggedIn,
+  async (req, res) => {
+    const { id } = req.params;
+    if (!id) {
+      req.flash("error", "Something went wrong");
+      return res.redirect("/dashboard/properties");
+    }
 
- await Properties.findByIdAndDelete(id)
+    await Properties.findByIdAndUpdate(id, {
+      $set: {
+        status: "draft",
+      },
+    });
 
-  req.flash("success", "Property has been deleted successfully")
-  return res.redirect("/dashboard/properties")
-});
+    req.flash("success", "Property has been converted to draft successfully");
+    return res.redirect("/dashboard/properties");
+  }
+);
+
+router.get(
+  "/dashboard/properties/:id/unpublish",
+  isLoggedIn,
+  async (req, res) => {
+    const { id } = req.params;
+    if (!id) {
+      req.flash("error", "Something went wrong");
+      return res.redirect("/dashboard/properties");
+    }
+
+    await Properties.findByIdAndDelete(id);
+
+    req.flash("success", "Property has been deleted successfully");
+    return res.redirect("/dashboard/properties");
+  }
+);
 
 router.get("/dashboard/properties/:slug", isLoggedIn, async (req, res) => {
-  // var post_length = await (await Post.find()).length
-  // var posts = await Post.find()
+  var property = await Properties.findOne({ slug });
 
-  // var views =await posts.reduce((n, {views}) => n + views, 0)
-
-  // var published = await (await Post.find({status : "published"})).length
-
-  var property = await Properties.findOne({slug})
-
-
-
-  // console.log({views })
   res.render("admin/Property", {
     property,
-    // post_length,
-    // views,
-    // published
   });
 });
 
