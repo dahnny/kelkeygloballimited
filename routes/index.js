@@ -133,7 +133,7 @@ router.post(
   }
 );
 
-router.get("/admin-panel", async(req, res) => {
+router.get("/admin-panel",isLoggedIn, async(req, res) => {
 
   // var post_length = await (await Post.find()).length
   // var posts = await Post.find()
@@ -150,7 +150,7 @@ router.get("/admin-panel", async(req, res) => {
     })
 })
 
-router.get("/admin-panel/add-property", async(req, res) => {
+router.get("/admin-panel/add-property",isLoggedIn,  async(req, res) => {
 
   // var post_length = await (await Post.find()).length
   // var posts = await Post.find()
@@ -166,7 +166,7 @@ router.get("/admin-panel/add-property", async(req, res) => {
       // published
     })
 })
-router.get("/admin-panel/properties", async(req, res) => {
+router.get("/admin-panel/properties", isLoggedIn, async(req, res) => {
 
   // var post_length = await (await Post.find()).length
   // var posts = await Post.find()
@@ -184,7 +184,7 @@ router.get("/admin-panel/properties", async(req, res) => {
 })
 
 
-router.get("/admin-panel/users", async(req, res) => {
+router.get("/admin-panel/users", isLoggedIn, async(req, res) => {
 
   // var post_length = await (await Post.find()).length
   // var posts = await Post.find()
