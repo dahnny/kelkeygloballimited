@@ -13,7 +13,8 @@
 										<a href="/"><img src="dashboard/images/logo-full.png" alt=""></a>
 									</div>
                                     <h4 class="text-center mb-4 text-white">Sign in your account</h4>
-                                    <form action="index.html">
+                                    <form  method="POST"  action="/login" enctype="application/json">
+                                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                                         <% if (message.length > 0) { %>
                                             <!-- <%= message %> -->
                                              <!-- <%= message %> -->
