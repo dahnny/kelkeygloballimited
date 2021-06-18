@@ -206,6 +206,7 @@ router.post("/dashboard/add-property", isLoggedIn, async (req, res) => {
       title,
       location,
       category,
+      owner : req.user.id,
       content,
       price,
       details: {
