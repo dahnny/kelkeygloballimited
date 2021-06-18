@@ -199,6 +199,38 @@ router.get("/dashboard/users", isLoggedIn, async (req, res) => {
     // published
   });
 });
+router.post("/dashboard/users", isLoggedIn, async (req, res) => {
+ 
+var {category_name} = req.body
+
+if(!category_name){
+
+  req.flash("error", "Please enter a proper category name");
+ return res.redirect("/dashboard/create-category")
+}
+
+
+ var exists = await   BlogCategory.findOne({ category_name })
+
+// Post
+
+  if(exists){
+  
+    req.flash("error", "This category already exists");
+   return res.redirect("/dashboard/create-category")
+  }else{
+
+    var new_category = await new BlogCategory({
+      category_name
+    })
+    await new_category.save()
+    req.flash("success", "Category created successfully");
+    res.redirect("/admin-panel/create-category")
+  }
+});
+
+
+
 
 router.get("/", async (req, res) => {
   res.render("index");
