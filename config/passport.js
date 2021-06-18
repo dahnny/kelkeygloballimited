@@ -71,7 +71,7 @@ module.exports = function(passport) {
         } 
 
 
-        var newUser    = new Admin({
+        var newUser    = new User({
             email    : email.toLowerCase(),
             password : User.generateHash(password),
           
