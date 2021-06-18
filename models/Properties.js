@@ -17,7 +17,7 @@ const downloadableSchema = new mongoose.Schema({
     },
     owner:{
         type:Schema.Types.ObjectId,
-        ref:'admin'
+        ref:'user'
     },
     category:{
         type:Schema.Types.ObjectId,
