@@ -1,37 +1,32 @@
-const express = require('express')
-const request= require("request")
-
+const express = require("express");
+const request = require("request");
 
 var FroalaEditor = require("wysiwyg-editor-node-sdk/lib/froalaEditor.js");
-const router = express.Router()
+const router = express.Router();
 
+const moment = require("moment");
+var csrf = require("csurf");
+var csrfProtection = csrf({ cookie: true });
 
-const moment = require("moment")
-var csrf = require('csurf')
-var csrfProtection = csrf({ cookie: true })
+const isLoggedIn = require("../middleware/loggedIn");
+let passport;
 
-const isLoggedIn = require('../middleware/loggedIn');
-let passport
-
-passport = require('passport');
-require('../config/passport')(passport);
-const multer = require("multer")
+passport = require("passport");
+require("../config/passport")(passport);
+const multer = require("multer");
 // var upload = multer({ dest: 'uploads/' })
-var cloudinary = require('cloudinary').v2;
+var cloudinary = require("cloudinary").v2;
 
 const { CloudinaryStorage } = require("multer-storage-cloudinary");
-const News = require('../models/News');
-const Properties = require('../models/Properties');
-const SignupUser = require('../models/user');
-
-
-
+const News = require("../models/News");
+const Properties = require("../models/Properties");
+const SignupUser = require("../models/user");
 
 // cloudinary configuration
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
   api_key: process.env.API_KEY,
-  api_secret: process.env.API_SECRET
+  api_secret: process.env.API_SECRET,
   // cloud_name: process.env.CLOUD_NAME,
   // api_key: process.env.API_KEY,
   // api_secret: process.env.API_SECRET
@@ -51,8 +46,7 @@ const storage = new CloudinaryStorage({
   // },
 
   allowedFormats: ["jpg", "png", "jpeg"],
-transformation: [{ width: 500, height: 500, crop: "limit" }]
-
+  transformation: [{ width: 500, height: 500, crop: "limit" }],
 });
 
 const fileFilter = (req, file, cb) => {
@@ -69,21 +63,16 @@ const fileFilter = (req, file, cb) => {
   }
 };
 
-
 const parser = multer({ storage: storage });
 
-
-
-router.get("/login", csrfProtection, async (req, res)=> {
-
-
+router.get("/login", csrfProtection, async (req, res) => {
   // console.log("Referral ID",req.query['referral'])
   // render the page and pass in any flash data if it exists
   return res.render("admin/Login", {
     message: req.flash("loginMessage"),
-    successMessage : req.flash("successMessage"),
+    successMessage: req.flash("successMessage"),
     title: "Log-In",
-    csrfToken: req.csrfToken()
+    csrfToken: req.csrfToken(),
   });
 });
 
@@ -96,22 +85,18 @@ router.post(
     failureFlash: true, // allow flash messages
   }),
   function (req, res) {
-  
-      res.redirect("/dashboard");
-    
+    res.redirect("/dashboard");
   }
 );
 
-router.get("/register", csrfProtection, async (req, res)=> {
-
-
+router.get("/register", csrfProtection, async (req, res) => {
   // console.log("Referral ID",req.query['referral'])
   // render the page and pass in any flash data if it exists
   return res.render("admin/Register", {
     signupMessage: req.flash("signupMessage"),
-    successMessage : req.flash("successMessage"),
+    successMessage: req.flash("successMessage"),
     title: "Log-In",
-    csrfToken: req.csrfToken()
+    csrfToken: req.csrfToken(),
   });
 });
 
@@ -124,32 +109,28 @@ router.post(
     failureFlash: true, // allow flash messages
   }),
   function (req, res) {
-  
-      res.redirect("/dashboard");
-    
+    res.redirect("/dashboard");
   }
 );
 
-router.get("/dashboard",isLoggedIn, async(req, res) => {
+router.get("/dashboard", isLoggedIn, async (req, res) => {
+  var property_length = await (await Properties.find()).length;
+  var all_properties = await Properties.find();
 
-  var property_length = await (await Properties.find()).length
-  var all_properties = await Properties.find()
+  var valuation = await all_properties.reduce((n, { price }) => n + price, 0);
+  console.log({ valuation });
 
-  var valuation =await all_properties.reduce((n, {price}) => n + price, 0)
-  console.log({valuation})
-
-  var user_length = await (await SignupUser.find()).length
+  var user_length = await (await SignupUser.find()).length;
 
   // console.log({views })
-    res.render("admin/dashboard",{
-property_length,
-user_length,
-valuation
-    })
-})
+  res.render("admin/dashboard", {
+    property_length,
+    user_length,
+    valuation,
+  });
+});
 
-router.get("/dashboard/add-property",isLoggedIn,  async(req, res) => {
-
+router.get("/dashboard/add-property", isLoggedIn, async (req, res) => {
   // var post_length = await (await Post.find()).length
   // var posts = await Post.find()
 
@@ -158,14 +139,13 @@ router.get("/dashboard/add-property",isLoggedIn,  async(req, res) => {
   // var published = await (await Post.find({status : "published"})).length
 
   // console.log({views })
-    res.render("admin/Addproperty",{
-      // post_length,
-      // views,
-      // published
-    })
-})
-router.get("/dashboard/properties", isLoggedIn, async(req, res) => {
-
+  res.render("admin/Addproperty", {
+    // post_length,
+    // views,
+    // published
+  });
+});
+router.get("/dashboard/properties", isLoggedIn, async (req, res) => {
   // var post_length = await (await Post.find()).length
   // var posts = await Post.find()
 
@@ -174,15 +154,14 @@ router.get("/dashboard/properties", isLoggedIn, async(req, res) => {
   // var published = await (await Post.find({status : "published"})).length
 
   // console.log({views })
-    res.render("admin/Properties",{
-      // post_length,
-      // views,
-      // published
-    })
-})
+  res.render("admin/Properties", {
+    // post_length,
+    // views,
+    // published
+  });
+});
 
-router.get("/dashboard/properties/:slug", isLoggedIn, async(req, res) => {
-
+router.get("/dashboard/properties/:slug", isLoggedIn, async (req, res) => {
   // var post_length = await (await Post.find()).length
   // var posts = await Post.find()
 
@@ -191,16 +170,14 @@ router.get("/dashboard/properties/:slug", isLoggedIn, async(req, res) => {
   // var published = await (await Post.find({status : "published"})).length
 
   // console.log({views })
-    res.render("admin/Property",{
-      // post_length,
-      // views,
-      // published
-    })
-})
+  res.render("admin/Property", {
+    // post_length,
+    // views,
+    // published
+  });
+});
 
-
-router.get("/dashboard/users", isLoggedIn, async(req, res) => {
-
+router.get("/dashboard/users", isLoggedIn, async (req, res) => {
   // var post_length = await (await Post.find()).length
   // var posts = await Post.find()
 
@@ -209,38 +186,33 @@ router.get("/dashboard/users", isLoggedIn, async(req, res) => {
   // var published = await (await Post.find({status : "published"})).length
 
   // console.log({views })
-    res.render("admin/Users",{
-      // post_length,
-      // views,
-      // published
-    })
-})
+  res.render("admin/Users", {
+    // post_length,
+    // views,
+    // published
+  });
+});
 
+router.get("/", async (req, res) => {
+  res.render("index");
+});
+router.get("/about", async (req, res) => {
+  res.render("about");
+});
 
-
-
-
-router.get("/", async(req, res) => {
-    res.render("index")
-})
-router.get("/about", async(req, res) => {
-    res.render("about")
-})
-
-router.get("/contact", async(req, res) => {
-    res.render("contact")
-})
-router.get("/listing", async(req, res) => {
-    res.render("listings")
-})
-router.get("/listing/:slug", async(req, res) => {
-    res.render("single_listing")
-})
-
+router.get("/contact", async (req, res) => {
+  res.render("contact");
+});
+router.get("/listing", async (req, res) => {
+  res.render("listings");
+});
+router.get("/listing/:slug", async (req, res) => {
+  res.render("single_listing");
+});
 
 // router.post("/newsletter", async(req, res) => {
 //     const {email} = req.body
-    
+
 //     const data = {
 //         members:[
 //           {
@@ -252,7 +224,7 @@ router.get("/listing/:slug", async(req, res) => {
 //           }
 //         ]
 //       }
-//       const postData = JSON.stringify(data) 
+//       const postData = JSON.stringify(data)
 //       const options = {
 //         url :"https://us19.api.mailchimp.com/3.0/lists/02e1d16e87",
 //         method:'POST',
@@ -261,7 +233,7 @@ router.get("/listing/:slug", async(req, res) => {
 //         },
 //         body:postData
 //       };
-  
+
 //       request(options, (err, response,body)=>{
 //         if(err){
 //           console.log("MAILCHIMP: ERROR", err)
@@ -273,9 +245,7 @@ router.get("/listing/:slug", async(req, res) => {
 //           }
 //         }
 //       })
-      
+
 // })
 
-
-
-module.exports = router
+module.exports = router;
