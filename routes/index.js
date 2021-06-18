@@ -225,7 +225,7 @@ if(!category_name){
     })
     await new_category.save()
     req.flash("success", "Category created successfully");
-    res.redirect("/admin-panel/create-category")
+    res.redirect("/dashboard/create-category")
   }
 });
 
