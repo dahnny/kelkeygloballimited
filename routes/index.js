@@ -193,7 +193,7 @@ router.get("/admin-panel/properties/:slug", isLoggedIn, async(req, res) => {
   // var published = await (await Post.find({status : "published"})).length
 
   // console.log({views })
-    res.render("admin/Properties",{
+    res.render("admin/Property",{
       // post_length,
       // views,
       // published
