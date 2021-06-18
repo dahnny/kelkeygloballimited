@@ -102,7 +102,44 @@
 											</tr>
 										</thead>
 										<tbody>
-											
+											<%all_properties.forEach((post) => {%>
+											<tr>
+												<td>
+													<div class="checkbox mr-0 align-self-center">
+														<div class="custom-control custom-checkbox ">
+															<input type="checkbox" class="custom-control-input" id="customCheckBox2" required="">
+															<label class="custom-control-label" for="customCheckBox2"></label>
+														</div>
+													</div>	
+												</td>
+												<td>
+													<div class="media align-items-center">
+														<img class="img-fluid rounded mr-3 d-none d-xl-inline-block" width="70" src="./images/avatar/1.jpg" alt="DexignZone">
+														<div class="media-body">
+															<h4 class="font-w600 mb-1 wspace-no"><a href="/admin-panel/properties/property" class="text-black">Glee Smiley</a></h4>
+															<span>Sunday, 24 July 2020 04:55 PM</span>
+														</div>
+													</div>
+												</td>
+												<td class="d-none d-lg-table-cell">The Story of Danau Toba (Musical Drama)</td>
+												<td>
+													<!-- <span class="star-review d-inline-block mb-2 fs-16 wspace-no">
+														<i class="fa fa-star fs-16 text-orange"></i>
+														<i class="fa fa-star fs-16 text-orange"></i>
+														<i class="fa fa-star fs-16 text-orange"></i>
+														<i class="fa fa-star fs-16 text-orange"></i>
+														<i class="fa fa-star fs-16 text-gray"></i>
+													</span> -->
+													<p class="mb-0 d-none d-xl-inline-block">Karciz is one of the best vendors we've ever worked with. Thanks for your wonderful, helpful service across the board. It is greatly appreciated!</p>
+												</td>
+												<td>
+													<div class="d-flex">
+														<a href="javascript:;" class="btn btn-info btn-sm light px-4">Publish</a>
+														<a href="javascript:;" class="btn btn-danger  btn-sm light ml-2 px-4">Delete</a>
+													</div>
+												</td>
+											</tr>
+											<% })%>
 										</tbody>
 									</table>
 								</div>
