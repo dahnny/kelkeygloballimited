@@ -94,6 +94,10 @@ const downloadableSchema = new mongoose.Schema({
   video : {
       type : String,
   },
+  price : {
+      type : Number,
+      required:true
+  },
 
   details: {
     bedrooms: {
