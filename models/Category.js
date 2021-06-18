@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 const slugify = require('slugify')
 
-const BlogCategorySchema = new Schema({   
+const CategorySchema = new Schema({   
     
     category_name:{
         type:String, 
@@ -25,7 +25,7 @@ const BlogCategorySchema = new Schema({
 })
 
 
-BlogCategorySchema.pre("save", function(next) {
+CategorySchema.pre("save", function(next) {
     slug = slugify(this.category_name);
     this.slug=slug.toLowerCase() 
     next();

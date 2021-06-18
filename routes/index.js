@@ -18,7 +18,7 @@ const multer = require("multer");
 var cloudinary = require("cloudinary").v2;
 
 const { CloudinaryStorage } = require("multer-storage-cloudinary");
-const News = require("../models/News");
+const Category = require("../models/Category");
 const Properties = require("../models/Properties");
 const SignupUser = require("../models/user");
 
