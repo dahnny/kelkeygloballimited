@@ -418,7 +418,8 @@ router.get("/listing/:slug", async (req, res) => {
     console.log({rows})
     res.render("single_listing", {
     property,
-    moment
+    moment,
+    total_amenities
     });
   }else{
     res.redirect("/listing")
