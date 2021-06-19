@@ -76,8 +76,10 @@ router.get("/register", csrfProtection, async (req, res) => {
     csrfToken: req.csrfToken(),
   });
   } catch (error) {
+    console.log({error})
     return res.render("admin/Forbidden")
   }
+
  
 });
 
