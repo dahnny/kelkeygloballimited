@@ -403,6 +403,7 @@ router.get("/listing/:slug", async (req, res) => {
   const {slug} = req.params
   const property = await Properties.findOne({slug})
   
+  console.log({property})
   if(property){
 
     await Properties.findOneAndUpdate({slug}, {
