@@ -415,7 +415,7 @@ router.get("/listing/:slug", async (req, res) => {
     const total_amenities = property.amenities.length
 
     // const rows=  Math.round(Math.abs(total_amenities/(total_amenities/3)) )
-    console.log({rows})
+    // console.log({rows})
     res.render("single_listing", {
     property,
     moment,
