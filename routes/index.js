@@ -402,9 +402,18 @@ router.get("/listing", async (req, res) => {
 router.get("/listing/:slug", async (req, res) => {
   const {slug} = req.params
   const property = Properties.findOne({slug})
+  
   if(property){
+
+    await Properties.findByIdAndUpdate(id, {
+      $set:{
+        views : property.views + 1
+      }
+    })
     const total_amenities = property.amenities.length
+
     const rows=  Math.round(Math.abs(total_amenities/(total_amenities/3)) )
+    console.log({rows})
     res.render("single_listing", {
     property
     });
