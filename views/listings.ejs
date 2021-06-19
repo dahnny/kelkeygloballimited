@@ -179,6 +179,7 @@
                     </div>
                     <div class="listings_page_content">
                         <div class="row">
+                            <%properties.map((property, key) => {%>
                             <div class="col-xl-6">
                                 <!--Listings Page Content Single-->
                                 <div class="listings_page_content_single">
@@ -233,7 +234,7 @@
                                     </div>
                                 </div>
                             </div>
-                        
+                        	<% })%>
                         </div>
                         <div class="row">
                             <div class="col-xl-12">
