@@ -399,7 +399,16 @@ router.get("/listing", async (req, res) => {
   });
 });
 router.get("/listing/:slug", async (req, res) => {
-  res.render("single_listing");
+  const {slug} = req.params
+  const property = Properties.findOne({slug})
+  if(property){
+    res.render("single_listing", {
+    property
+    });
+  }else{
+    res.redirect("/listing")
+  }
+
 });
 
 // router.post("/newsletter", async(req, res) => {
