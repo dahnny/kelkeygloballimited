@@ -184,16 +184,15 @@
                                 <div class="col-xl-4 col-lg-4 col-md-4">
                                     <ul class="listing_details_amenities_single list-unstyled">
                                         <%property.amenities.slice(5,9).map((amenity, key) => {%>
-                                        <li><span class="icon-confirmation"></span>Lawn</li>
+                                        <li><span class="icon-confirmation"></span><%= amenity %></li>
                                         <% })%>
                                     </ul>
                                 </div>
                                 <div class="col-xl-4 col-lg-4 col-md-4">
                                     <ul class="listing_details_amenities_single list-unstyled">
-                                        <li><span class="icon-confirmation"></span>TV Cable</li>
-                                        <li><span class="icon-confirmation clr-gray"></span>Washer</li>
-                                        <li><span class="icon-confirmation"></span>WiFi</li>
-                                        <li><span class="icon-confirmation"></span>Window Coverings</li>
+                                        <%property.amenities.slice(10,14).map((amenity, key) => {%>
+                                        <li><span class="icon-confirmation"></span><%= amenity %></li>
+                                        <% })%>
                                     </ul>
                                 </div>
                             </div>
