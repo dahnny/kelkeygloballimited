@@ -124,7 +124,7 @@
                     <div class="listing_details_bottom_left">
                         <div class="listing_details_bottom_left_content">
                             <ul class="post_rating_and_view_list list-unstyled">
-                                <li><i class="far fa-clock"></i>Posted 2 days ago</li>
+                                <li><i class="far fa-clock"></i>Posted <%= moment(property.dateCreated).fromNow() %></li>
                                 <li>
                                     <ul class="rating_list list-unstyled">
                                         <li><i class="fas fa-star"></i></li>
