@@ -410,6 +410,7 @@ router.get("/listing/:slug", async (req, res) => {
         views : property.views + 1
       }
     })
+    console.log(property)
     const total_amenities = property.amenities.length
 
     const rows=  Math.round(Math.abs(total_amenities/(total_amenities/3)) )
