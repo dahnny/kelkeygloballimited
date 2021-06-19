@@ -393,7 +393,10 @@ router.get("/contact", async (req, res) => {
   res.render("contact");
 });
 router.get("/listing", async (req, res) => {
-  res.render("listings");
+  const properties = await Properties.find()
+  res.render("listings", {
+    properties
+  });
 });
 router.get("/listing/:slug", async (req, res) => {
   res.render("single_listing");
