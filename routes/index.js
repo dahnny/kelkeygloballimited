@@ -108,7 +108,7 @@ router.get("/dashboard", isLoggedIn, async (req, res) => {
       })
   ).slice(0, 4);
   // console.log({views })
-  res.render("admin/dashboard", {
+  res.render("admin/Dashboard", {
     property_length,
     user_length,
     valuation,
