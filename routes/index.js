@@ -97,6 +97,7 @@ router.post(
 );
 
 router.get("/dashboard", isLoggedIn, async (req, res) => {
+try {
   var property_length = await (await Properties.find()).length;
   var all_properties = await Properties.find();
 
@@ -121,6 +122,11 @@ router.get("/dashboard", isLoggedIn, async (req, res) => {
     valuation,
     popular_properties,
   });
+
+} catch (error) {
+  console.log({error})
+  return res.render("admin/Forbidden")
+}
 });
 
 router.get("/dashboard/add-property", isLoggedIn, async (req, res) => {
