@@ -405,7 +405,7 @@ router.get("/listing/:slug", async (req, res) => {
   
   if(property){
 
-    await Properties.findByIdAndUpdate(id, {
+    await Properties.findOneAndUpdate({slug}, {
       $set:{
         views : property.views + 1
       }
