@@ -66,7 +66,8 @@ router.post(
 );
 
 router.get("/register", csrfProtection, async (req, res) => {
-  // console.log("Referral ID",req.query['referral'])
+  try {
+     // console.log("Referral ID",req.query['referral'])
   // render the page and pass in any flash data if it exists
   return res.render("admin/Register", {
     signupMessage: req.flash("signupMessage"),
@@ -74,6 +75,10 @@ router.get("/register", csrfProtection, async (req, res) => {
     title: "Log-In",
     csrfToken: req.csrfToken(),
   });
+  } catch (error) {
+    return res.render("admin/Forbidden")
+  }
+ 
 });
 
 router.post(
