@@ -403,6 +403,8 @@ router.get("/listing/:slug", async (req, res) => {
   const {slug} = req.params
   const property = Properties.findOne({slug})
   if(property){
+    const total_amenities = property.amenities.length
+    const rows= total_amenities/(total_amenities/3)
     res.render("single_listing", {
     property
     });
