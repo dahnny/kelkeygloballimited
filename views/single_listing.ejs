@@ -174,8 +174,8 @@
                                 <div class="col-xl-4 col-lg-4 col-md-4">
                                
                                     <ul class="listing_details_amenities_single list-unstyled">
-                                        <%property.amenities.slice(0,4).map((post, key) => {%>
-                                        <li><span class="icon-confirmation"></span>Air Conditioning</li>
+                                        <%property.amenities.slice(0,4).map((amenity, key) => {%>
+                                        <li><span class="icon-confirmation"></span><%= amenity %></li>
                                        
                                         <% }%>
                                     </ul>
