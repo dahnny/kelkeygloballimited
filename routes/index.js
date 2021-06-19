@@ -395,7 +395,8 @@ router.get("/contact", async (req, res) => {
 router.get("/listing", async (req, res) => {
   const properties = await Properties.find()
   res.render("listings", {
-    properties
+    properties,
+    moment
   });
 });
 router.get("/listing/:slug", async (req, res) => {
