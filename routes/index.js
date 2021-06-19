@@ -401,15 +401,15 @@ router.get("/listing", async (req, res) => {
 });
 router.get("/listing/:slug", async (req, res) => {
   const {slug} = req.params
-  const property = Properties.findOne({slug})
+  const property = await Properties.findOne({slug})
   
   if(property){
 
-    // await Properties.findOneAndUpdate({slug}, {
-    //   $set:{
-    //     views : property.views + 1
-    //   }
-    // })
+    await Properties.findOneAndUpdate({slug}, {
+      $set:{
+        views : property.views + 1
+      }
+    })
     console.log(property)
     const total_amenities = property.amenities.length
 
