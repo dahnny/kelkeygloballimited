@@ -100,7 +100,7 @@ router.post(
 router.get("/dashboard", isLoggedIn, async (req, res) => {
 try {
 
-  const user  = await SignupUser.findById(req.user.id)
+  const user  = await SignupUser.findById(req.user.id).populate("referrals")
   if(user.is_admin){
     var property_length = await (await Properties.find()).length;
     var all_properties = await Properties.find();
