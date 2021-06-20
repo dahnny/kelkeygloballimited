@@ -124,6 +124,7 @@ try {
       user_length,
       valuation,
       popular_properties,
+      user
     });
   }else {
   
