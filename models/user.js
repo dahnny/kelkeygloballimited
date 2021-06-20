@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const referralCodes = require("referral-codes")
 
 // Create Schema
 var bcrypt   = require('bcrypt-nodejs');
