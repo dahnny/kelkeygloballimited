@@ -89,14 +89,17 @@ module.exports = function (passport) {
           const new_saved = await newUser.save();
           /** referral */
 
-          await SignupUser.findOneAndUpdate(
-            { referralCode },
-            {
-              $push: {
-                referrals: new_saved._id,
-              }
-            }
-          );
+          if(referralCode){
+            await SignupUser.findOneAndUpdate(
+                { referralCode },
+                {
+                  $push: {
+                    referrals: new_saved._id,
+                  }
+                }
+              );
+          }
+         
 
           return done(null, newUser);
         });
