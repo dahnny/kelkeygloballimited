@@ -88,7 +88,7 @@ app.use(express.json());
 app.use(methodOverride('_method'))
 
 app.use(function(req, res, next) {
-  res.status(404).render("views/admin/404page");
+  res.status(404).render("admin/404page");
 });
 
 // app.use(helmet())
