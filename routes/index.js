@@ -127,13 +127,16 @@ try {
       user_length,
       valuation,
       popular_properties,
-      user
+      user,
+      moment
     });
   }else {
   
     // console.log({views })
     res.render("admin/Dashboard", {
-   user
+   user,
+   
+   moment
     });
   }
  
