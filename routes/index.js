@@ -427,20 +427,29 @@ router.get("/", async (req, res) => {
   });
 });
 router.get("/about", async (req, res) => {
-  res.render("about");
+  const authenticated = req.isAuthenticated()
+  res.render("about", {
+    authenticated
+  });
 });
 
 router.get("/contact", async (req, res) => {
-  res.render("contact");
+  const authenticated = req.isAuthenticated()
+  res.render("contact",{
+    authenticated
+  });
 });
 router.get("/listing", async (req, res) => {
+  const authenticated = req.isAuthenticated()
   const properties = await Properties.find()
   res.render("listings", {
     properties,
-    moment
+    moment,
+    authenticated
   });
 });
 router.get("/listing/:slug", async (req, res) => {
+  const authenticated = req.isAuthenticated()
   const {slug} = req.params
   const property = await Properties.findOne({slug})
   
@@ -460,7 +469,8 @@ router.get("/listing/:slug", async (req, res) => {
     res.render("single_listing", {
     property,
     moment,
-    total_amenities
+    total_amenities,
+    authenticated
     });
   }else{
     res.redirect("/listing")
