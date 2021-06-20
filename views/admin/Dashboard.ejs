@@ -230,65 +230,54 @@
 									</div>
 								</div>
 								<div class="col-xl-8 col-xxl-12">
-									<div class="row">
-									
-										<div class="col-xl-12">
-											<div class="card">
-												<div class="card-header border-0 pb-0 d-sm-flex d-block">
-													<h4 class="card-title mb-1">Trending Properties</h4>
+									<div class="content-body">
+										<!-- row -->
+										<div class="container-fluid">
+										
+											<div class="d-flex flex-wrap mb-2 align-items-center justify-content-between">
+												<div class="mb-3 mr-3">
+													<h6 class="fs-16 text-black font-w600 mb-0"><%=user.length %> Total Users</h6>
 												
 												</div>
-												
-												<div class="card-body pt-0 p-0">
-	
-													<%if(user.referrals.length < 1) {%> 
-														<div class="align-items-center row mx-0 border-bottom p-4">
-														
-														
-																<div class="col-sm-4 col-12 col-xxl-5 my-3 my-sm-0 px-0">
-																	<h2 class="mt-0 mb-0">No Referral Yet</h2>
-																</div>
-															
-															
-															
-														
-														</div>
-														<% }%>
-
-														
-													<%user.referrals.map((post, key) => {%>
-														
-													<div class="align-items-center row mx-0 border-bottom p-4">
-														<span class="number col-2 col-sm-1 px-0 align-self-center">#<%= key +1 %></span>
-														<div class=" p-3 mr-3">
-															<img class="img-fluid  mr-3 d-none d-xl-inline-block" width="70" src="https://www.pinclipart.com/picdir/middle/78-780477_about-us-avatar-icon-red-png-clipart.png" alt="Kelkeyglobal">
-														</div>
-														<div class="col-sm-4 col-12 col-xxl-5 my-3 my-sm-0 px-0">
-															<h5 class="mt-0 mb-0"><a class="text-black" href="/"></a> <%= post.first_name  %> <%= post.last_name  %></a></h5>
-														</div>
-														<div class="ml-sm-auto col-2 col-sm-2 px-0 d-flex align-self-center align-items-center">
-															<div class="text-center">
-																<h4 class="mb-0 text-black"><%= post.referrals.length %></h4>
-																<span class="fs-14">Referrals</span>
+										
+											</div>
+											<div class="row">
+												<div class="col-xl-12">
+													<div class="tab-content">
+														<div id="All" class="tab-pane active fade show">
+															<div class="table-responsive">
+																<table id="example2" class="table card-table display dataTablesCard">
+																	<thead>
+																		<tr>
+																			<th>User ID</th>
+																		 
+																			<th>First Name</th>
+																			<th>Last Name </th>
+																			<th>Email </th>
+																			<th>Date</th>
+																		   
+																			<th>Referrals</th>
+																		</tr>
+																	</thead>
+																	<tbody>
+																		<%user.referrals.forEach((user) => {%>
+																		<tr>
+																			<td>#<%=user._id %></td>
+																			<td><%=user.first_name %></td>
+																			<td><span class="text-nowrap"><%=user.last_name %></td>
+																			<td><%=user.email %></td>
+																			<td><%=moment(user.dateCreated).format("LLLL") %></td>
+													
+																			<td><a href="javascript:void(0)" class="btn btn-primary btn-sm light"><%=user.referrals.length %></a></td>
+																		</tr>
+																		<% })%>
+																	</tbody>
+																</table>
 															</div>
 														</div>
-														<div class="mr-3 col-2 col-sm-1">
-															<span class="peity-success" data-style="width:100%;" style="display: none;">0,2,1,4</span>
-															<svg width="26" height="27" viewBox="0 0 26 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-																<rect width="3.71426" height="27" rx="1.85713" transform="matrix(-1 0 0 1 26 0)" fill="#FE634E"/>
-																<rect width="3.71426" height="19.6364" rx="1.85713" transform="matrix(-1 0 0 1 18.5723 7.36365)" fill="#FE634E"/>
-																<rect width="3.71426" height="8.59091" rx="1.85713" transform="matrix(-1 0 0 1 11.1436 18.4091)" fill="#FE634E"/>
-																<rect width="4.19045" height="16.6154" rx="2.09522" transform="matrix(-1 0 0 1 4.19043 10.3846)" fill="#FE634E"/>
-															</svg>
-														</div>
-														<svg width="22" height="11" class="col-sm-1 col-2" viewBox="0 0 22 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-														<path d="M0 11L11 -4.72849e-07L22 11" fill="#21B830"></path>
-														</svg>
+												
 													</div>
-													<% })%>
 												</div>
-											
-			 
 											</div>
 										</div>
 									</div>
