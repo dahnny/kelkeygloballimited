@@ -17,7 +17,7 @@ require("../config/passport")(passport);
 const multer = require("multer");
 // var upload = multer({ dest: 'uploads/' })
 var cloudinary = require("cloudinary").v2;
-
+const referralCodes = require("referral-codes")
 const { CloudinaryStorage } = require("multer-storage-cloudinary");
 const Category = require("../models/Category");
 const Properties = require("../models/Properties");
@@ -99,9 +99,14 @@ router.post(
 
 router.get("/dashboard", isLoggedIn, async (req, res) => {
 try {
+  const code = referralCodes.generate({
+    length: 5,
+   
+})
 
+console.log({code})
   const user  = await SignupUser.findById(req.user.id).populate("referrals")
-  console.log({user})
+  // console.log({user})
   if(user.is_admin){
     var property_length = await (await Properties.find()).length;
     var all_properties = await Properties.find();
