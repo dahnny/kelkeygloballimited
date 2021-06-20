@@ -99,10 +99,13 @@ router.post(
 
 router.get("/dashboard", isLoggedIn, async (req, res) => {
 try {
-console.log("code !!!! ",   referralCodes.generate({
-  length: 5,
-})[0])
+
   const user  = await SignupUser.findById(req.user.id).populate("referrals")
+  console.log("code !!!! ",   referralCodes.generate({
+    length: 5,
+    charset: "0123456789",
+    prefix : user.first_name
+  })[0])
   // console.log({user})
   if(user.is_admin){
     var property_length = await (await Properties.find()).length;
