@@ -87,7 +87,7 @@ app.use(express.json());
 
 app.use(methodOverride('_method'))
 
-app.use(function(req, res, next) {
+app.get('*', (req, res) => {
   res.status(404).render("admin/404page");
 });
 
