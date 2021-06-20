@@ -9,6 +9,7 @@ var csrf = require("csurf");
 var csrfProtection = csrf({ cookie: true });
 
 const isLoggedIn = require("../middleware/loggedIn");
+const id_admin = require("../middleware/is_admin");
 let passport;
 
 passport = require("passport");
@@ -141,7 +142,7 @@ try {
 }
 });
 
-router.get("/dashboard/add-property", isLoggedIn, async (req, res) => {
+router.get("/dashboard/add-property", isLoggedIn, id_admin, async (req, res) => {
   try {
     var categories = await Category.find();
     console.log({ categories });
