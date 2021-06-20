@@ -229,52 +229,54 @@
 										</div>
 									</div>
 								</div>
-								<div class="content-body">
-									<!-- row -->
-									<div class="container-fluid">
-									
-										<div class="d-flex flex-wrap mb-2 align-items-center justify-content-between">
-											<div class="mb-3 mr-3">
-												<h6 class="fs-16 text-black font-w600 mb-0"><%=user.length %> Total Users</h6>
-											
-											</div>
-									
-										</div>
-										<div class="row">
-											<div class="col-xl-12">
-												<div class="tab-content">
-													<div id="All" class="tab-pane active fade show">
-														<div class="table-responsive">
-															<table id="example2" class="table card-table display dataTablesCard">
-																<thead>
-																	<tr>
-																		<th>User ID</th>
-																	 
-																		<th>First Name</th>
-																		<th>Last Name </th>
-																		<th>Email </th>
-																		<th>Date</th>
-																	   
-																		<th>Referrals</th>
-																	</tr>
-																</thead>
-																<tbody>
-																	<%user.referrals.forEach((user) => {%>
-																	<tr>
-																		<td>#<%=user._id %></td>
-																		<td><%=user.first_name %></td>
-																		<td><span class="text-nowrap"><%=user.last_name %></td>
-																		<td><%=user.email %></td>
-																		<td><%=moment(user.dateCreated).format("LLLL") %></td>
+								<div class="col-xl-8 col-xxl-12">
+									<div class="content-body">
+										<!-- row -->
+										<div class="container-fluid">
+										
+											<div class="d-flex flex-wrap mb-2 align-items-center justify-content-between">
+												<div class="mb-3 mr-3">
+													<h6 class="fs-16 text-black font-w600 mb-0"><%=user.length %> Total Users</h6>
 												
-																		<td><a href="javascript:void(0)" class="btn btn-primary btn-sm light"><%=user.referrals.length %></a></td>
-																	</tr>
-																	<% })%>
-																</tbody>
-															</table>
+												</div>
+										
+											</div>
+											<div class="row">
+												<div class="col-xl-12">
+													<div class="tab-content">
+														<div id="All" class="tab-pane active fade show">
+															<div class="table-responsive">
+																<table id="example2" class="table card-table display dataTablesCard">
+																	<thead>
+																		<tr>
+																			<th>User ID</th>
+																		 
+																			<th>First Name</th>
+																			<th>Last Name </th>
+																			<th>Email </th>
+																			<th>Date</th>
+																		   
+																			<th>Referrals</th>
+																		</tr>
+																	</thead>
+																	<tbody>
+																		<%user.referrals.forEach((user) => {%>
+																		<tr>
+																			<td>#<%=user._id %></td>
+																			<td><%=user.first_name %></td>
+																			<td><span class="text-nowrap"><%=user.last_name %></td>
+																			<td><%=user.email %></td>
+																			<td><%=moment(user.dateCreated).format("LLLL") %></td>
+													
+																			<td><a href="javascript:void(0)" class="btn btn-primary btn-sm light"><%=user.referrals.length %></a></td>
+																		</tr>
+																		<% })%>
+																	</tbody>
+																</table>
+															</div>
 														</div>
+												
 													</div>
-											
 												</div>
 											</div>
 										</div>
