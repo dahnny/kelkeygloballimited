@@ -4,7 +4,7 @@
         ***********************************-->
 
 		
-		<%if(user.isAdmin) {%>
+		<%if(user.is_admin) {%>
         <div class="deznav">
             <div class="deznav-scroll">
 				<a href="/dashboard/add-property" class="add-menu-sidebar"  >+ Add Property</a>
@@ -44,7 +44,7 @@
         </div>
 		<% })%>
 
-		<%if(!user.isAdmin) {%>
+		<%if(!user.is_admin) {%>
 			<div class="deznav">
 				<div class="deznav-scroll">
 					<a href="/dashboard/add-property" class="add-menu-sidebar"  >+ Add Property</a>
