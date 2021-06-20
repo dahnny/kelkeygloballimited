@@ -34,10 +34,7 @@ const UserSchema = new Schema({
 
   referralCode: {
     type: String,
-    default:  referralCodes.generate({
-      length: 6,
-      charset: "0123456789",
-    })[0]
+  required : true
   },
   is_admin: {
     type: Boolean,
