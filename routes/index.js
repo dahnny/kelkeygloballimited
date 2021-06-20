@@ -165,6 +165,7 @@ router.get("/dashboard/add-property", isLoggedIn, id_admin, async (req, res) => 
 router.post(
   "/dashboard/add-property",
   isLoggedIn,
+  id_admin,
   upload.array("properties", 5),
   async (req, res) => {
     try {
@@ -273,7 +274,7 @@ router.post(
   }
 );
 
-router.get("/dashboard/properties", isLoggedIn, async (req, res) => {
+router.get("/dashboard/properties", isLoggedIn,id_admin, async (req, res) => {
   // var post_length = await (await Post.find()).length
   // var posts = await Post.find()
 
@@ -297,6 +298,7 @@ router.get("/dashboard/properties", isLoggedIn, async (req, res) => {
 router.get(
   "/dashboard/properties/:id/publish",
   isLoggedIn,
+  id_admin,
   async (req, res) => {
     const { id } = req.params;
     if (!id) {
@@ -317,6 +319,7 @@ router.get(
 router.get(
   "/dashboard/properties/:id/unpublish",
   isLoggedIn,
+  id_admin,
   async (req, res) => {
     const { id } = req.params;
     if (!id) {
@@ -338,6 +341,7 @@ router.get(
 router.get(
   "/dashboard/properties/:id/unpublish",
   isLoggedIn,
+  id_admin,
   async (req, res) => {
     const { id } = req.params;
     if (!id) {
@@ -352,7 +356,7 @@ router.get(
   }
 );
 
-router.get("/dashboard/properties/:slug", isLoggedIn, async (req, res) => {
+router.get("/dashboard/properties/:slug", isLoggedIn,id_admin, async (req, res) => {
   const {slug} = req.params
   var property = await Properties.findOne({ slug }).populate("category");
 
@@ -362,7 +366,7 @@ router.get("/dashboard/properties/:slug", isLoggedIn, async (req, res) => {
   });
 });
 
-router.get("/dashboard/users", isLoggedIn, async (req, res) => {
+router.get("/dashboard/users", isLoggedIn,id_admin, async (req, res) => {
 const  users = await SignupUser.find()
   // var posts = await Post.find()
 
@@ -382,7 +386,7 @@ const  users = await SignupUser.find()
     // published
   });
 });
-router.post("/dashboard/create-category", isLoggedIn, async (req, res) => {
+router.post("/dashboard/create-category", isLoggedIn,id_admin, async (req, res) => {
   var { category_name } = req.body;
 
   if (!category_name) {
