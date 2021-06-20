@@ -176,7 +176,7 @@ router.post(
   upload.array("properties", 5),
   async (req, res) => {
     try {
-      const user  = await SignupUser.findById(req.user.id).populate("referrals")
+      
       const {
         title,
         location,
@@ -291,12 +291,14 @@ router.get("/dashboard/properties", isLoggedIn,id_admin, async (req, res) => {
   // var published = await (await Post.find({status : "published"})).length
 
   // console.log({views })
+  const user  = await SignupUser.findById(req.user.id).populate("referrals")
   var all_properties = await Properties.find();
   res.render("admin/Properties", {
     all_properties,
     message: req.flash("error"),
     successMessage: req.flash("success"),
-    moment
+    moment,
+    user
     // post_length,
     // views,
     // published
@@ -314,6 +316,7 @@ router.get(
       return res.redirect("/dashboard/properties");
     }
 
+    
     await Properties.findByIdAndUpdate(id, {
       $set: {
         status: "published",
