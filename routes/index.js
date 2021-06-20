@@ -98,6 +98,9 @@ router.post(
 
 router.get("/dashboard", isLoggedIn, async (req, res) => {
 try {
+
+  const user  = await SignupUser.findById(req.user.id)
+  if(user.isAdmin)
   var property_length = await (await Properties.find()).length;
   var all_properties = await Properties.find();
 
