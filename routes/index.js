@@ -463,6 +463,10 @@ router.get("/listing/:slug", async (req, res) => {
 
 });
 
+app.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/');
+});
 // router.post("/newsletter", async(req, res) => {
 //     const {email} = req.body
 
