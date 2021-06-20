@@ -104,7 +104,7 @@ try {
    
 })
 
-console.log({code})
+console.log(code[0])
   const user  = await SignupUser.findById(req.user.id).populate("referrals")
   // console.log({user})
   if(user.is_admin){
