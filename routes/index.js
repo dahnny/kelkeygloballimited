@@ -102,7 +102,7 @@ try {
 
   const user  = await SignupUser.findById(req.user.id).populate("referrals")
  
-  // console.log({user})
+  console.log({user})
   if(user.is_admin){
     var property_length = await (await Properties.find()).length;
     var all_properties = await Properties.find();
