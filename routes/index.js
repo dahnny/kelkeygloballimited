@@ -441,7 +441,7 @@ router.get("/contact", async (req, res) => {
 });
 router.get("/listing", async (req, res) => {
   const authenticated = req.isAuthenticated()
-  const properties = await Properties.find()
+  const properties = await Properties.find({status : "published"})
   res.render("listings", {
     properties,
     moment,
