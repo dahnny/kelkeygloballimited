@@ -77,9 +77,15 @@ module.exports = function(passport) {
         newUser.password = newUser.generateHash(password);
         newUser.first_name = req.body.first_name
         newUser.last_name = req.body.last_name
-        await newUser.save()
+        const new_saved = await newUser.save()
                 /** referral */
    
+        await SignupUser.findOneAndUpdate({referralCode}, {
+            $push : {
+                referrals : new_saved._id
+            }
+        })
+
             return done(null, newUser);
        
         }
