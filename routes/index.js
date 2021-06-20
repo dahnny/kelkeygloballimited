@@ -419,6 +419,7 @@ router.post("/dashboard/create-category", isLoggedIn,id_admin, async (req, res) 
 
 router.get("/", async (req, res) => {
   const properties = await Properties.find()
+  
   console.log({properties})
   res.render("index",{
     properties
