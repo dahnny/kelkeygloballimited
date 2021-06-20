@@ -36,6 +36,7 @@
     "multer-storage-cloudinary": "^4.0.0",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
+    "referral-codes": "^1.0.2",
     "request": "^2.88.2",
     "session": "^0.1.0",
     "slugify": "^1.4.6",
