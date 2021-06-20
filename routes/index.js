@@ -149,6 +149,7 @@ try {
 
 router.get("/dashboard/add-property", isLoggedIn, id_admin, async (req, res) => {
   try {
+    const user  = await SignupUser.findById(req.user.id).populate("referrals")
     var categories = await Category.find();
     console.log({ categories });
 
@@ -156,6 +157,7 @@ router.get("/dashboard/add-property", isLoggedIn, id_admin, async (req, res) => 
       categories,
       message: req.flash("error"),
       successMessage: req.flash("success"),
+      user
       // post_length,
       // views,
       // published
@@ -174,6 +176,7 @@ router.post(
   upload.array("properties", 5),
   async (req, res) => {
     try {
+      const user  = await SignupUser.findById(req.user.id).populate("referrals")
       const {
         title,
         location,
