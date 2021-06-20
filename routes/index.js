@@ -153,7 +153,7 @@ router.get("/dashboard/add-property", isLoggedIn, id_admin, async (req, res) => 
     var categories = await Category.find();
     console.log({ categories });
 
-    res.render("admin/Addproperty", {
+    res.render("admin/AddProperty", {
       categories,
       message: req.flash("error"),
       successMessage: req.flash("success"),
