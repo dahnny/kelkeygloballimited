@@ -353,15 +353,17 @@ router.get(
 router.get("/dashboard/properties/:slug", isLoggedIn,id_admin, async (req, res) => {
   const {slug} = req.params
   var property = await Properties.findOne({ slug }).populate("category");
-
+  const user  = await SignupUser.findById(req.user.id).populate("referrals")
   res.render("admin/Property", {
     property,
-    moment
+    moment,
+    user
   });
 });
 
 router.get("/dashboard/users", isLoggedIn,id_admin, async (req, res) => {
 const  users = await SignupUser.find()
+const user  = await SignupUser.findById(req.user.id).populate("referrals")
   // var posts = await Post.find()
 
   // var views =await posts.reduce((n, {views}) => n + views, 0)
@@ -374,6 +376,7 @@ const  users = await SignupUser.find()
     moment,
     message: req.flash("error"),
     successMessage: req.flash("success"),
+    user
 
     // post_length,
     // views,
