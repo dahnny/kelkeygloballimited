@@ -470,6 +470,8 @@ router.get('/logout', function(req, res){
   req.logout();
   res.redirect('/');
 });
+
+
 // router.post("/newsletter", async(req, res) => {
 //     const {email} = req.body
 
