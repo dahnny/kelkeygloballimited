@@ -126,29 +126,10 @@ try {
       popular_properties,
     });
   }else {
-    var property_length = await (await Properties.find()).length;
-    var all_properties = await Properties.find();
   
-    var valuation = await all_properties.reduce((n, { price }) => n + price, 0);
-    console.log({ valuation });
-  
-    var user_length = await (await SignupUser.find()).length;
-  
-    var popular_properties = await (
-      await Properties.find()
-        .where("status")
-        .equals("published")
-        .populate("category")
-        .sort({
-          views: -1,
-        })
-    ).slice(0, 4);
     // console.log({views })
     res.render("admin/Dashboard", {
-      property_length,
-      user_length,
-      valuation,
-      popular_properties,
+   user
     });
   }
  
