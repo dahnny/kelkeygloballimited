@@ -6,6 +6,7 @@ var LocalStrategy = require("passport-local").Strategy;
 // load up the user model
 var Admin = require("../models/Admin");
 var SignupUser = require("../models/user");
+const referralCodes = require("referral-codes")
 
 // expose this function to our app using module.exports
 module.exports = function (passport) {
@@ -86,6 +87,10 @@ module.exports = function (passport) {
           newUser.password = newUser.generateHash(password);
           newUser.first_name = req.body.first_name;
           newUser.last_name = req.body.last_name;
+          newUsr.referralCode =   referralCodes.generate({
+            length: 6,
+            charset: "0123456789",
+          })[0]
           const new_saved = await newUser.save();
           /** referral */
 
