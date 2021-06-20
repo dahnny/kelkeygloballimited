@@ -471,6 +471,10 @@ router.get('/logout', function(req, res){
   res.redirect('/');
 });
 
+router.get('*', (req, res) => {
+  res.status(404).render("admin/404page");
+});
+
 
 // router.post("/newsletter", async(req, res) => {
 //     const {email} = req.body
