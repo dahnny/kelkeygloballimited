@@ -419,10 +419,11 @@ router.post("/dashboard/create-category", isLoggedIn,id_admin, async (req, res) 
 
 router.get("/", async (req, res) => {
   const properties = await Properties.find()
-  
-  console.log({properties})
+  const authenticated = req.isAuthenticated()
+  console.log({authenticated})
   res.render("index",{
-    properties
+    properties,
+    authenticated
   });
 });
 router.get("/about", async (req, res) => {
