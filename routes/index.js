@@ -463,7 +463,7 @@ router.get("/listing/:slug", async (req, res) => {
 
 });
 
-app.get('/logout', function(req, res){
+router.get('/logout', function(req, res){
   req.logout();
   res.redirect('/');
 });
