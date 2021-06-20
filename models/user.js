@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const referralCodes = require("referral-codes")
+const referralCodes = require("referral-codes");
 
 // Create Schema
-var bcrypt   = require('bcrypt-nodejs');
+var bcrypt = require("bcrypt-nodejs");
 
 const UserSchema = new Schema({
   email: {
@@ -32,12 +32,12 @@ const UserSchema = new Schema({
     },
   ],
 
-referralCode : {
-  type : String,
-  default : referralCodes.generate({
-    length: 5,
-   })
-},
+  referralCode: {
+    type: String,
+    default: referralCodes.generate({
+      length: 5,
+    }),
+  },
   is_admin: {
     type: Boolean,
     default: false,
