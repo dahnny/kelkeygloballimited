@@ -105,8 +105,17 @@
                                     
 											<%if(authenticated) {%>
                                     <li>
-                                        <a href="/dashboard">Login</a>
+                                        <a href="/dashboard">Dashboard</a>
                                     </li>
+
+                                    <% }%>
+
+                                    <%if(!authenticated) {%>
+                                        <li>
+                                            <a href="/login">Login</a>
+                                        </li>
+    
+                                        <% }%>
                                 </ul>
                             </div><!-- /.navbar-collapse -->
                         </div>
