@@ -480,63 +480,68 @@ router.get("/contact", async (req, res) => {
   });
 
   router.post("/reset-password", async (req, res, next) => {
-    const token = (await promisify(crypto.randomBytes)(20)).toString("hex");
 
- const user = await   SignupUser.findOne({ email: req.body.email.toLowerCase() })
-      
-   
-        if (!user) {
-          req.flash("error", "No account with that email address exists.");
-          return res.redirect("/reset-password");
-        }
-        // user.resetPasswordToken = token;
-        // user.resetPasswordExpires = Date.now() + 3600000;
+    try {
+      const token = (await promisify(crypto.randomBytes)(20)).toString("hex");
 
-        // user.save()
+      const user = await   SignupUser.findOne({ email: req.body.email.toLowerCase() })
+           
+        
+             if (!user) {
+               req.flash("error", "No account with that email address exists.");
+               return res.redirect("/reset-password");
+             }
+             // user.resetPasswordToken = token;
+             // user.resetPasswordExpires = Date.now() + 3600000;
+     
+             // user.save()
+     
+           await  SignupUser.findOneAndUpdate({ email: req.body.email.toLowerCase()}, {
+               $set:{
+                 resetPasswordToken : token,
+                 resetPasswordExpires : Date.now() + 3600000
+               }
+             })
+     
+             const resetEmail = {
+               to: req.body.email,
+               from: '"Kelkeyglobal" <info@kelkeyglobal.com>',
+               subject: "Password Reset",
+               text: `
+                           You are receiving this because you (or someone else) have requested the reset of the password for your account.
+                           Please click on the following link, or paste this into your browser to complete the process:
+                           http://${req.headers.host}/reset/${token}
+                           If you did not request this, please ignore this email and your password will remain unchanged.
+                         `,
+             };
+       
+             transporter.sendMail(resetEmail, function (err, info) {
+               if (err) {
+                 console.log(err);
+     
+                 req.flash(
+                   "error",
+                   `Something went wrong. Please refresh and try again.`
+                 );
+                 return res.redirect("/reset-password");
+               } else {
+                 req.flash(
+                   "success",
+                   `An e-mail has been sent to ${req.body.email} with further instructions.`
+                 );
+                 return res.redirect("/reset-password"); // return ('Email sent')
+               }
+             });
+     
+         // =====================================
+         // PASWORD RESET  ========
+         // =====================================
+    } catch (error) {
+     console.log({error}) 
+     req.flash("error", "something went wrong")
+     return res.redirect("")
+    }
 
-      await  SignupUser.findOneAndUpdate({ email: req.body.email.toLowerCase()}, {
-          $set:{
-            resetPasswordToken : token,
-            resetPasswordExpires : Date.now() + 3600000
-          }
-        })
-
-        const resetEmail = {
-          to: req.body.email,
-          from: '"Kelkeyglobal" <info@kelkeyglobal.com>',
-          subject: "Password Reset",
-          text: `
-                      You are receiving this because you (or someone else) have requested the reset of the password for your account.
-                      Please click on the following link, or paste this into your browser to complete the process:
-                      http://${req.headers.host}/reset/${token}
-                      If you did not request this, please ignore this email and your password will remain unchanged.
-                    `,
-        };
-  
-        transporter.sendMail(resetEmail, function (err, info) {
-          if (err) {
-            console.log(err);
-
-            req.flash(
-              "error",
-              `Something went wrong. Please refresh and try again.`
-            );
-            return res.redirect("/reset-password");
-          } else {
-            req.flash(
-              "success",
-              `An e-mail has been sent to ${req.body.email} with further instructions.`
-            );
-            return res.redirect("/reset-password"); // return ('Email sent')
-          }
-        });
-    
-      .catch((err) => {
-        return res.json(err.message);
-      });
-    // =====================================
-    // PASWORD RESET  ========
-    // =====================================
   });
 
   router.get("/reset/:token", csrfProtection, function (req, res) {
