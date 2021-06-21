@@ -438,6 +438,12 @@ router.get("/forgot-password", async (req, res) => {
     // authenticated
   });
 });
+router.post("/forgot-password", async (req, res) => {
+  // const authenticated = req.isAuthenticated()
+  res.render("admin/forgotPassword",{
+    // authenticated
+  });
+});
 router.get("/listing", async (req, res) => {
   const authenticated = req.isAuthenticated()
   const properties = await Properties.find({status : "published"})
