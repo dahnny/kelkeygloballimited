@@ -561,7 +561,7 @@ router.get("/contact", async (req, res) => {
       req.flash("error", "Passwords do not match");
       return res.redirect(`/reset/${token}`);
     }
-    User.findOne({
+    SignupUser.findOne({
       resetPasswordToken: token,
     }).then((data) => {
       console.log("user found via token ", data)
@@ -572,7 +572,7 @@ router.get("/contact", async (req, res) => {
         }
         const new_password = bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);;
 
-        User.findOneAndUpdate(
+        SignupUser.findOneAndUpdate(
           { resetPasswordToken: token },
           {
             $set: {
