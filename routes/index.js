@@ -408,7 +408,7 @@ const user  = await SignupUser.findById(req.user.id).populate("referrals")
 
   // console.log({views })
   res.render("admin/Users", {
-    users,
+    users : users.reverse(),
     moment,
     message: req.flash("error"),
     successMessage: req.flash("success"),
