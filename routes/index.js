@@ -539,7 +539,7 @@ router.get("/contact", async (req, res) => {
     } catch (error) {
      console.log({error}) 
      req.flash("error", "something went wrong")
-     return res.redirect("")
+     return res.redirect("reset-password")
     }
 
   });
