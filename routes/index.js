@@ -479,13 +479,10 @@ router.get("/contact", async (req, res) => {
 
   router.post("/reset-password", async (req, res, next) => {
     const token = (await promisify(crypto.randomBytes)(20)).toString("hex");
-    // const user = User.find(u => u.email === req.body.email);
-    // console.log(req.body.email)
-    // console.log(token)
-    console.log("email ", req.body.email);
+
     SignupUser.findOne({ email: req.body.email.toLowerCase() })
       .then((user) => {
-        console.log({ user });
+   
         if (!user) {
           req.flash("error", "No account with that email address exists.");
           return res.redirect("/reset-password");
