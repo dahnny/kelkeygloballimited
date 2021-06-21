@@ -65,7 +65,7 @@ var transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
       user: 'emmanuelworkmail@gmail.com',
-      pass: process.env.pass
+      pass: 'Mega123456#'
   }
 });
 const storage = multer.diskStorage({
