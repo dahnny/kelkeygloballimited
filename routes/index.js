@@ -438,13 +438,139 @@ router.get("/forgot-password", async (req, res) => {
     // authenticated
   });
 });
-router.post("/forgot-password", async (req, res) => {
-  // const authenticated = req.isAuthenticated()
-  const {email} = req.body
-  res.render("admin/forgotPassword",{
-    // authenticated
+  // =====================================
+  // PASWORD RESET  ========
+  // =====================================
+  app.get("/reset_password", csrfProtection, function (req, res) {
+    res.render("user/reset_password.ejs", {
+      message: req.flash("error"),
+      successMessage: req.flash("success"),
+      csrfToken: req.csrfToken(),
+    }); // load the index.ejs file
   });
-});
+
+  app.post("/reset_password", async (req, res, next) => {
+    const token = (await promisify(crypto.randomBytes)(20)).toString("hex");
+    // const user = User.find(u => u.email === req.body.email);
+    // console.log(req.body.email)
+    // console.log(token)
+    console.log("email ", req.body.email);
+    User.findOne({ email: req.body.email.toLowerCase() })
+      .then((user) => {
+        console.log({ user });
+        if (!user) {
+          req.flash("error", "No account with that email address exists.");
+          return res.redirect("/reset_password");
+        }
+        user.resetPasswordToken = token;
+        user.resetPasswordExpires = Date.now() + 3600000;
+
+        user.save()
+
+        const resetEmail = {
+          to: req.body.email,
+          from: '"GrowthwayHub" <info@growthwayhub.com>',
+          subject: "Password Reset",
+          text: `
+                      You are receiving this because you (or someone else) have requested the reset of the password for your account.
+                      Please click on the following link, or paste this into your browser to complete the process:
+                      http://${req.headers.host}/reset/${token}
+                      If you did not request this, please ignore this email and your password will remain unchanged.
+                    `,
+        };
+        // mailgun.messages().send(resetEmail, function (error, body) {
+        //   if (error) {
+        //     console.log(error);
+        //   }
+        //   console.log("EMAIL SENT!!!");
+        //   req.flash(
+        //     "info",
+        //     `An e-mail has been sent to ${req.body.email} with further instructions.`
+        //   );
+        //   res.redirect("/reset_password");
+        // });
+        transporter.sendMail(resetEmail, function (err, info) {
+          if (err) {
+            console.log(err);
+
+            req.flash(
+              "error",
+              `Something went wrong. Please refresh and try again.`
+            );
+            return res.redirect("/reset_password");
+          } else {
+            req.flash(
+              "success",
+              `An e-mail has been sent to ${req.body.email} with further instructions.`
+            );
+            return res.redirect("/reset_password"); // return ('Email sent')
+          }
+        });
+      })
+      .catch((err) => {
+        return res.json(err.message);
+      });
+    // =====================================
+    // PASWORD RESET  ========
+    // =====================================
+  });
+
+  app.get("/reset/:token", csrfProtection, function (req, res) {
+
+  
+    res.render("user/new_password.ejs", {
+      message: req.flash("error"),
+      successMessage: req.flash("success"),
+      csrfToken: req.csrfToken(),
+    }); // load the index.ejs file
+  });
+
+  app.post("/reset/:token", csrfProtection, function (req, res) {
+    const { token } = req.params;
+    const { password, confirm_password } = req.body;
+
+    if (!password || !confirm_password) {
+      req.flash("error", "Please enter all fields");
+      return res.redirect(`/reset/${token}`);
+    }
+    if (password !== confirm_password) {
+      req.flash("error", "Passwords do not match");
+      return res.redirect(`/reset/${token}`);
+    }
+    User.findOne({
+      resetPasswordToken: token,
+    }).then((data) => {
+      console.log("user found via token ", data)
+      if (data) {
+        if (Date.now() > data.resetPasswordExpires) {
+          req.flash("error", "This session has expired");
+          return res.redirect(`/reset_password`);
+        }
+        const new_password = bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);;
+
+        User.findOneAndUpdate(
+          { resetPasswordToken: token },
+          {
+            $set: {
+              password: new_password,
+            },
+          }
+        ).then((update)=>{
+          req.flash("successMessage", "password has been updated successfully. Please Login")
+          return res.redirect("/login")
+        });
+      }else{
+        req.flash("loginMessage","session is invalid.")
+        return res.redirect("/login")
+      }
+    }).catch((err)=>{
+      console.log({err})
+
+      req.flash("error","Something went wrong . Please refresh and try again")
+      return res.redirect(`/reset/${token}`);
+
+    });
+  });
 router.get("/listing", async (req, res) => {
   const authenticated = req.isAuthenticated()
   const properties = await Properties.find({status : "published"})
