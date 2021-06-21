@@ -484,10 +484,17 @@ router.get("/contact", async (req, res) => {
           req.flash("error", "No account with that email address exists.");
           return res.redirect("/reset-password");
         }
-        user.resetPasswordToken = token;
-        user.resetPasswordExpires = Date.now() + 3600000;
+        // user.resetPasswordToken = token;
+        // user.resetPasswordExpires = Date.now() + 3600000;
 
-        user.save()
+        // user.save()
+
+        SignupUser.findOneAndUpdate({ email: req.body.email.toLowerCase()}, {
+          $set:{
+            resetPasswordToken : token,
+            resetPasswordExpires : Date.now() + 3600000
+          }
+        })
 
         const resetEmail = {
           to: req.body.email,
