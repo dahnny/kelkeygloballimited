@@ -30,6 +30,7 @@
                                                 <th>First Name</th>
                                                 <th>Last Name </th>
                                                 <th>Email </th>
+                                                <th>Phone Number </th>
 												<th>Date</th>
                                                
                                                 <th>Referrals</th>
@@ -42,6 +43,7 @@
 												<td><%=user.first_name %></td>
 												<td><span class="text-nowrap"><%=user.last_name %></td>
 												<td><%=user.email %></td>
+												<td><%=user.phone_number %></td>
 												<td><%=moment(user.dateCreated).format("LLLL") %></td>
 						
 												<td><a href="javascript:void(0)" class="btn btn-primary btn-sm light"><%=user.referrals.length %></a></td>
