@@ -24,6 +24,8 @@ const Properties = require("../models/Properties");
 const SignupUser = require("../models/user");
 var bcrypt = require("bcrypt-nodejs");
 
+const nodemailer = require("nodemailer");
+
 // cloudinary configuration
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
@@ -34,6 +36,30 @@ cloudinary.config({
   // api_secret: process.env.API_SECRET
 });
 
+
+var transporter = nodemailer.createTransport({
+  host: "mail.privateemail.com",
+  port: 587,
+
+  secure: false,
+  auth: {
+    user: "info@growthwayhub.com", // your domain email address
+    pass: process.env.GWHPASS,
+  },
+  tls: {
+    // do not fail on invalid certs
+    rejectUnauthorized: false,
+  },
+  //  tls: {
+  //   secure: false,
+  //   ignoreTLS: true,
+  //   rejectUnauthorized: false
+  // },
+  // port: 587 ,
+  // secure: false,
+  // logger: true,
+  // debug: true,
+});
 const storage = multer.diskStorage({
   filename: function (req, file, cb) {
     cb(null, file.fieldname + "-" + Date.now());
