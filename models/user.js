@@ -25,6 +25,9 @@ const UserSchema = new Schema({
     type: String,
     required: true,
   },
+  phone_number : {
+    type  : Number
+  },
   referrals: [
     {
       type: Schema.Types.ObjectId,
