@@ -22,7 +22,7 @@ const { CloudinaryStorage } = require("multer-storage-cloudinary");
 const Category = require("../models/Category");
 const Properties = require("../models/Properties");
 const SignupUser = require("../models/user");
-
+var bcrypt = require("bcrypt-nodejs");
 
 // cloudinary configuration
 cloudinary.config({
