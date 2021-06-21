@@ -399,7 +399,9 @@ router.get("/dashboard/properties/:slug", isLoggedIn,id_admin, async (req, res) 
 
 router.get("/dashboard/users", isLoggedIn,id_admin, async (req, res) => {
 const  users = await SignupUser.find()
-const user  = await SignupUser.findById(req.user.id).populate("referrals")
+const user  = await SignupUser.findById(req.user.id).populate("referrals").sort({
+  dateCreated: -1,
+})
   // var posts = await Post.find()
 
   // var views =await posts.reduce((n, {views}) => n + views, 0)
@@ -408,7 +410,7 @@ const user  = await SignupUser.findById(req.user.id).populate("referrals")
 
   // console.log({views })
   res.render("admin/Users", {
-    users : users.reverse(),
+    users,
     moment,
     message: req.flash("error"),
     successMessage: req.flash("success"),
