@@ -40,6 +40,8 @@ cloudinary.config({
 
 console.log("passss!!!!!!!!!!!!!!!!!!!! ", process.env.pass)
 
+
+
 var transporter = nodemailer.createTransport({
   // host: "mail.privateemail.com",
   // port: 587,
