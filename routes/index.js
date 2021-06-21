@@ -433,9 +433,9 @@ router.get("/contact", async (req, res) => {
 });
 
 router.get("/forgot-password", async (req, res) => {
-  const authenticated = req.isAuthenticated()
-  res.render("contact",{
-    authenticated
+  // const authenticated = req.isAuthenticated()
+  res.render("admin/forgotPassword",{
+    // authenticated
   });
 });
 router.get("/listing", async (req, res) => {
