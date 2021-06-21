@@ -432,24 +432,18 @@ router.get("/contact", async (req, res) => {
   });
 });
 
-router.get("/forgot-password", async (req, res) => {
-  // const authenticated = req.isAuthenticated()
-  res.render("admin/forgotPassword",{
-    // authenticated
-  });
-});
   // =====================================
   // PASWORD RESET  ========
   // =====================================
-  app.get("/reset_password", csrfProtection, function (req, res) {
-    res.render("user/reset_password.ejs", {
+  app.get("/reset-password", csrfProtection, function (req, res) {
+    res.render("admin/forgotPassword", {
       message: req.flash("error"),
       successMessage: req.flash("success"),
       csrfToken: req.csrfToken(),
     }); // load the index.ejs file
   });
 
-  app.post("/reset_password", async (req, res, next) => {
+  app.post("/reset-password", async (req, res, next) => {
     const token = (await promisify(crypto.randomBytes)(20)).toString("hex");
     // const user = User.find(u => u.email === req.body.email);
     // console.log(req.body.email)
