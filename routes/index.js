@@ -449,7 +449,7 @@ router.get("/contact", async (req, res) => {
     // console.log(req.body.email)
     // console.log(token)
     console.log("email ", req.body.email);
-    User.findOne({ email: req.body.email.toLowerCase() })
+    SignupUser.findOne({ email: req.body.email.toLowerCase() })
       .then((user) => {
         console.log({ user });
         if (!user) {
