@@ -38,6 +38,7 @@ cloudinary.config({
   // api_secret: process.env.API_SECRET
 });
 
+console.log("passss!!!!!!!!!!!!!!!!!!!! ", process.env.pass)
 
 var transporter = nodemailer.createTransport({
   // host: "mail.privateemail.com",
