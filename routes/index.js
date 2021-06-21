@@ -435,7 +435,7 @@ router.get("/contact", async (req, res) => {
   // =====================================
   // PASWORD RESET  ========
   // =====================================
-  app.get("/reset-password", csrfProtection, function (req, res) {
+  router.get("/reset-password", csrfProtection, function (req, res) {
     res.render("admin/forgotPassword", {
       message: req.flash("error"),
       successMessage: req.flash("success"),
@@ -443,7 +443,7 @@ router.get("/contact", async (req, res) => {
     }); // load the index.ejs file
   });
 
-  app.post("/reset-password", async (req, res, next) => {
+  router.post("/reset-password", async (req, res, next) => {
     const token = (await promisify(crypto.randomBytes)(20)).toString("hex");
     // const user = User.find(u => u.email === req.body.email);
     // console.log(req.body.email)
@@ -509,7 +509,7 @@ router.get("/contact", async (req, res) => {
     // =====================================
   });
 
-  app.get("/reset/:token", csrfProtection, function (req, res) {
+  router.get("/reset/:token", csrfProtection, function (req, res) {
 
   
     res.render("user/new_password.ejs", {
@@ -519,7 +519,7 @@ router.get("/contact", async (req, res) => {
     }); // load the index.ejs file
   });
 
-  app.post("/reset/:token", csrfProtection, function (req, res) {
+  router.post("/reset/:token", csrfProtection, function (req, res) {
     const { token } = req.params;
     const { password, confirm_password } = req.body;
 
