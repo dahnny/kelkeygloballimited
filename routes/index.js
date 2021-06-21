@@ -585,7 +585,7 @@ router.get("/contact", async (req, res) => {
             },
           }
         ).then((update)=>{
-          req.flash("successMessage", "password has been updated successfully. Please Login")
+          req.flash("successMessage", "Your password has been updated successfully. Please login")
           return res.redirect("/login")
         });
       }else{
