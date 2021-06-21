@@ -26,6 +26,7 @@ var bcrypt = require("bcrypt-nodejs");
 const { promisify } = require("util");
 
 const nodemailer = require("nodemailer");
+const crypto = require("crypto");
 
 // cloudinary configuration
 cloudinary.config({
