@@ -87,6 +87,7 @@ module.exports = function (passport) {
           newUser.password = newUser.generateHash(password);
           newUser.first_name = req.body.first_name;
           newUser.last_name = req.body.last_name;
+          newUser.phone_number = req.body.phone_number;
           newUser.referralCode =   referralCodes.generate({
             length: 6,
             charset: "0123456789",
@@ -94,7 +95,7 @@ module.exports = function (passport) {
           const new_saved = await newUser.save();
           /** referral */
 
-          if (referralCode) {
+          if (referralCode) { 
             await SignupUser.findOneAndUpdate(
               { referralCode },
               {
