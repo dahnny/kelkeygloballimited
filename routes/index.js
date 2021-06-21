@@ -472,17 +472,7 @@ router.get("/contact", async (req, res) => {
                       If you did not request this, please ignore this email and your password will remain unchanged.
                     `,
         };
-        // mailgun.messages().send(resetEmail, function (error, body) {
-        //   if (error) {
-        //     console.log(error);
-        //   }
-        //   console.log("EMAIL SENT!!!");
-        //   req.flash(
-        //     "info",
-        //     `An e-mail has been sent to ${req.body.email} with further instructions.`
-        //   );
-        //   res.redirect("/reset-password");
-        // });
+  
         transporter.sendMail(resetEmail, function (err, info) {
           if (err) {
             console.log(err);
