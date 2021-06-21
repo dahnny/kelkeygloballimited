@@ -47,12 +47,12 @@ module.exports = function (passport) {
         // asynchronous
         // User.findOne wont fire unless data is sent back
         process.nextTick(async () => {
-          const { first_name, last_name, confirm_password, referralCode } =
+          const { first_name, last_name, confirm_password, phone_number, referralCode } =
             req.body;
 
           // find a user whose email is the same as the forms email
 
-          if (!first_name || !last_name | !confirm_password) {
+          if (!first_name || !last_name || !phone_number || !confirm_password) {
             return done(
               null,
               false,
