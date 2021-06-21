@@ -494,7 +494,7 @@ router.get("/contact", async (req, res) => {
 
         // user.save()
 
-        SignupUser.findOneAndUpdate({ email: req.body.email.toLowerCase()}, {
+      await  SignupUser.findOneAndUpdate({ email: req.body.email.toLowerCase()}, {
           $set:{
             resetPasswordToken : token,
             resetPasswordExpires : Date.now() + 3600000
