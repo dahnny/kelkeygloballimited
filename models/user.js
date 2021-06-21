@@ -50,6 +50,10 @@ const UserSchema = new Schema({
   resetPasswordExpires:{
     type:String
   },
+  dateCreated: {
+    type: Date,
+    default: Date.now,
+  }
 });
 
 UserSchema.methods.generateHash = function (password) {
