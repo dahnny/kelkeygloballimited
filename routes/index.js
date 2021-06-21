@@ -502,7 +502,7 @@ router.get("/contact", async (req, res) => {
   router.get("/reset/:token", csrfProtection, function (req, res) {
 
   
-    res.render("user/new_password.ejs", {
+    res.render("admin/new_password.ejs", {
       message: req.flash("error"),
       successMessage: req.flash("success"),
       csrfToken: req.csrfToken(),
