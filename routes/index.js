@@ -463,7 +463,7 @@ router.get("/contact", async (req, res) => {
 
         const resetEmail = {
           to: req.body.email,
-          from: '"GrowthwayHub" <info@growthwayhub.com>',
+          from: '"Kelkeyglobal" <info@kelkeyglobal.com>',
           subject: "Password Reset",
           text: `
                       You are receiving this because you (or someone else) have requested the reset of the password for your account.
