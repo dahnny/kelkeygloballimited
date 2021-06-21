@@ -431,6 +431,13 @@ router.get("/contact", async (req, res) => {
     authenticated
   });
 });
+
+router.get("/forgot-password", async (req, res) => {
+  const authenticated = req.isAuthenticated()
+  res.render("contact",{
+    authenticated
+  });
+});
 router.get("/listing", async (req, res) => {
   const authenticated = req.isAuthenticated()
   const properties = await Properties.find({status : "published"})
