@@ -482,8 +482,8 @@ router.get("/contact", async (req, res) => {
   router.post("/reset-password", async (req, res, next) => {
     const token = (await promisify(crypto.randomBytes)(20)).toString("hex");
 
-    SignupUser.findOne({ email: req.body.email.toLowerCase() })
-      .then((user) => {
+ const user = await   SignupUser.findOne({ email: req.body.email.toLowerCase() })
+      
    
         if (!user) {
           req.flash("error", "No account with that email address exists.");
@@ -530,7 +530,7 @@ router.get("/contact", async (req, res) => {
             return res.redirect("/reset-password"); // return ('Email sent')
           }
         });
-      })
+    
       .catch((err) => {
         return res.json(err.message);
       });
