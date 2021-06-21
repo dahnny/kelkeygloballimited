@@ -440,6 +440,7 @@ router.get("/forgot-password", async (req, res) => {
 });
 router.post("/forgot-password", async (req, res) => {
   // const authenticated = req.isAuthenticated()
+  const {email} = req.body
   res.render("admin/forgotPassword",{
     // authenticated
   });
