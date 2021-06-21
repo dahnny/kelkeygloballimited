@@ -41,9 +41,12 @@ const UserSchema = new Schema({
     default: false,
   },
 
-  resetPasswordToken : {
-    type : Number
-  }
+  resetPasswordToken:{
+    type:String
+  },
+  resetPasswordExpires:{
+    type:String
+  },
 });
 
 UserSchema.methods.generateHash = function (password) {
