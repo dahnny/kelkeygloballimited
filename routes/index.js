@@ -454,7 +454,7 @@ router.get("/contact", async (req, res) => {
         console.log({ user });
         if (!user) {
           req.flash("error", "No account with that email address exists.");
-          return res.redirect("/reset_password");
+          return res.redirect("/reset-password");
         }
         user.resetPasswordToken = token;
         user.resetPasswordExpires = Date.now() + 3600000;
@@ -481,7 +481,7 @@ router.get("/contact", async (req, res) => {
         //     "info",
         //     `An e-mail has been sent to ${req.body.email} with further instructions.`
         //   );
-        //   res.redirect("/reset_password");
+        //   res.redirect("/reset-password");
         // });
         transporter.sendMail(resetEmail, function (err, info) {
           if (err) {
@@ -491,13 +491,13 @@ router.get("/contact", async (req, res) => {
               "error",
               `Something went wrong. Please refresh and try again.`
             );
-            return res.redirect("/reset_password");
+            return res.redirect("/reset-password");
           } else {
             req.flash(
               "success",
               `An e-mail has been sent to ${req.body.email} with further instructions.`
             );
-            return res.redirect("/reset_password"); // return ('Email sent')
+            return res.redirect("/reset-password"); // return ('Email sent')
           }
         });
       })
@@ -538,7 +538,7 @@ router.get("/contact", async (req, res) => {
       if (data) {
         if (Date.now() > data.resetPasswordExpires) {
           req.flash("error", "This session has expired");
-          return res.redirect(`/reset_password`);
+          return res.redirect(`/reset-password`);
         }
         const new_password = bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);;
 
