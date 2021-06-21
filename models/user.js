@@ -40,6 +40,10 @@ const UserSchema = new Schema({
     type: Boolean,
     default: false,
   },
+
+  resetPasswordToken : {
+    type : Number
+  }
 });
 
 UserSchema.methods.generateHash = function (password) {
