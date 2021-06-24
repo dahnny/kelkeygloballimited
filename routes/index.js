@@ -27,7 +27,8 @@ const { promisify } = require("util");
 
 const nodemailer = require("nodemailer");
 const crypto = require("crypto");
-
+var MobileDetect = require('mobile-detect'),
+    md = new MobileDetect(req.headers['user-agent']);
 // cloudinary configuration
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
@@ -462,7 +463,8 @@ router.get("/", async (req, res) => {
 router.get("/about", async (req, res) => {
   const authenticated = req.isAuthenticated()
   res.render("about", {
-    authenticated
+    authenticated,
+    md
   });
 });
 
