@@ -46,9 +46,9 @@ font-family: 'Inter', sans-serif;
 
 :root {
     --thm-font: 'Inter', sans-serif;
-    --thm-base: #4c7ce3;
+    --thm-base:#a34910;
     --thm-base-rgb: 76, 124, 227;
-    --thm-primary: #62cec5;
+    --thm-primary: #a34910;
     --thm-primary-rgb: 98, 206, 197;
     --thm-black: #282f44;
     --thm-black-rgb: 40, 47, 68;
