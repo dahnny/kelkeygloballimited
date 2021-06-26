@@ -209,7 +209,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
   --indigo: #6610f2;
   --purple: #6f42c1;
   --pink: #e83e8c;
-  --red: #EE3232;
+  --red: #a34910;
   --orange: #ff9900;
   --yellow: #FFFA6F;
   --green: #297F00;
@@ -222,8 +222,8 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
   --secondary: #707070;
   --success: #2BC155;
   --info: #2421DA;
-  --warning: #FF6D4D;
-  --danger: #FF4847;
+  --warning: #a34910;
+  --danger: #a34910;
   --light: #F4F5F9;
   --dark: #B1B1B1;
   --breakpoint-xs: 0;
