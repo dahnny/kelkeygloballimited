@@ -331,11 +331,11 @@ sup {
   top: -.5em; }
 
 a {
-  color: #a34910;
+  color: #FE634E;
   text-decoration: none;
   background-color: transparent; }
   a:hover {
-    color: #a34910;
+    color: #fe2002;
     text-decoration: underline; }
 
 a:not([href]):not([class]) {
