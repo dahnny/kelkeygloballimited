@@ -2,8 +2,15 @@
 
 <body>
   <div class="preloader">
-    <img src="/logos/image2.png" height="100px" width="100px" class="preloader__image" alt="">
-</div><!-- /.preloader -->
+    <img
+      src="/logos/image2.png"
+      height="100px"
+      width="100px"
+      class="preloader__image"
+      alt=""
+    />
+  </div>
+  <!-- /.preloader -->
   <%- include('./partials/Nav.ejs');%>
 
   <!-- Banner Section One Start -->
@@ -347,8 +354,6 @@
                               }}'
           >
             <div class="swiper-wrapper">
-          
-
               <% properties && properties.map((property, key) => {%>
               <div class="swiper-slide">
                 <div class="latest_properties_single">
@@ -391,7 +396,11 @@
                   </div>
                   <div class="latest_properties_content">
                     <div class="latest_properties_top_content">
-                      <h4><a href="/listing/<%= property.slug %>"><%= property.title %></a></h4>
+                      <h4>
+                        <a href="/listing/<%= property.slug %>"
+                          ><%= property.title %></a
+                        >
+                      </h4>
                       <p><%= property.location %></p>
                       <h3>₦ <%= property.price %> <span>only</span></h3>
                     </div>
@@ -400,14 +409,15 @@
                         <li><span class="icon-bed"></span>4</li>
                         <li><span class="icon-shower"></span>2</li>
                         <li>
-                          <span class="icon-square-measument"></span><%= property.details.sqft_size %> sqft
+                          <span class="icon-square-measument"></span><%=
+                          property.details.sqft_size %> sqft
                         </li>
                       </ul>
                     </div>
                   </div>
                 </div>
               </div>
-            	<% })%>
+              <% })%>
             </div>
           </div>
         </div>
@@ -631,7 +641,10 @@
         <div class="swiper-wrapper">
           <div class="swiper-slide">
             <p>
-              This is due to their excellent service, competitive<br />
+              The team at K.Global has been very responsive to my needs.Their
+              expertise simply inspires confidence in making the right
+              investment choices in real estate! This is due to their excellent
+              service, competitive<br />
               pricing and customer support. It’s throughly <br />
               refresing to get such a personal touch.
             </p>
@@ -639,7 +652,7 @@
               <h3>Blueportals NG / <span>Customer</span></h3>
             </div>
           </div>
-          <div class="swiper-slide">
+          <!-- <div class="swiper-slide">
             <p>
               This is due to their excellent service, competitive<br />
               pricing and customer support. It’s throughly <br />
@@ -658,7 +671,7 @@
             <div class="testimonials-one__meta">
               <h3>Mike Hardson / <span>Customer</span></h3>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
