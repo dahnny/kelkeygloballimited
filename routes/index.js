@@ -463,6 +463,25 @@ router.post("/contact", async (req, res) => {
   const {name, email, phone, subject, message} = req.body
   console.log({name, email, phone , subject, message})
 
+  transporter.sendMail(resetEmail, function (err, info) {
+    if (err) {
+      console.log({ err });
+
+      req.flash(
+        "error",
+        `Something went wrong. Please refresh and try again.`
+      );
+      return res.redirect("/reset-password");
+    } else {
+      console.log({ info });
+      req.flash(
+        "success",
+        `An e-mail has been sent to ${email} with further instructions.`
+      );
+      return res.redirect("/reset-password"); // return ('Email sent')
+    }
+  });
+
 });
 
 
