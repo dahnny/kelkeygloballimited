@@ -646,28 +646,28 @@ router.get("/logout", function (req, res) {
   res.redirect("/");
 });
 
-router.post("/test", function (req, res) {
-  const resetEmail = {
-    to: "Emmanuelsumeh@gmail.com",
-    from: '"Kelkeyglobal" <support@kelkeygloballimited.com>',
-    subject: "Password Reset",
-    text: `
-                You are receiving this because you (or someone else) have requested the reset of the password for your account.
-                Please click on the following link, or paste this into your browser to complete the process:
+// router.post("/test", function (req, res) {
+//   const resetEmail = {
+//     to: "Emmanuelsumeh@gmail.com",
+//     from: '"Kelkeyglobal" <support@kelkeygloballimited.com>',
+//     subject: "Password Reset",
+//     text: `
+//                 You are receiving this because you (or someone else) have requested the reset of the password for your account.
+//                 Please click on the following link, or paste this into your browser to complete the process:
               
-                If you did not request this, please ignore this email and your password will remain unchanged.
-              `,
-  };
+//                 If you did not request this, please ignore this email and your password will remain unchanged.
+//               `,
+//   };
 
-  transporter.sendMail(resetEmail, function (err, info) {
-    if (err) {
-      console.log(err);
-      res.json("error");
-    } else {
-      res.json("sent");
-    }
-  });
-});
+//   transporter.sendMail(resetEmail, function (err, info) {
+//     if (err) {
+//       console.log(err);
+//       res.json("error");
+//     } else {
+//       res.json("sent");
+//     }
+//   });
+// });
 router.get("*", (req, res) => {
   res.status(404).render("admin/404page");
 });
