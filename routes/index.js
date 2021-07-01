@@ -460,8 +460,8 @@ router.get("/contact", async (req, res) => {
 });
 
 router.post("/contact", async (req, res) => {
-  const {name, email, phone, subject} = req.body
-  console.log({name, email, phone , subject})
+  const {name, email, phone, subject, message} = req.body
+  console.log({name, email, phone , subject, message})
 
 });
 
