@@ -462,6 +462,19 @@ router.get("/contact", async (req, res) => {
 router.post("/contact", async (req, res) => {
   const {name, email, phone, subject, message} = req.body
   console.log({name, email, phone , subject, message})
+  
+  const resetEmail = {
+    to: `support@kelkeyglobal.com`,
+    from:  `${email}`,
+    subject: `${subject}`,
+    text: `
+    Details of sender :
+    Email  : ${email},
+    Email  : ${email},
+    Email  : ${email},
+    Email  : ${email},
+    `,
+  };
 
   transporter.sendMail(resetEmail, function (err, info) {
     if (err) {
@@ -526,7 +539,7 @@ router.post("/reset-password", async (req, res, next) => {
 
     const resetEmail = {
       to: `${email}`,
-      from: '"Kelkeyglobal" <info@kelkeyglobal.com>',
+      from: '"Kelkeyglobal" <support@kelkeyglobal.com>',
       subject: "Password Reset",
       text: `
                            You are receiving this because you (or someone else) have requested the reset of the password for your account.
