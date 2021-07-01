@@ -477,7 +477,7 @@ router.post("/reset-password", async (req, res, next) => {
    const {email} = req.body
 
     const user = await SignupUser.findOne({
-      email: req.body.email.toLowerCase(),
+      email: email.toLowerCase(),
     });
 
     if (!user) {
@@ -500,7 +500,7 @@ router.post("/reset-password", async (req, res, next) => {
     );
 
     const resetEmail = {
-      to: req.body.email,
+      to: `${email}`,
       from: '"Kelkeyglobal" <info@kelkeyglobal.com>',
       subject: "Password Reset",
       text: `
