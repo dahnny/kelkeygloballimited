@@ -46,7 +46,7 @@ var transporter = nodemailer.createTransport({
   host: "mail.kelkeygloballimited.com",
   port: 465,
 
-  secure: false,
+  // secure: false,
   auth: {
     user: "info@growthwayhub.com", // your domain email address
     pass: process.env.GWHPASS,
