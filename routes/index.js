@@ -638,7 +638,7 @@ router.post('/test', function(req, res){
 
   const resetEmail = {
     to: "Emmanuelsumeh@gmail.com",
-    from: '"Kelkeyglobal" <info@kelkeyglobal.com>',
+    from: '"Kelkeyglobal" <support@kelkeyglobal.com>',
     subject: "Password Reset",
     text: `
                 You are receiving this because you (or someone else) have requested the reset of the password for your account.
