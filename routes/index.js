@@ -43,7 +43,7 @@ console.log("passss!!!!!!!!!!!!!!!!!!!! ", process.env.pass)
 
 
 var transporter = nodemailer.createTransport({
-  host: "mail.privateemail.com",
+  host: "mail.kelkeygloballimited.com",
   port: 587,
 
   secure: false,
