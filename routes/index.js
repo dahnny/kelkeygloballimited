@@ -460,19 +460,19 @@ router.get("/contact", async (req, res) => {
 });
 
 router.post("/contact", async (req, res) => {
-  const {name, email, phone, subject, message} = req.body
-  console.log({name, email, phone , subject, message})
-  
+  const { name, email, phone, subject, message } = req.body;
+  console.log({ name, email, phone, subject, message });
+
   const resetEmail = {
     to: `support@kelkeyglobal.com`,
-    from:  `${email}`,
+    from: `${email}`,
     subject: `${subject}`,
     text: `
     Details of sender :
     Email  : ${email},
-    Email  : ${email},
-    Email  : ${email},
-    Email  : ${email},
+    name  : ${name},
+
+    Message : ${message}
     `,
   };
 
@@ -480,10 +480,7 @@ router.post("/contact", async (req, res) => {
     if (err) {
       console.log({ err });
 
-      req.flash(
-        "error",
-        `Something went wrong. Please refresh and try again.`
-      );
+      req.flash("error", `Something went wrong. Please refresh and try again.`);
       return res.redirect("/reset-password");
     } else {
       console.log({ info });
@@ -494,9 +491,7 @@ router.post("/contact", async (req, res) => {
       return res.redirect("/reset-password"); // return ('Email sent')
     }
   });
-
 });
-
 
 // =====================================
 // PASWORD RESET  ========
