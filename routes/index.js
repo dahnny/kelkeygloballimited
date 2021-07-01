@@ -49,7 +49,7 @@ var transporter = nodemailer.createTransport({
   // secure: false,
   auth: {
     user: "support@kelkeygloballimited.com", // your domain email address
-    pass: process.env.GWHPASS,
+    pass: process.env.PASS,
   }
 
 });
