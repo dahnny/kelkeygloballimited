@@ -38,7 +38,6 @@ cloudinary.config({
   // api_secret: process.env.API_SECRET
 });
 
-
 var transporter = nodemailer.createTransport({
   host: "mail.kelkeygloballimited.com",
   port: 465,
@@ -474,7 +473,7 @@ router.get("/reset-password", csrfProtection, function (req, res) {
 router.post("/reset-password", async (req, res, next) => {
   try {
     const token = (await promisify(crypto.randomBytes)(20)).toString("hex");
-   const {email} = req.body
+    const { email } = req.body;
 
     const user = await SignupUser.findOne({
       email: email.toLowerCase(),
@@ -513,7 +512,7 @@ router.post("/reset-password", async (req, res, next) => {
 
     transporter.sendMail(resetEmail, function (err, info) {
       if (err) {
-        console.log({err});
+        console.log({ err });
 
         req.flash(
           "error",
@@ -521,7 +520,7 @@ router.post("/reset-password", async (req, res, next) => {
         );
         return res.redirect("/reset-password");
       } else {
-        console.log({info})
+        console.log({ info });
         req.flash(
           "success",
           `An e-mail has been sent to ${email} with further instructions.`
@@ -655,7 +654,7 @@ router.get("/logout", function (req, res) {
 //     text: `
 //                 You are receiving this because you (or someone else) have requested the reset of the password for your account.
 //                 Please click on the following link, or paste this into your browser to complete the process:
-              
+
 //                 If you did not request this, please ignore this email and your password will remain unchanged.
 //               `,
 //   };
