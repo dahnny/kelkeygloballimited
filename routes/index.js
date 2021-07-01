@@ -456,6 +456,8 @@ router.get("/contact", async (req, res) => {
   const authenticated = req.isAuthenticated();
   res.render("contact", {
     authenticated,
+    message: req.flash("error"),
+        successMessage: req.flash("success"),
   });
 });
 
@@ -481,14 +483,14 @@ router.post("/contact", async (req, res) => {
       console.log({ err });
 
       req.flash("error", `Something went wrong. Please refresh and try again.`);
-      return res.redirect("/reset-password");
+      return res.redirect("/contact");
     } else {
       console.log({ info });
       req.flash(
         "success",
         `Your email has been sent successfully!!.`
       );
-      return res.redirect("/reset-password"); // return ('Email sent')
+      return res.redirect("/contact"); // return ('Email sent')
     }
   });
 });
