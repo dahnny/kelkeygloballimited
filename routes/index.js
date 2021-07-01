@@ -43,33 +43,15 @@ console.log("passss!!!!!!!!!!!!!!!!!!!! ", process.env.pass)
 
 
 var transporter = nodemailer.createTransport({
-  // host: "mail.privateemail.com",
-  // port: 587,
+  host: "mail.privateemail.com",
+  port: 587,
 
-  // secure: false,
-  // auth: {
-  //   user: "info@growthwayhub.com", // your domain email address
-  //   pass: process.env.GWHPASS,
-  // },
-  // tls: {
-  //   // do not fail on invalid certs
-  //   rejectUnauthorized: false,
-  // },
-  // //  tls: {
-  // //   secure: false,
-  // //   ignoreTLS: true,
-  // //   rejectUnauthorized: false
-  // // },
-  // // port: 587 ,
-  // // secure: false,
-  // // logger: true,
-  // // debug: true,
-
-  service: 'gmail',
+  secure: false,
   auth: {
-      user: 'emmanuelworkmail@gmail.com',
-      pass: process.env.pass
+    user: "info@growthwayhub.com", // your domain email address
+    pass: process.env.GWHPASS,
   }
+
 });
 const storage = multer.diskStorage({
   filename: function (req, file, cb) {
