@@ -474,6 +474,7 @@ router.get("/reset-password", csrfProtection, function (req, res) {
 router.post("/reset-password", async (req, res, next) => {
   try {
     const token = (await promisify(crypto.randomBytes)(20)).toString("hex");
+    console.log("email!!!!!!!!!!!!!!!!!!! ", req.body.email)
 
     const user = await SignupUser.findOne({
       email: req.body.email.toLowerCase(),
@@ -512,7 +513,7 @@ router.post("/reset-password", async (req, res, next) => {
 
     transporter.sendMail(resetEmail, function (err, info) {
       if (err) {
-        console.log(err);
+        console.log({err});
 
         req.flash(
           "error",
