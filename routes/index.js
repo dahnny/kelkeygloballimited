@@ -651,18 +651,12 @@ router.post('/test', function(req, res){
   transporter.sendMail(resetEmail, function (err, info) {
     if (err) {
       console.log(err);
+res.json("error")
 
-      req.flash(
-        "error",
-        `Something went wrong. Please refresh and try again.`
-      );
-      return res.redirect("/reset-password");
     } else {
-      req.flash(
-        "success",
-        `An e-mail has been sent to ${req.body.email} with further instructions.`
-      );
-      return res.redirect("/reset-password"); // return ('Email sent')
+   
+
+      res.json("sent")
     }
   });
 });
