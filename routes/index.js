@@ -524,7 +524,7 @@ router.post("/reset-password", async (req, res, next) => {
         console.log({info})
         req.flash(
           "success",
-          `An e-mail has been sent to ${req.body.email} with further instructions.`
+          `An e-mail has been sent to ${email} with further instructions.`
         );
         return res.redirect("/reset-password"); // return ('Email sent')
       }
