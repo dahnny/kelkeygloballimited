@@ -459,6 +459,12 @@ router.get("/contact", async (req, res) => {
   });
 });
 
+router.post("/contact", async (req, res) => {
+  const {} = req.body
+
+});
+
+
 // =====================================
 // PASWORD RESET  ========
 // =====================================
