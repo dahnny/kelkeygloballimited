@@ -44,7 +44,7 @@ console.log("passss!!!!!!!!!!!!!!!!!!!! ", process.env.pass)
 
 var transporter = nodemailer.createTransport({
   host: "mail.kelkeygloballimited.com",
-  port: 587,
+  port: 465,
 
   secure: false,
   auth: {
