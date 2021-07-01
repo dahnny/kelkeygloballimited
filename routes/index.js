@@ -17,7 +17,7 @@ require("../config/passport")(passport);
 const multer = require("multer");
 // var upload = multer({ dest: 'uploads/' })
 var cloudinary = require("cloudinary").v2;
-const referralCodes = require("referral-codes")
+const referralCodes = require("referral-codes");
 const { CloudinaryStorage } = require("multer-storage-cloudinary");
 const Category = require("../models/Category");
 const Properties = require("../models/Properties");
@@ -38,9 +38,7 @@ cloudinary.config({
   // api_secret: process.env.API_SECRET
 });
 
-console.log("passss!!!!!!!!!!!!!!!!!!!! ", process.env.pass)
-
-
+console.log("passss!!!!!!!!!!!!!!!!!!!! ", process.env.pass);
 
 var transporter = nodemailer.createTransport({
   host: "mail.kelkeygloballimited.com",
@@ -50,16 +48,13 @@ var transporter = nodemailer.createTransport({
   auth: {
     user: "support@kelkeygloballimited.com", // your domain email address
     pass: process.env.MAIL_PASS,
-  }
-
+  },
 });
 const storage = multer.diskStorage({
   filename: function (req, file, cb) {
     cb(null, file.fieldname + "-" + Date.now());
   },
 });
-
-
 
 const upload = multer({ storage });
 
@@ -89,20 +84,18 @@ router.post(
 
 router.get("/register", csrfProtection, async (req, res) => {
   try {
-     // console.log("Referral ID",req.query['referral'])
-  // render the page and pass in any flash data if it exists
-  return res.render("admin/Register", {
-    signupMessage: req.flash("signupMessage"),
-    successMessage: req.flash("successMessage"),
-    title: "Log-In",
-    csrfToken: req.csrfToken(),
-  });
+    // console.log("Referral ID",req.query['referral'])
+    // render the page and pass in any flash data if it exists
+    return res.render("admin/Register", {
+      signupMessage: req.flash("signupMessage"),
+      successMessage: req.flash("successMessage"),
+      title: "Log-In",
+      csrfToken: req.csrfToken(),
+    });
   } catch (error) {
-    console.log({error})
-    return res.render("admin/Forbidden")
+    console.log({ error });
+    return res.render("admin/Forbidden");
   }
-
- 
 });
 
 router.post(
@@ -119,76 +112,80 @@ router.post(
 );
 
 router.get("/dashboard", isLoggedIn, async (req, res) => {
-try {
-
-  const user  = await SignupUser.findById(req.user.id).populate("referrals")
- 
-  console.log({user})
-  if(user.is_admin){
-    var property_length = await (await Properties.find()).length;
-    var all_properties = await Properties.find();
-  
-    var valuation = await all_properties.reduce((n, { price }) => n + price, 0);
-    console.log({ valuation });
-  
-    var user_length = await (await SignupUser.find()).length;
-  
-    var popular_properties = await (
-      await Properties.find()
-        .where("status")
-        .equals("published")
-        .populate("category")
-        .sort({
-          views: -1,
-        })
-    ).slice(0, 4);
-    // console.log({views })
-    return res.render("admin/Dashboard", {
-      property_length,
-      user_length,
-      valuation,
-      popular_properties,
-      user,
-      moment
-    });
-  }else {
-  
-    // console.log({views })
-    res.render("admin/Dashboard", {
-   user,
-   
-   moment
-    });
-  }
- 
-
-} catch (error) {
-  console.log({error})
-  return res.render("admin/Forbidden")
-}
-});
-
-router.get("/dashboard/add-property", isLoggedIn, id_admin, async (req, res) => {
   try {
-    const user  = await SignupUser.findById(req.user.id).populate("referrals")
-    var categories = await Category.find();
-    console.log({ categories });
+    const user = await SignupUser.findById(req.user.id).populate("referrals");
 
-    res.render("admin/AddProperty", {
-      categories,
-      message: req.flash("error"),
-      successMessage: req.flash("success"),
-      user
-      // post_length,
-      // views,
-      // published
-    });
+    console.log({ user });
+    if (user.is_admin) {
+      var property_length = await (await Properties.find()).length;
+      var all_properties = await Properties.find();
+
+      var valuation = await all_properties.reduce(
+        (n, { price }) => n + price,
+        0
+      );
+      console.log({ valuation });
+
+      var user_length = await (await SignupUser.find()).length;
+
+      var popular_properties = await (
+        await Properties.find()
+          .where("status")
+          .equals("published")
+          .populate("category")
+          .sort({
+            views: -1,
+          })
+      ).slice(0, 4);
+      // console.log({views })
+      return res.render("admin/Dashboard", {
+        property_length,
+        user_length,
+        valuation,
+        popular_properties,
+        user,
+        moment,
+      });
+    } else {
+      // console.log({views })
+      res.render("admin/Dashboard", {
+        user,
+
+        moment,
+      });
+    }
   } catch (error) {
     console.log({ error });
-    req.flash("error", "Something went wrong");
-    return res.redirect("/dashboard/add-property");
+    return res.render("admin/Forbidden");
   }
 });
+
+router.get(
+  "/dashboard/add-property",
+  isLoggedIn,
+  id_admin,
+  async (req, res) => {
+    try {
+      const user = await SignupUser.findById(req.user.id).populate("referrals");
+      var categories = await Category.find();
+      console.log({ categories });
+
+      res.render("admin/AddProperty", {
+        categories,
+        message: req.flash("error"),
+        successMessage: req.flash("success"),
+        user,
+        // post_length,
+        // views,
+        // published
+      });
+    } catch (error) {
+      console.log({ error });
+      req.flash("error", "Something went wrong");
+      return res.redirect("/dashboard/add-property");
+    }
+  }
+);
 
 router.post(
   "/dashboard/add-property",
@@ -197,7 +194,6 @@ router.post(
   upload.array("properties", 5),
   async (req, res) => {
     try {
-      
       const {
         title,
         location,
@@ -303,7 +299,7 @@ router.post(
   }
 );
 
-router.get("/dashboard/properties", isLoggedIn,id_admin, async (req, res) => {
+router.get("/dashboard/properties", isLoggedIn, id_admin, async (req, res) => {
   // var post_length = await (await Post.find()).length
   // var posts = await Post.find()
 
@@ -312,14 +308,14 @@ router.get("/dashboard/properties", isLoggedIn,id_admin, async (req, res) => {
   // var published = await (await Post.find({status : "published"})).length
 
   // console.log({views })
-  const user  = await SignupUser.findById(req.user.id).populate("referrals")
+  const user = await SignupUser.findById(req.user.id).populate("referrals");
   var all_properties = await Properties.find();
   res.render("admin/Properties", {
     all_properties,
     message: req.flash("error"),
     successMessage: req.flash("success"),
     moment,
-    user
+    user,
     // post_length,
     // views,
     // published
@@ -337,7 +333,6 @@ router.get(
       return res.redirect("/dashboard/properties");
     }
 
-    
     await Properties.findByIdAndUpdate(id, {
       $set: {
         status: "published",
@@ -370,23 +365,29 @@ router.get(
   }
 );
 
+router.get(
+  "/dashboard/properties/:slug",
+  isLoggedIn,
+  id_admin,
+  async (req, res) => {
+    const { slug } = req.params;
+    var property = await Properties.findOne({ slug }).populate("category");
+    const user = await SignupUser.findById(req.user.id).populate("referrals");
+    res.render("admin/Property", {
+      property,
+      moment,
+      user,
+    });
+  }
+);
 
-router.get("/dashboard/properties/:slug", isLoggedIn,id_admin, async (req, res) => {
-  const {slug} = req.params
-  var property = await Properties.findOne({ slug }).populate("category");
-  const user  = await SignupUser.findById(req.user.id).populate("referrals")
-  res.render("admin/Property", {
-    property,
-    moment,
-    user
-  });
-});
-
-router.get("/dashboard/users", isLoggedIn,id_admin, async (req, res) => {
-const  users = await SignupUser.find()
-const user  = await SignupUser.findById(req.user.id).populate("referrals").sort({
-  dateCreated: -1,
-})
+router.get("/dashboard/users", isLoggedIn, id_admin, async (req, res) => {
+  const users = await SignupUser.find();
+  const user = await SignupUser.findById(req.user.id)
+    .populate("referrals")
+    .sort({
+      dateCreated: -1,
+    });
   // var posts = await Post.find()
 
   // var views =await posts.reduce((n, {views}) => n + views, 0)
@@ -399,170 +400,180 @@ const user  = await SignupUser.findById(req.user.id).populate("referrals").sort(
     moment,
     message: req.flash("error"),
     successMessage: req.flash("success"),
-    user
+    user,
 
     // post_length,
     // views,
     // published
   });
 });
-router.post("/dashboard/create-category", isLoggedIn,id_admin, async (req, res) => {
-  var { category_name } = req.body;
+router.post(
+  "/dashboard/create-category",
+  isLoggedIn,
+  id_admin,
+  async (req, res) => {
+    var { category_name } = req.body;
 
-  if (!category_name) {
-    req.flash("error", "Please enter a proper category name");
-    return res.redirect("/dashboard/create-category");
+    if (!category_name) {
+      req.flash("error", "Please enter a proper category name");
+      return res.redirect("/dashboard/create-category");
+    }
+
+    var exists = await Category.findOne({ category_name });
+
+    // Post
+
+    if (exists) {
+      req.flash("error", "This category already exists");
+      return res.redirect("/dashboard/create-category");
+    } else {
+      var new_category = await new Category({
+        category_name,
+      });
+      await new_category.save();
+      req.flash("success", "Category created successfully");
+      res.redirect("/dashboard/create-category");
+      // res.json(new_category)
+    }
   }
-
-  var exists = await Category.findOne({ category_name });
-
-  // Post
-
-  if (exists) {
-    req.flash("error", "This category already exists");
-    return res.redirect("/dashboard/create-category");
-  } else {
-    var new_category = await new Category({
-      category_name,
-    });
-    await new_category.save();
-    req.flash("success", "Category created successfully");
-    res.redirect("/dashboard/create-category");
-    // res.json(new_category)
-  }
-});
+);
 
 router.get("/", async (req, res) => {
-  const properties = await Properties.find({status : "published"})
-  const authenticated = req.isAuthenticated()
-  console.log({authenticated})
-  res.render("index",{
+  const properties = await Properties.find({ status: "published" });
+  const authenticated = req.isAuthenticated();
+  console.log({ authenticated });
+  res.render("index", {
     properties,
-    authenticated
+    authenticated,
   });
 });
 router.get("/about", async (req, res) => {
-  const authenticated = req.isAuthenticated()
+  const authenticated = req.isAuthenticated();
   res.render("about", {
-    authenticated
+    authenticated,
   });
 });
 
 router.get("/contact", async (req, res) => {
-  const authenticated = req.isAuthenticated()
-  res.render("contact",{
-    authenticated
+  const authenticated = req.isAuthenticated();
+  res.render("contact", {
+    authenticated,
   });
 });
 
-  // =====================================
-  // PASWORD RESET  ========
-  // =====================================
-  router.get("/reset-password", csrfProtection, function (req, res) {
-    res.render("admin/forgotPassword", {
-      message: req.flash("error"),
-      successMessage: req.flash("success"),
-      csrfToken: req.csrfToken(),
-    }); // load the index.ejs file
-  });
+// =====================================
+// PASWORD RESET  ========
+// =====================================
+router.get("/reset-password", csrfProtection, function (req, res) {
+  res.render("admin/forgotPassword", {
+    message: req.flash("error"),
+    successMessage: req.flash("success"),
+    csrfToken: req.csrfToken(),
+  }); // load the index.ejs file
+});
 
-  router.post("/reset-password", async (req, res, next) => {
+router.post("/reset-password", async (req, res, next) => {
+  try {
+    const token = (await promisify(crypto.randomBytes)(20)).toString("hex");
 
-    try {
-      const token = (await promisify(crypto.randomBytes)(20)).toString("hex");
+    const user = await SignupUser.findOne({
+      email: req.body.email.toLowerCase(),
+    });
 
-      const user = await   SignupUser.findOne({ email: req.body.email.toLowerCase() })
-           
-        
-             if (!user) {
-               req.flash("error", "No account with that email address exists.");
-               return res.redirect("/reset-password");
-             }
-             // user.resetPasswordToken = token;
-             // user.resetPasswordExpires = Date.now() + 3600000;
-     
-             // user.save()
-     
-           await  SignupUser.findOneAndUpdate({ email: req.body.email.toLowerCase()}, {
-               $set:{
-                 resetPasswordToken : token,
-                 resetPasswordExpires : Date.now() + 3600000
-               }
-             })
-     
-             const resetEmail = {
-               to: req.body.email,
-               from: '"Kelkeyglobal" <info@kelkeyglobal.com>',
-               subject: "Password Reset",
-               text: `
+    if (!user) {
+      req.flash("error", "No account with that email address exists.");
+      return res.redirect("/reset-password");
+    }
+    // user.resetPasswordToken = token;
+    // user.resetPasswordExpires = Date.now() + 3600000;
+
+    // user.save()
+
+    await SignupUser.findOneAndUpdate(
+      { email: req.body.email.toLowerCase() },
+      {
+        $set: {
+          resetPasswordToken: token,
+          resetPasswordExpires: Date.now() + 3600000,
+        },
+      }
+    );
+
+    const resetEmail = {
+      to: req.body.email,
+      from: '"Kelkeyglobal" <info@kelkeyglobal.com>',
+      subject: "Password Reset",
+      text: `
                            You are receiving this because you (or someone else) have requested the reset of the password for your account.
                            Please click on the following link, or paste this into your browser to complete the process:
                            http://${req.headers.host}/reset/${token}
                            If you did not request this, please ignore this email and your password will remain unchanged.
                          `,
-             };
-       
-             transporter.sendMail(resetEmail, function (err, info) {
-               if (err) {
-                 console.log(err);
-     
-                 req.flash(
-                   "error",
-                   `Something went wrong. Please refresh and try again.`
-                 );
-                 return res.redirect("/reset-password");
-               } else {
-                 req.flash(
-                   "success",
-                   `An e-mail has been sent to ${req.body.email} with further instructions.`
-                 );
-                 return res.redirect("/reset-password"); // return ('Email sent')
-               }
-             });
-     
-         // =====================================
-         // PASWORD RESET  ========
-         // =====================================
-    } catch (error) {
-     console.log({error}) 
-     req.flash("error", "something went wrong")
-     return res.redirect("reset-password")
-    }
+    };
 
-  });
+    transporter.sendMail(resetEmail, function (err, info) {
+      if (err) {
+        console.log(err);
 
-  router.get("/reset/:token", csrfProtection, function (req, res) {
+        req.flash(
+          "error",
+          `Something went wrong. Please refresh and try again.`
+        );
+        return res.redirect("/reset-password");
+      } else {
+        req.flash(
+          "success",
+          `An e-mail has been sent to ${req.body.email} with further instructions.`
+        );
+        return res.redirect("/reset-password"); // return ('Email sent')
+      }
+    });
 
-  
-    res.render("admin/newPassword.ejs", {
-      message: req.flash("error"),
-      successMessage: req.flash("success"),
-      csrfToken: req.csrfToken(),
-    }); // load the index.ejs file
-  });
+    // =====================================
+    // PASWORD RESET  ========
+    // =====================================
+  } catch (error) {
+    console.log({ error });
+    req.flash("error", "something went wrong");
+    return res.redirect("reset-password");
+  }
+});
 
-  router.post("/reset/:token", csrfProtection, function (req, res) {
-    const { token } = req.params;
-    const { password, confirm_password } = req.body;
+router.get("/reset/:token", csrfProtection, function (req, res) {
+  res.render("admin/newPassword.ejs", {
+    message: req.flash("error"),
+    successMessage: req.flash("success"),
+    csrfToken: req.csrfToken(),
+  }); // load the index.ejs file
+});
 
-    if (!password || !confirm_password) {
-      req.flash("error", "Please enter all fields");
-      return res.redirect(`/reset/${token}`);
-    }
-    if (password !== confirm_password) {
-      req.flash("error", "Passwords do not match");
-      return res.redirect(`/reset/${token}`);
-    }
-    SignupUser.findOne({
-      resetPasswordToken: token,
-    }).then((data) => {
-      console.log("user found via token ", data)
+router.post("/reset/:token", csrfProtection, function (req, res) {
+  const { token } = req.params;
+  const { password, confirm_password } = req.body;
+
+  if (!password || !confirm_password) {
+    req.flash("error", "Please enter all fields");
+    return res.redirect(`/reset/${token}`);
+  }
+  if (password !== confirm_password) {
+    req.flash("error", "Passwords do not match");
+    return res.redirect(`/reset/${token}`);
+  }
+  SignupUser.findOne({
+    resetPasswordToken: token,
+  })
+    .then((data) => {
+      console.log("user found via token ", data);
       if (data) {
         if (Date.now() > data.resetPasswordExpires) {
           req.flash("error", "This session has expired");
           return res.redirect(`/reset-password`);
         }
-        const new_password = bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);;
+        const new_password = bcrypt.hashSync(
+          password,
+          bcrypt.genSaltSync(8),
+          null
+        );
 
         SignupUser.findOneAndUpdate(
           { resetPasswordToken: token },
@@ -571,71 +582,71 @@ router.get("/contact", async (req, res) => {
               password: new_password,
             },
           }
-        ).then((update)=>{
-          req.flash("successMessage", "Your password has been updated successfully. Please login")
-          return res.redirect("/login")
+        ).then((update) => {
+          req.flash(
+            "successMessage",
+            "Your password has been updated successfully. Please login"
+          );
+          return res.redirect("/login");
         });
-      }else{
-        req.flash("loginMessage","session is invalid.")
-        return res.redirect("/login")
+      } else {
+        req.flash("loginMessage", "session is invalid.");
+        return res.redirect("/login");
       }
-    }).catch((err)=>{
-      console.log({err})
+    })
+    .catch((err) => {
+      console.log({ err });
 
-      req.flash("error","Something went wrong . Please refresh and try again")
+      req.flash("error", "Something went wrong . Please refresh and try again");
       return res.redirect(`/reset/${token}`);
-
     });
-  });
+});
 router.get("/listing", async (req, res) => {
-  const authenticated = req.isAuthenticated()
-  const properties = await Properties.find({status : "published"})
+  const authenticated = req.isAuthenticated();
+  const properties = await Properties.find({ status: "published" });
   res.render("listings", {
     properties,
     moment,
-    authenticated
+    authenticated,
   });
 });
 router.get("/listing/:slug", async (req, res) => {
-  const authenticated = req.isAuthenticated()
-  const {slug} = req.params
-  const property = await Properties.findOne({slug})
-  
-  console.log({property})
-  if(property){
+  const authenticated = req.isAuthenticated();
+  const { slug } = req.params;
+  const property = await Properties.findOne({ slug });
 
-    await Properties.findOneAndUpdate({slug}, {
-      $set:{
-        views : property.views + 1
+  console.log({ property });
+  if (property) {
+    await Properties.findOneAndUpdate(
+      { slug },
+      {
+        $set: {
+          views: property.views + 1,
+        },
       }
-    })
-    console.log(property)
-    const total_amenities = property.amenities.length
+    );
+    console.log(property);
+    const total_amenities = property.amenities.length;
 
     // const rows=  Math.round(Math.abs(total_amenities/(total_amenities/3)) )
     // console.log({rows})
     res.render("single_listing", {
-    property,
-    moment,
-    total_amenities,
-    authenticated
+      property,
+      moment,
+      total_amenities,
+      authenticated,
     });
-  }else{
-    res.redirect("/listing")
+  } else {
+    res.redirect("/listing");
   }
-
 });
 
-router.get('/logout', function(req, res){
+router.get("/logout", function (req, res) {
   req.logout();
-  res.redirect('/');
+  res.redirect("/");
 });
 
-
-
-
-router.post('/test', function(req, res){
-
+router.post("/test", function (req, res) {
   const resetEmail = {
     to: "Emmanuelsumeh@gmail.com",
     from: '"Kelkeyglobal" <support@kelkeygloballimited.com>',
@@ -651,19 +662,15 @@ router.post('/test', function(req, res){
   transporter.sendMail(resetEmail, function (err, info) {
     if (err) {
       console.log(err);
-res.json("error")
-
+      res.json("error");
     } else {
-   
-
-      res.json("sent")
+      res.json("sent");
     }
   });
 });
-router.get('*', (req, res) => {
+router.get("*", (req, res) => {
   res.status(404).render("admin/404page");
 });
-
 
 // router.post("/newsletter", async(req, res) => {
 //     const {email} = req.body
