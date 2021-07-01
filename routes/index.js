@@ -631,6 +631,13 @@ router.get('/logout', function(req, res){
   res.redirect('/');
 });
 
+
+
+
+router.post('/test', function(req, res){
+
+  
+});
 router.get('*', (req, res) => {
   res.status(404).render("admin/404page");
 });
