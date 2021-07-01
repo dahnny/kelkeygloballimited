@@ -98,6 +98,30 @@
                       </div>
                   </div>
                   <div class="col-xl-8 col-lg-8">
+
+                    <% if (message.length > 0) { %>
+                        <!-- <%= message %> -->
+                         <!-- <%= message %> -->
+                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                          <strong class="text-center">
+                              <%= message %></strong> 
+                              
+                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                    <% } %> 
+                    <% if (successMessage.length > 0) { %>
+                        <!-- <%= message %> -->
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <strong class="text-center">
+                                <%= successMessage %></strong> 
+                                
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                    <% } %>
                       <form action="/contact" class="contact__form" method="POST">
                           <div class="row">
                               <div class="col-xl-6">
