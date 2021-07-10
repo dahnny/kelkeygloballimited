@@ -1,9 +1,12 @@
 <%- include('./partials/Header.ejs'); %>
+<link rel="stylesheet" href="/assets/css/aboutus.css" />
+<link rel="stylesheet" href="/assets/css/properties.css" />
+
 
 <body>
   <div class="preloader">
     <img
-      src="/logos/image2.png"
+      src="/logos/image3.png"
       height="100px"
       width="100px"
       class="preloader__image"
@@ -15,6 +18,7 @@
 
   <!-- Banner Section One Start -->
   <section class="banner-one">
+    <div id="overlay"></div>
     <div
       class="banner-bg-slide"
       data-options='{ "delay": 5000, "slides": [ { "src": "assets/images/properties/slider1.jpg" }, { "src": "assets/images/properties/slider2.jpg" } ], "transition": "fade", "timer": false, "align": "top", "animation": [ "kenburnsUp", "kenburnsDown", "kenburnsLeft", "kenburnsRight" ] }'
@@ -23,510 +27,127 @@
     <div class="container">
       <div class="content-box">
         <div class="top-title">
-          <h2>
-            Find Your Future <br />
-            Dream Property
-          </h2>
-        </div>
-
-        <div class="product-tab-box tabs-box">
-          <ul class="tab-btns tab-buttons clearfix list-unstyled">
-            <li data-tab="#desc" class="tab-btn active-btn">
-              <span>Buy</span>
-            </li>
-            <li data-tab="#addi__info" class="tab-btn"><span>Rent</span></li>
-            <li data-tab="#review" class="tab-btn"><span>Lease</span></li>
-          </ul>
-          <div class="tabs-content">
-            <div class="tab active-tab" id="desc">
-              <form class="banner_one_search_form" action="/listing">
-                <div class="banner_one_search_form_input_box">
-                  <input
-                    type="text"
-                    placeholder="Search for city, property, agent and more..."
-                  />
-                  <button type="submit" class="thm-btn banner_one_search_btn">
-                    Search Property
-                  </button>
-                  <div class="banner_one_search_icon">
-                    <a href="#"><span class="icon-magnifying-glass"></span></a>
-                  </div>
-                </div>
-              </form>
-            </div>
-
-            <div class="tab" id="addi__info">
-              <form class="banner_one_search_form" action="/listing">
-                <div class="banner_one_search_form_input_box">
-                  <input
-                    type="text"
-                    placeholder="Search for city, property, agent and more..."
-                  />
-                  <button type="submit" class="thm-btn banner_one_search_btn">
-                    Search Property
-                  </button>
-                  <div class="banner_one_search_icon">
-                    <a href="#"><span class="icon-magnifying-glass"></span></a>
-                  </div>
-                </div>
-              </form>
-            </div>
-
-            <div class="tab" id="review">
-              <form class="banner_one_search_form" action="/listing">
-                <div class="banner_one_search_form_input_box">
-                  <input
-                    type="text"
-                    placeholder="Search for city, property, agent and more..."
-                  />
-                  <button type="submit" class="thm-btn banner_one_search_btn">
-                    Search Property
-                  </button>
-                  <div class="banner_one_search_icon">
-                    <a href="#"><span class="icon-magnifying-glass"></span></a>
-                  </div>
-                </div>
-              </form>
-            </div>
+          <div class="header-image">
+            <img src="/logos/image3.png" width="250px" height="300px" style="background-size: contain;" alt="">
           </div>
-        </div>
-        <div class="banner_one_bottom_icon_text">
-          <div class="banner_one_bottom_icon">
-            <span class="icon-building"></span>
-          </div>
-          <div class="banner_one_bottom_text">
-            <p>Smart Real Estate Services All our the World</p>
-          </div>
+          <!-- <h1>Kelkey Global Limited</h1> -->
+          <br />
+          <br />
+          <h3>making living comfortable and affordable...</h3>
         </div>
       </div>
     </div>
   </section>
   <!-- Banner Section One End -->
 
-  <!--Explore One Start-->
-  <!-- <section class="explore_one">
-          <div class="container">
-              <div class="block-title text-left">
-                  <h4>Find Your Properties</h4>
-                  <h2>Explore the Cities</h2>
-              </div>
-              <div class="row">
-                  <div class="col-xl-12">
-                      <div class="explore_one_inner_content">
-                          <div class="thm-swiper__slider swiper-container" data-swiper-options='{"spaceBetween": 100, "slidesPerView": 4, "autoplay": { "delay": 5000 }, "pagination": {
-                  "el": "#testimonials-one-pagination",
-                  "type": "bullets",
-                  "clickable": true
-                },
-                 "navigation": {
-                  "nextEl": ".explore_one_prev",
-                  "prevEl": ".explore_one_next",
-                  "clickable": true
-              },
-                 "breakpoints": {
-                  "0": {
-                      "spaceBetween": 30,
-                      "slidesPerView": 1
-                  },
-                  "425": {
-                      "spaceBetween": 30,
-                      "slidesPerView": 1
-                  },
-                  "575": {
-                      "spaceBetween": 30,
-                      "slidesPerView": 1
-                  },
-                  "767": {
-                      "spaceBetween": 30,
-                      "slidesPerView": 1
-                  },
-                  "991": {
-                      "spaceBetween": 20,
-                      "slidesPerView": 3
-                  },
-                  "1289": {
-                      "spaceBetween": 30,
-                      "slidesPerView": 4
-                  },
-                  "1440": {
-                      "spaceBetween": 30,
-                      "slidesPerView": 5
-                  }
-              }}'>
-                              <div class="swiper-wrapper">
-                                  <div class="swiper-slide">
-                                      <div class="explore_one_single">
-                                          <div class="explore_one_img">
-                                              <img src="assets/images/resources/explore_one_img-1.jpg" alt="">
-                                              <div class="explore_one_text">
-                                                  <p><a href="listing">London / England</a></p>
-                                              </div>
-                                              <div class="explore_one_btn">
-                                                  <a href="#">2 Properties</a>
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <div class="swiper-slide">
-                                      <div class="explore_one_single">
-                                          <div class="explore_one_img">
-                                              <img src="assets/images/resources/explore_one_img-2.jpg" alt="">
-                                              <div class="explore_one_text">
-                                                  <p><a href="listing">Paris / France</a></p>
-                                              </div>
-                                              <div class="explore_one_btn">
-                                                  <a href="#">2 Properties</a>
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <div class="swiper-slide">
-                                      <div class="explore_one_single">
-                                          <div class="explore_one_img">
-                                              <img src="assets/images/resources/explore_one_img-3.jpg" alt="">
-                                              <div class="explore_one_text">
-                                                  <p><a href="listing">New York / USA</a></p>
-                                              </div>
-                                              <div class="explore_one_btn">
-                                                  <a href="#">2 Properties</a>
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <div class="swiper-slide">
-                                      <div class="explore_one_single">
-                                          <div class="explore_one_img">
-                                              <img src="assets/images/resources/explore_one_img-4.jpg" alt="">
-                                              <div class="explore_one_text">
-                                                  <p><a href="listing">Rome / Turkey</a></p>
-                                              </div>
-                                              <div class="explore_one_btn">
-                                                  <a href="#">2 Properties</a>
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <div class="swiper-slide">
-                                      <div class="explore_one_single">
-                                          <div class="explore_one_img">
-                                              <img src="assets/images/resources/explore_one_img-5.jpg" alt="">
-                                              <div class="explore_one_text">
-                                                  <p><a href="listing">Dubai / Dubai</a></p>
-                                              </div>
-                                              <div class="explore_one_btn">
-                                                  <a href="#">2 Properties</a>
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <div class="swiper-slide">
-                                      <div class="explore_one_single">
-                                          <div class="explore_one_img">
-                                              <img src="assets/images/resources/explore_one_img-1.jpg" alt="">
-                                              <div class="explore_one_text">
-                                                  <p><a href="listing">London / England</a></p>
-                                              </div>
-                                              <div class="explore_one_btn">
-                                                  <a href="#">2 Properties</a>
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <div class="swiper-slide">
-                                      <div class="explore_one_single">
-                                          <div class="explore_one_img">
-                                              <img src="assets/images/resources/explore_one_img-2.jpg" alt="">
-                                              <div class="explore_one_text">
-                                                  <p><a href="listing">Paris / France</a></p>
-                                              </div>
-                                              <div class="explore_one_btn">
-                                                  <a href="#">2 Properties</a>
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <div class="swiper-slide">
-                                      <div class="explore_one_single">
-                                          <div class="explore_one_img">
-                                              <img src="assets/images/resources/explore_one_img-3.jpg" alt="">
-                                              <div class="explore_one_text">
-                                                  <p><a href="listing">New York / USA</a></p>
-                                              </div>
-                                              <div class="explore_one_btn">
-                                                  <a href="#">2 Properties</a>
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <div class="swiper-slide">
-                                      <div class="explore_one_single">
-                                          <div class="explore_one_img">
-                                              <img src="assets/images/resources/explore_one_img-4.jpg" alt="">
-                                              <div class="explore_one_text">
-                                                  <p><a href="listing">Rome / Turkey</a></p>
-                                              </div>
-                                              <div class="explore_one_btn">
-                                                  <a href="#">2 Properties</a>
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <div class="swiper-slide">
-                                      <div class="explore_one_single">
-                                          <div class="explore_one_img">
-                                              <img src="assets/images/resources/explore_one_img-5.jpg" alt="">
-                                              <div class="explore_one_text">
-                                                  <p><a href="listing">Dubai / Dubai</a></p>
-                                              </div>
-                                              <div class="explore_one_btn">
-                                                  <a href="#">2 Properties</a>
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="explore_one_nav">
-                              <div class="explore_one_next"><span class="icon-right-arrow"></span></div>
-                              <div class="explore_one_prev"><span class="icon-right-arrow"></span> </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </section> -->
-  <!--Explore One End-->
+  <section class="bg-black py-8 pt-0" id="store">
+    <div class="bg-image bg-holder"></div>
+    <!--/.bg-holder-->
 
-  <!--Latest Properties Start-->
-  <section class="latest_properties">
-    <div class="container">
-      <div class="block-title text-center">
-        <h4>Browse Hot Offers</h4>
-        <h2>Latest Properties</h2>
-      </div>
-      <div class="row">
-        <div class="col-xl-12">
+    <div class="container-lg">
+      <div class="row flex-center">
+        <div class="col-6 order-md-0 text-center text-md-start"></div>
+        <div class="col-sm-10 col-md-7 col-lg-6 text-center text-md-start">
           <div
-            class="
-              thm-swiper__slider
-              swiper-container
-              thm-swiper__slider-pause-hover
-            "
-            data-swiper-options='{"spaceBetween": 100, "slidesPerView": 4, "autoplay": { "delay": 5000 }, "pagination": {
-                                  "el": "#latest_properties_pagination",
-                                  "type": "bullets",
-                                  "clickable": true
-                              },
-                              "navigation": {
-                                  "nextEl": ".latest_properties_next",
-                                  "prevEl": ".latest_properties_prev",
-                                  "clickable": true
-                              },
-                              "breakpoints": {
-                                  "0": {
-                                      "spaceBetween": 30,
-                                      "slidesPerView": 1
-                                  },
-                                  "425": {
-                                      "spaceBetween": 30,
-                                      "slidesPerView": 1
-                                  },
-                                  "575": {
-                                      "spaceBetween": 30,
-                                      "slidesPerView": 1
-                                  },
-                                  "767": {
-                                      "spaceBetween": 30,
-                                      "slidesPerView": 2
-                                  },
-                                  "991": {
-                                      "spaceBetween": 20,
-                                      "slidesPerView": 2
-                                  },
-                                  "1289": {
-                                      "spaceBetween": 30,
-                                      "slidesPerView": 3
-                                  },
-                                  "1440": {
-                                      "spaceBetween": 30,
-                                      "slidesPerView": 3
-                                  }
-                              }}'
+            class="carousel slide carousel-fade"
+            id="carouselExampleFade"
+            data-bs-ride="carousel"
           >
-            <div class="swiper-wrapper">
-              <% properties && properties.map((property, key) => {%>
-              <div class="swiper-slide">
-                <div class="latest_properties_single">
-                  <div
-                    class="
-                      latest_properties_img_carousel
-                      owl-theme owl-carousel
-                    "
-                  >
-                    <div class="latest_properties_img">
-                      <img src="<%= property.image_one %>" alt="" />
-                      <div class="latest_properties_icon">
-                        <i class="fa fa-heart"></i>
-                      </div>
-                      <div class="featured_and_sale_btn">
-                        <a href="#" class="featured_btn">Featured</a>
-                        <a href="#" class="sale_btn">For Sale</a>
-                      </div>
-                    </div>
-                    <div class="latest_properties_img">
-                      <img src="<%= property.image_two %>" alt="" />
-                      <div class="latest_properties_icon">
-                        <i class="fa fa-heart"></i>
-                      </div>
-                      <div class="featured_and_sale_btn">
-                        <a href="#" class="featured_btn">Featured</a>
-                        <a href="#" class="sale_btn">For Sale</a>
-                      </div>
-                    </div>
-                    <div class="latest_properties_img">
-                      <img src="<%= property.image_three %>" alt="" />
-                      <div class="latest_properties_icon">
-                        <i class="fa fa-heart"></i>
-                      </div>
-                      <div class="featured_and_sale_btn">
-                        <a href="#" class="featured_btn">Featured</a>
-                        <a href="#" class="sale_btn">For Sale</a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="latest_properties_content">
-                    <div class="latest_properties_top_content">
-                      <h4>
-                        <a href="/listing/<%= property.slug %>"
-                          ><%= property.title %></a
-                        >
-                      </h4>
-                      <p><%= property.location %></p>
-                      <h3>₦ <%= property.price %> <span>only</span></h3>
-                    </div>
-                    <div class="latest_properties_bottom_content">
-                      <ul class="list-unstyled">
-                        <li><span class="icon-bed"></span>4</li>
-                        <li><span class="icon-shower"></span>2</li>
-                        <li>
-                          <span class="icon-square-measument"></span><%=
-                          property.details.sqft_size %> sqft
-                        </li>
-                      </ul>
-                    </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="row h-100">
+                  <div class="col-12">
+                    <h5
+                      class="fs-6 fs-lg-7 lh-sm text-uppercase mt-7 long-image"
+                    >
+                      About Us
+                    </h5>
+                    <p class="my-45 larger-font wow fadeInRight animated">
+                      Memphis clinched a spot in the play-in tournament with the
+                      victory, but the fight for seeding continues. The race for
+                      the No. 8 spot in the West -- and the safety net of having
+                      to win just one of two games to make the playoffs -- could
+                      come down to the regular seasons final day, when Memphis
+                      and Golden State meet.
+                    </p>
+                    <a
+                      href=""
+                      class="btn btn-outline-primary btn-lg py-3 wow animated"
+                      >Get In Contact</a
+                    >
                   </div>
                 </div>
               </div>
-              <% })%>
+              <div class="carousel-item">
+                <div class="row h-100">
+                  <div class="col-12">
+                    <h5 class="fs-3 fs-lg-5 lh-sm text-uppercase">Our store</h5>
+                    <p class="my-4 pe-xl-5">
+                      Memphis clinched a spot in the play-in tournament with the
+                      victory, but the fight for seeding continues. The race for
+                      the No. 8 spot in the West -- and the safety net of having
+                      to win just one of two games to make the playoffs -- could
+                      come down to the regular seasons final day, when Memphis
+                      and Golden State meet. The good thing for the Grizzlies is
+                      they dont have to leave home until that matchup as they
+                      have games against Dallas and two against Sacramento
+                      before the finale.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="row h-100">
+                  <div class="col-12">
+                    <h5 class="fs-3 fs-lg-5 lh-sm text-uppercase">Our store</h5>
+                    <p class="my-4 pe-xl-5">
+                      Memphis clinched a spot in the play-in tournament with the
+                      victory, but the fight for seeding continues. The race for
+                      the No. 8 spot in the West -- and the safety net of having
+                      to win just one of two games to make the playoffs -- could
+                      come down to the regular seasons final day, when Memphis
+                      and Golden State meet. The good thing for the Grizzlies is
+                      they dont have to leave home until that matchup as they
+                      have games against Dallas and two against Sacramento
+                      before the finale.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="swiper-pagination" id="latest_properties_pagination"></div>
     </div>
   </section>
-  <!--Latest Properties End-->
 
-  <!--Why Choose One Start-->
-  <section
-    class="why_choose_one jarallax"
-    data-jarallax
-    data-speed="0.2"
-    data-imgPosition="50% 0%"
-    style="background-image: url(assets/images/properties/background1.jpeg)"
-  >
-    <div class="container">
-      <div class="why_choose_one_title">
-        <h2>Why Choose Us</h2>
+  <section class="about-video">
+    <div class="row">
+      <div class="col-lg-6">
+        <h5 class="pl-lg-5 pt-lg-6 pt-sm-3">We know what you are looking for</h5>
+        <ul class="">
+          <li>Serene NeighborHood</li>
+          <li>World Class Structure</li>
+          <li>Top Notch Infrastructure</li>
+          <li>Top Notch Infrastructure</li>
+          <li>Top Notch Infrastructure</li>
+        </ul>
       </div>
-      <div
-        class="why_choose_one_shape_one"
-        style="
-          background-image: url(assets/images/shapes/why_choose_one_shape_1.png);
-        "
-      ></div>
-      <div class="row">
-        <div class="col-xl-3 col-lg-6 col-md-6">
-          <!--Why Choose One Single-->
-          <div class="why_choose_one_single wow fadeInUp">
-            <div class="why_choose_one_icon">
-              <span class="icon-town"></span>
-            </div>
-            <h3>
-              Find Your <br />
-              Dream Home
-            </h3>
-            <p>
-              There many variation of <br />
-              pasages of lorem sum<br />
-              available.
-            </p>
+      <div class="col-lg-6 ">
+          <div class="listing_details_video wow fadeInDown animated p-5"  data-wow-offset="2">
+              <div class="listing_details_video_img">
+                  <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=667&q=80?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="image">
+                  <div class="listing_details_video_btn_box">
+                      <a href="https://www.youtube.com/watch?v=i9E_Blai8vk"
+                          class="listing_details_video_btn video-popup"><i
+                              class="fa fa-play"></i></a>
+                  </div>
+              </div>
           </div>
-        </div>
-        <div class="col-xl-3 col-lg-6 col-md-6">
-          <!--Why Choose One Single-->
-          <div
-            class="why_choose_one_single wow fadeInUp"
-            data-wow-delay="100ms"
-          >
-            <div class="why_choose_one_icon">
-              <span class="icon-agent"></span>
-            </div>
-            <h3>
-              Experienced <br />
-              Agents
-            </h3>
-            <p>
-              There many variation of <br />
-              pasages of lorem sum<br />
-              available.
-            </p>
-          </div>
-        </div>
-        <div class="col-xl-3 col-lg-6 col-md-6">
-          <!--Why Choose One Single-->
-          <div
-            class="why_choose_one_single wow fadeInUp"
-            data-wow-delay="200ms"
-          >
-            <div class="why_choose_one_icon">
-              <span class="icon-assets"></span>
-            </div>
-            <h3>
-              Buy or Sale <br />
-              Homes
-            </h3>
-            <p>
-              There many variation of <br />
-              pasages of lorem sum<br />
-              available.
-            </p>
-          </div>
-        </div>
-        <div class="col-xl-3 col-lg-6 col-md-6">
-          <!--Why Choose One Single-->
-          <div
-            class="why_choose_one_single wow fadeInUp"
-            data-wow-delay="300ms"
-          >
-            <div class="why_choose_one_icon">
-              <span class="icon-Sale"></span>
-            </div>
-            <h3>
-              List Your <br />
-              Own Property
-            </h3>
-            <p>
-              There many variation of <br />
-              pasages of lorem sum<br />
-              available.
-            </p>
-          </div>
-        </div>
       </div>
-    </div>
+  
+  </div>
   </section>
-  <!--Why Choose One End-->
 
   <!--Providing One Start-->
   <section
@@ -543,12 +164,11 @@
         <div class="col-xl-5 col-lg-5">
           <div class="providing_one_left">
             <div class="block-title text-left">
-              <h4>What Are You Looking</h4>
               <h2>
-                Providing the <br />
-                Best Real Estate Services
+                This is <br/> What We Stand For
               </h2>
-            </div>
+              <p class = "fs-3">We at KelKey Global Limited strongly believe that a great home is a reward for success</p>
+                          </div>
             <div class="providing_one_btn">
               <a href="/listing" class="thm-btn">Search Property</a>
             </div>
@@ -568,7 +188,7 @@
                   <span class="icon-home"></span>
                 </div>
                 <div class="providing_one_four_boxes_text">
-                  <p>Modern<br />Villas</p>
+                  <p>Affordable<br />Housing</p>
                 </div>
               </li>
               <li>
@@ -584,7 +204,7 @@
                   <span class="icon-condominium"></span>
                 </div>
                 <div class="providing_one_four_boxes_text">
-                  <p>Sweet<br />Apartment</p>
+                  <p>Luxurious<br />Living</p>
                 </div>
               </li>
               <li>
@@ -592,7 +212,7 @@
                   <span class="icon-buildings"></span>
                 </div>
                 <div class="providing_one_four_boxes_text">
-                  <p>Commercial<br />Building</p>
+                  <p>Customer<br />Service</p>
                 </div>
               </li>
             </ul>
@@ -645,8 +265,7 @@
               <br />
               Their expertise simply inspires confidence in making the right
               <br />
-              investment choices in real estate! 
-        
+              investment choices in real estate!
             </p>
             <div class="testimonials-one__meta">
               <h3>James Atah / <span>Customer</span></h3>
@@ -664,7 +283,6 @@
           </div>
           <div class="swiper-slide">
             <p>
-              
               This is due to their excellent service, competitive<br />
               pricing and customer support. It’s throughly <br />
               refresing to get such a personal touch.
@@ -690,9 +308,9 @@
         <h2>Follow Easy Steps</h2>
       </div>
       <div class="row">
-        <div class="col-xl-12">
-          <ul class="how_it_works_single list-unstyled">
-            <li>
+        <div class="col-xl-12" >
+          <ul class="how_it_works_single list-unstyled" style="margin: 0 auto;justify-content: center;padding-left: 50px;">
+            <li style="padding-top: 30px;margin-right: 60px;margin-bottom: 30px;">
               <div class="how_it_works_img">
                 <img
                   style="height: 162px; width: 162px"
@@ -708,7 +326,7 @@
                 <p>Select the property which appeals to you.</p>
               </div>
             </li>
-            <li class="item-2">
+            <li class="item-2"style="padding-top: 30px;margin-right: 60px;margin-bottom: 30px;">
               <div class="how_it_works_img">
                 <img src="assets/images/properties/howitworks2.jpg" alt="" />
                 <div class="how_it_works_circle">
@@ -720,7 +338,7 @@
                 <p>Pay the fee for the property.</p>
               </div>
             </li>
-            <li>
+            <li style="padding-top: 30px;margin-right: 60px;margin-bottom: 30px;">
               <div class="how_it_works_img">
                 <img src="assets/images/properties/howitworks3.jpg" alt="" />
                 <div class="how_it_works_circle">
@@ -732,7 +350,7 @@
                 <p>Get the documents and keys to your newly owned property.</p>
               </div>
             </li>
-            <li class="item-4">
+            <li class="item-4" style="padding-top: 30px;margin-right: 60px;margin-bottom: 30px;">
               <div class="how_it_works_img">
                 <img src="assets/images/properties/howitworks4.jpg" alt="" />
                 <div class="how_it_works_circle">
@@ -750,165 +368,128 @@
     </div>
   </section>
   <!--How It Works End-->
-
-  <!--Blog One Start-->
-  <!-- <section class="blog_one">
-          <div class="container">
-              <div class="row">
-                  <div class="col-xl-4 col-lg-4">
-                      <div class="blog_one_left">
-                          <div class="block-title text-left">
-                              <h4>Our Blog Posts</h4>
-                              <h2>Latest News <br>& Articles</h2>
-                          </div>
-                          <div class="blog_one_text">
-                              <p>Lorem ipsum onts persp unde omnis iste natus errluptatem acc usantium demque
-                                  laudantium totam.</p>
-                          </div>
+    <!--Latest Properties Start-->
+    <section class="latest_properties">
+      <div class="container">
+        <div class="block-title text-center">
+          <h4>Browse Featured Projects</h4>
+          <h2>Our Projects</h2>
+        </div>
+        <div class="row">
+          <div class="col-xl-12">
+            <div
+              class="thm-swiper__slider swiper-container thm-swiper__slider-pause-hover"
+              data-swiper-options='{"spaceBetween": 100, "slidesPerView": 4, "autoplay": { "delay": 5000 }, "pagination": {
+                                    "el": "#latest_properties_pagination",
+                                    "type": "bullets",
+                                    "clickable": true
+                                },
+                                "navigation": {
+                                    "nextEl": ".latest_properties_next",
+                                    "prevEl": ".latest_properties_prev",
+                                    "clickable": true
+                                },
+                                "breakpoints": {
+                                    "0": {
+                                        "spaceBetween": 30,
+                                        "slidesPerView": 1
+                                    },
+                                    "425": {
+                                        "spaceBetween": 30,
+                                        "slidesPerView": 1
+                                    },
+                                    "575": {
+                                        "spaceBetween": 30,
+                                        "slidesPerView": 1
+                                    },
+                                    "767": {
+                                        "spaceBetween": 30,
+                                        "slidesPerView": 2
+                                    },
+                                    "991": {
+                                        "spaceBetween": 20,
+                                        "slidesPerView": 2
+                                    },
+                                    "1289": {
+                                        "spaceBetween": 30,
+                                        "slidesPerView": 3
+                                    },
+                                    "1440": {
+                                        "spaceBetween": 30,
+                                        "slidesPerView": 3
+                                    }
+                                }}'
+            >
+              <div class="swiper-wrapper">
+                <% properties && properties.map((property, key) => {%>
+                <div class="swiper-slide">
+                  <div class="latest_properties_single">
+                    <div
+                      class="latest_properties_img_carousel owl-theme owl-carousel"
+                    >
+                      <div class="latest_properties_img">
+                        <img src="<%= property.image_one %>" alt="" />
+                        <div class="latest_properties_icon">
+                          <i class="fa fa-heart"></i>
+                        </div>
+                        <div class="featured_and_sale_btn">
+                          <a href="#" class="featured_btn">Featured</a>
+                          <a href="#" class="sale_btn">For Sale</a>
+                        </div>
                       </div>
-                  </div>
-                  <div class="col-xl-8 col-lg-8">
-                      <div class="blog_one_right">
-                          <div class="blog_one_carousel owl-theme owl-carousel">
-                       
-                              <div class="blog_one_single">
-                                  <div class="blog_one_image_box">
-                                      <div class="blog_one_img">
-                                          <img src="assets/images/blog/blog_1_img_1.jpg" alt="">
-                                      </div>
-                                      <div class="blog_one_date_box">
-                                          <p>20 Nov, 2020</p>
-                                      </div>
-                                  </div>
-                                  <div class="blog_one_content_box">
-                                      <h3><a href="news-details.html">Save Thousands Selling Your Property</a></h3>
-                                      <ul class="list-unstyled blog-one__meta">
-                                          <li><a href="blog-details.html"><i class="far fa-user-circle"></i> Admin</a>
-                                          </li>
-                                          <li><span>/</span></li>
-                                          <li><a href="news-details.html"><i class="far fa-comments"></i> 2
-                                                  Comments</a>
-                                          </li>
-                                      </ul>
-                                  </div>
-                              </div>
-                              <div class="blog_one_single">
-                                  <div class="blog_one_image_box">
-                                      <div class="blog_one_img">
-                                          <img src="assets/images/blog/blog_1_img_2.jpg" alt="">
-                                      </div>
-                                      <div class="blog_one_date_box">
-                                          <p>20 Nov, 2020</p>
-                                      </div>
-                                  </div>
-                                  <div class="blog_one_content_box">
-                                      <h3><a href="news-details.html">Leverage agile frame works to a
-                                              robust</a></h3>
-                                      <ul class="list-unstyled blog-one__meta">
-                                          <li><a href="news-details.html"><i class="far fa-user-circle"></i> Admin</a>
-                                          </li>
-                                          <li><span>/</span></li>
-                                          <li><a href="news-details.html"><i class="far fa-comments"></i> 2
-                                                  Comments</a>
-                                          </li>
-                                      </ul>
-                                  </div>
-                              </div>
-                              <div class="blog_one_single">
-                                  <div class="blog_one_image_box">
-                                      <div class="blog_one_img">
-                                          <img src="assets/images/blog/blog_1_img_3.jpg" alt="">
-                                      </div>
-                                      <div class="blog_one_date_box">
-                                          <p>20 Nov, 2020</p>
-                                      </div>
-                                  </div>
-                                  <div class="blog_one_content_box">
-                                      <h3><a href="news-details.html"> Iterative approaches to corporate
-                                              foster</a></h3>
-                                      <ul class="list-unstyled blog-one__meta">
-                                          <li><a href="news-details.html"><i class="far fa-user-circle"></i> Admin</a>
-                                          </li>
-                                          <li><span>/</span></li>
-                                          <li><a href="news-details.html"><i class="far fa-comments"></i> 2
-                                                  Comments</a>
-                                          </li>
-                                      </ul>
-                                  </div>
-                              </div>
-                          </div>
+                      <div class="latest_properties_img">
+                        <img src="<%= property.image_two %>" alt="" />
+                        <div class="latest_properties_icon">
+                          <i class="fa fa-heart"></i>
+                        </div>
+                        <div class="featured_and_sale_btn">
+                          <a href="#" class="featured_btn">Featured</a>
+                          <a href="#" class="sale_btn">For Sale</a>
+                        </div>
                       </div>
+                      <div class="latest_properties_img">
+                        <img src="<%= property.image_three %>" alt="" />
+                        <div class="latest_properties_icon">
+                          <i class="fa fa-heart"></i>
+                        </div>
+                        <div class="featured_and_sale_btn">
+                          <a href="#" class="featured_btn">Featured</a>
+                          <a href="#" class="sale_btn">For Sale</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="latest_properties_content">
+                      <div class="latest_properties_top_content">
+                        <h4>
+                          <a href="/listing/<%= property.slug %>"
+                            ><%= property.title %></a
+                          >
+                        </h4>
+                        <p><%= property.location %></p>
+                        <h3>₦ <%= property.price %> <span>only</span></h3>
+                      </div>
+                      <div class="latest_properties_bottom_content">
+                        <ul class="list-unstyled">
+                          <li><span class="icon-bed"></span>4</li>
+                          <li><span class="icon-shower"></span>2</li>
+                          <li>
+                            <span class="icon-square-measument"></span><%=
+                            property.details.sqft_size %> sqft
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
                   </div>
+                </div>
+                <% })%>
               </div>
+            </div>
           </div>
-      </section> -->
-  <!--Blog One End-->
-
-  <!--Brand One Start-->
-  <!-- <div class="brand_one">
-          <div class="container">
-              <div class="thm-swiper__slider swiper-container" data-swiper-options='{"spaceBetween": 100, "slidesPerView": 5, "autoplay": { "delay": 5000 }, "breakpoints": {
-              "0": {
-                  "spaceBetween": 30,
-                  "slidesPerView": 2
-              },
-              "375": {
-                  "spaceBetween": 30,
-                  "slidesPerView": 2
-              },
-              "575": {
-                  "spaceBetween": 30,
-                  "slidesPerView": 3
-              },
-              "767": {
-                  "spaceBetween": 50,
-                  "slidesPerView": 4
-              },
-              "991": {
-                  "spaceBetween": 50,
-                  "slidesPerView": 5
-              },
-              "1199": {
-                  "spaceBetween": 100,
-                  "slidesPerView": 5
-              }
-          }}'>
-                  <div class="swiper-wrapper">
-                      <div class="swiper-slide">
-                          <img src="assets/images/brand/brand_1_img_1.png" alt="">
-                      </div>
-                      <div class="swiper-slide">
-                          <img src="assets/images/brand/brand_1_img_2.png" alt="">
-                      </div>
-                      <div class="swiper-slide">
-                          <img src="assets/images/brand/brand_1_img_3.png" alt="">
-                      </div>
-                      <div class="swiper-slide">
-                          <img src="assets/images/brand/brand_1_img_4.png" alt="">
-                      </div>
-                      <div class="swiper-slide">
-                          <img src="assets/images/brand/brand_1_img_5.png" alt="">
-                      </div>
-                      <div class="swiper-slide">
-                          <img src="assets/images/brand/brand_1_img_1.png" alt="">
-                      </div>
-                      <div class="swiper-slide">
-                          <img src="assets/images/brand/brand_1_img_2.png" alt="">
-                      </div>
-                      <div class="swiper-slide">
-                          <img src="assets/images/brand/brand_1_img_3.png" alt="">
-                      </div>
-                      <div class="swiper-slide">
-                          <img src="assets/images/brand/brand_1_img_4.png" alt="">
-                      </div>
-                      <div class="swiper-slide">
-                          <img src="assets/images/brand/brand_1_img_5.png" alt="">
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div> -->
-  <!--Brand One End-->
+        </div>
+        <div class="swiper-pagination" id="latest_properties_pagination"></div>
+      </div>
+    </section>
+    <!--Latest Properties End-->
 
   <%- include('./partials/Footer.ejs'); %>
-</body>
+ 

@@ -1,4 +1,5 @@
 <%- include('./partials/Header.ejs'); %>
+<link rel="stylesheet" href="/assets/css/aboutus.css">
 <%- include('./partials/Nav.ejs'); %>
 
 
@@ -17,69 +18,9 @@
       </section>
       <!--Page Header End-->
 
-      <!--Locations Start-->
-      <!-- <section class="locations">
-          <div class="container">
-              <div class="row">
-                  <div class="col-xl-3 col-lg-6 col-md-6">
-                     
-                      <div class="locations_three_single">
-                          <div class="locations_three_title">
-                              <h3>Austin</h3>
-                              <p>22 Texas West Hills</p>
-                          </div>
-                          <div class="locations_three_contact">
-                              <a href="mailto:needhelp@tolins.com" class="mail_box">needhelp@tolins.com</a>
-                              <a href="tel:888-999-0000" class="number_box">888 999 0000</a>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-xl-3 col-lg-6 col-md-6">
-                     
-                      <div class="locations_three_single">
-                          <div class="locations_three_title">
-                              <h3>Boston</h3>
-                              <p>5 Federal Street Boston</p>
-                          </div>
-                          <div class="locations_three_contact">
-                              <a href="mailto:needhelp@tolins.com" class="mail_box">needhelp@tolins.com</a>
-                              <a href="tel:888-999-0000" class="number_box">888 999 0000</a>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-xl-3 col-lg-6 col-md-6">
-                     
-                      <div class="locations_three_single">
-                          <div class="locations_three_title">
-                              <h3>New York</h3>
-                              <p>8th Broklyn New York</p>
-                          </div>
-                          <div class="locations_three_contact">
-                              <a href="mailto:needhelp@tolins.com" class="mail_box">needhelp@tolins.com</a>
-                              <a href="tel:888-999-0000" class="number_box">888 999 0000</a>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-xl-3 col-lg-6 col-md-6">
-                     
-                      <div class="locations_three_single">
-                          <div class="locations_three_title">
-                              <h3>Baltimore</h3>
-                              <p>3 Lombabr 50 baltimore</p>
-                          </div>
-                          <div class="locations_three_contact">
-                              <a href="mailto:needhelp@tolins.com" class="mail_box">needhelp@tolins.com</a>
-                              <a href="tel:888-999-0000" class="number_box">888 999 0000</a>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </section> -->
-      <!--Locations End-->
 
       <!--Contact Start-->
-      <section class="contact" style="margin-top : 80px">
+      <section class="contact">
           <div class="container">
               <div class="row">
                   <div class="col-xl-4 col-lg-4">
@@ -123,7 +64,7 @@
                           </div>
                     <% } %>
                       <form action="/contact" class="contact__form" method="POST">
-                          <div class="row">
+                          <div class="row contact-form" >
                               <div class="col-xl-6">
                                   <div class="comment_input_box">
                                       <input type="text" placeholder="Your name" name="name">
@@ -163,7 +104,7 @@
       <!--Contact End-->
 
       <!--Google Map-->
-      <section class="google_map">
+      <section class="google_map" style="padding: 0px;">
           <iframe
           src="https://maps.google.com/maps?q=Lagos&t=&z=15&ie=UTF8&iwloc=&output=embed" class="google-map__contact" allowfullscreen></iframe>
 

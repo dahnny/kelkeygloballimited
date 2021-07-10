@@ -18,7 +18,7 @@ const passport = require("passport")
 const app = express();
 app.use(
   cors({
-    // origin: ["http://localhost:3000", "http://127.0.0.1:3000"],
+    origin: ["http://localhost:3000", "http://127.0.0.1:3000"],
     credentials: true
   })
 );
@@ -93,7 +93,7 @@ app.use(methodOverride('_method'))
 
 
 /** END AUTH ROUTE */
-app.use('/', require('./routes/index'))
+app.use('/', require('./routes/index'));
 
 
 

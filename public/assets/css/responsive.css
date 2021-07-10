@@ -1029,7 +1029,8 @@
     }
 
     .main-nav__left_one .side-menu__toggler {
-        padding: 24.5px 0;
+        padding: 24.5px 40px;
+        padding-top: 50px;
     }
 
 
@@ -1054,7 +1055,8 @@
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .main-nav__left_one .side-menu__toggler {
-        padding: 24.5px 0;
+        padding: 24.5px 40px;
+        padding-top: 50px;
     }
 
 
@@ -1075,7 +1077,8 @@
 
 @media (max-width: 767px) {
     .main-nav__left_one .side-menu__toggler {
-        padding: 24.5px 0;
+        padding: 0px 10px;
+        padding-top: 50px;
     }
 
     .main-nav__right_one .icon_cart_box {
@@ -1086,6 +1089,21 @@
         display: none;
     }
 
+    .partner-button{
+        display: none;
+    }
+
+    .thm-btn{
+        font-size: 10px;
+        padding: 10px 10px
+    }
+    .banner-one .content-box .top-title h1{
+        font-size: smaller;
+    }
+
+    .recommended-image{
+        width: 80px;
+    }
 
     .main-nav__header-one.two .main-nav__left_one .side-menu__toggler {
         padding: 41.5px 0;
